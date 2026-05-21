@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Median Monthly Household Income by State (2022)",
+    "subtitle": "Darker blue = higher median income",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 380,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/malaysia_states.geojson",
+    "format": {"type": "json", "property": "features"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.state",
+      "from": {
+        "data": {
+          "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
+        },
+        "key": "state",
+        "fields": ["income_median", "income_mean", "poverty", "gini"]
+      }
+    }
+  ],
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#ffffff",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "color": {
+      "field": "income_median",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues",
+        "domain": [3000, 11000]
+      },
+      "legend": {
+        "title": "Median Income (RM)",
+        "orient": "bottom-right",
+        "titleFontSize": 11,
+        "labelFontSize": 10,
+        "gradientLength": 120
+      }
+    },
+    "tooltip": [
+      {"field": "properties.state", "type": "nominal", "title": "State"},
+      {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
+      {"field": "income_mean", "type": "quantitative", "title": "Mean Income (RM)", "format": ",.0f"},
+      {"field": "poverty", "type": "quantitative", "title": "Poverty Rate (%)"},
+      {"field": "gini", "type": "quantitative", "title": "Gini Coefficient", "format": ".3f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "background": "#ffffff"
+  }
+}
