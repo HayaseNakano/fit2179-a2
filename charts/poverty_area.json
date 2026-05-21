@@ -1,0 +1,53 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "National Poverty Rate Decline (1970–2022)",
+    "subtitle": "Absolute poverty rate · Malaysia · hh_poverty_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_poverty_state.csv"
+  },
+  "transform": [
+    {"filter": "datum.poverty_absolute != null"},
+    {
+      "aggregate": [{"op": "mean", "field": "poverty_absolute", "as": "national_poverty"}],
+      "groupby": ["date"]
+    },
+    {"calculate": "year(datum.date)", "as": "year"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {"color": "#0c447c", "strokeWidth": 2.5},
+        "color": "#ddeeff",
+        "opacity": 0.8
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {"format": "%Y", "labelFontSize": 10, "titleFontSize": 12, "grid": false}
+        },
+        "y": {
+          "field": "national_poverty",
+          "type": "quantitative",
+          "title": "Average Poverty Rate (%)",
+          "axis": {"labelFontSize": 10, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Year", "format": "%Y"},
+          {"field": "national_poverty", "type": "quantitative", "title": "Avg Poverty Rate (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+}
