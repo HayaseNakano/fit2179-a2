@@ -11,14 +11,25 @@
   "width": "container",
   "height": 420,
   "data": {
-    "url": "data/hies_state.csv"
+    "values": [
+      {"state": "Kelantan",        "income_median": 3614,  "diff": -2724, "side": "Below average"},
+      {"state": "Kedah",           "income_median": 4402,  "diff": -1936, "side": "Below average"},
+      {"state": "Perak",           "income_median": 4494,  "diff": -1844, "side": "Below average"},
+      {"state": "Sabah",           "income_median": 4577,  "diff": -1761, "side": "Below average"},
+      {"state": "Perlis",          "income_median": 4713,  "diff": -1625, "side": "Below average"},
+      {"state": "Pahang",          "income_median": 4753,  "diff": -1585, "side": "Below average"},
+      {"state": "Sarawak",         "income_median": 4978,  "diff": -1360, "side": "Below average"},
+      {"state": "Negeri Sembilan", "income_median": 5226,  "diff": -1112, "side": "Below average"},
+      {"state": "Terengganu",      "income_median": 5878,  "diff": -460,  "side": "Below average"},
+      {"state": "Melaka",          "income_median": 6210,  "diff": -128,  "side": "Below average"},
+      {"state": "Pulau Pinang",    "income_median": 6502,  "diff": 164,   "side": "Above average"},
+      {"state": "Johor",           "income_median": 6879,  "diff": 541,   "side": "Above average"},
+      {"state": "W.P. Labuan",     "income_median": 6904,  "diff": 566,   "side": "Above average"},
+      {"state": "Selangor",        "income_median": 9983,  "diff": 3645,  "side": "Above average"},
+      {"state": "W.P. Putrajaya",  "income_median": 10056, "diff": 3718,  "side": "Above average"},
+      {"state": "W.P. Kuala Lumpur","income_median": 10234, "diff": 3896, "side": "Above average"}
+    ]
   },
-  "transform": [
-    {
-      "calculate": "datum.median_income - 6338", 
-      "as": "diff"
-    }
-  ],
   "layer": [
     {
       "mark": {"type": "bar", "cornerRadiusEnd": 2},
@@ -48,55 +59,38 @@
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "median_income", "type": "quantitative", "title": "Median Income (RM)"},
+          {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)"},
           {"field": "diff", "type": "quantitative", "title": "Gap from Average (RM)"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.diff > 0"}],
       "mark": {
         "type": "text",
-        "align": "right",
         "baseline": "middle",
-        "dx": -5,
         "font": "Arial",
         "fontSize": 11,
-        "fontWeight": "bold",
-        "color": "#333333"
+        "fontWeight": "bold"
       },
       "encoding": {
         "x": {"datum": 0}, 
         "y": {
           "field": "state",
           "type": "nominal",
-          "axis": null, 
           "sort": {"field": "diff", "order": "descending"}
         },
-        "text": {"field": "state", "type": "nominal"}
-      }
-    },
-    {
-      "transform": [{"filter": "datum.diff <= 0"}],
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "middle",
-        "dx": 5,
-        "font": "Arial",
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "color": "#333333"
-      },
-      "encoding": {
-        "x": {"datum": 0}, 
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "axis": null, 
-          "sort": {"field": "diff", "order": "descending"}
+        "text": {"field": "state", "type": "nominal"},
+        "align": {
+          "condition": {"test": "datum.diff > 0", "value": "right"},
+          "value": "left"
         },
-        "text": {"field": "state", "type": "nominal"}
+        "dx": {
+          "condition": {"test": "datum.diff > 0", "value": -5},
+          "value": 5
+        },
+        "color": {
+          "value": "#333333"
+        }
       }
     }
   ],
