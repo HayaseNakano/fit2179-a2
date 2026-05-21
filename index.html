@@ -125,6 +125,14 @@
     <div class="narr">The geographic pattern is stark — the Klang Valley corridor (W.P. Kuala Lumpur, Putrajaya, Selangor) forms a high-income cluster in the west, while the East Coast states of Kelantan, Terengganu, and the Borneo states of Sabah and Sarawak remain significantly behind. This is not just an income gap — it is a geographic one.</div>
   </div>
 
+  <!-- Diverging bar -->
+  <div class="cbox">
+    <div class="ctitle">Income relative to national average</div>
+    <div class="csub">Difference from national median of RM 6,338 · 2022 · hies_state.csv</div>
+    <span class="ctag">Diverging bar chart · derived data</span>
+    <div id="chart_diverging" class="chart-wrap"></div>
+  </div>
+
   <!-- SECTION 3 — Trends -->
   <div class="sec">
     <div class="sec-head">
@@ -232,6 +240,8 @@
   // ── Section 02 — Choropleth map ──
   vegaEmbed("#chart_map", "charts/choropleth.json", {actions: false})
     .catch(function(err) { console.error("map:", err); });
+
+    vegaEmbed("#chart_diverging", "charts/diverging_bar.json", {actions: false});
 
   // ── Section 03 — uncomment as you build ──
   // vegaEmbed("#chart_income_trend",  "charts/income_trend.json",      {actions: false});

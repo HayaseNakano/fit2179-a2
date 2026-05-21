@@ -1,0 +1,120 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "State Income Relative to National Median (2022)",
+    "subtitle": "Each bar shows how far a state's median income is above or below the national median of RM 6,338",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 420,
+  "data": {
+    "values": [
+      {"state": "Kelantan",        "income_median": 3614,  "diff": -2724, "side": "Below average"},
+      {"state": "Kedah",           "income_median": 4402,  "diff": -1936, "side": "Below average"},
+      {"state": "Perak",           "income_median": 4494,  "diff": -1844, "side": "Below average"},
+      {"state": "Sabah",           "income_median": 4577,  "diff": -1761, "side": "Below average"},
+      {"state": "Perlis",          "income_median": 4713,  "diff": -1625, "side": "Below average"},
+      {"state": "Pahang",          "income_median": 4753,  "diff": -1585, "side": "Below average"},
+      {"state": "Sarawak",         "income_median": 4978,  "diff": -1360, "side": "Below average"},
+      {"state": "Negeri Sembilan", "income_median": 5226,  "diff": -1112, "side": "Below average"},
+      {"state": "Terengganu",      "income_median": 5878,  "diff": -460,  "side": "Below average"},
+      {"state": "Melaka",          "income_median": 6210,  "diff": -128,  "side": "Below average"},
+      {"state": "Pulau Pinang",    "income_median": 6502,  "diff": 164,   "side": "Above average"},
+      {"state": "Johor",           "income_median": 6879,  "diff": 541,   "side": "Above average"},
+      {"state": "W.P. Labuan",     "income_median": 6904,  "diff": 566,   "side": "Above average"},
+      {"state": "Selangor",        "income_median": 9983,  "diff": 3645,  "side": "Above average"},
+      {"state": "W.P. Putrajaya",  "income_median": 10056, "diff": 3718,  "side": "Above average"},
+      {"state": "W.P. Kuala Lumpur","income_median": 10234, "diff": 3896, "side": "Above average"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {"field": "diff", "order": "ascending"},
+          "title": null,
+          "axis": {
+            "labelFontSize": 11,
+            "labelColor": "#333333",
+            "domain": false,
+            "ticks": false,
+            "grid": false
+          }
+        },
+        "x": {
+          "field": "diff",
+          "type": "quantitative",
+          "title": "Difference from National Median Income (RM)",
+          "axis": {
+            "format": "+,.0f",
+            "labelFontSize": 10,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [3, 3],
+            "domain": false,
+            "tickCount": 7
+          }
+        },
+        "color": {
+          "field": "side",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Above average", "Below average"],
+            "range": ["#1a5fa8", "#cc3333"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-left",
+            "labelFontSize": 11,
+            "symbolSize": 80
+          }
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
+          {"field": "diff", "type": "quantitative", "title": "vs National Median (RM)", "format": "+,.0f"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#333333",
+        "strokeWidth": 1.5,
+        "strokeDash": [4, 2]
+      },
+      "encoding": {
+        "x": {"datum": 0}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 9,
+        "fontStyle": "italic",
+        "color": "#555555"
+      },
+      "encoding": {
+        "x": {"datum": 0},
+        "y": {"datum": "Kelantan", "type": "nominal"},
+        "text": {"value": "National median RM 6,338"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "background": "#ffffff",
+    "bar": {"binSpacing": 2}
+  }
+}
