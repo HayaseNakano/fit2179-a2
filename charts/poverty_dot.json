@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Poverty Rate by State (2022)",
+    "subtitle": "Absolute poverty rate · hh_poverty_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_poverty_state.csv"
+  },
+  "transform": [
+    {"filter": "datum.date == '2022-01-01'"},
+    {"filter": "datum.poverty_absolute != null"}
+  ],
+  "mark": {
+    "type": "point",
+    "filled": true,
+    "size": 120
+  },
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": {"field": "poverty_absolute", "order": "descending"},
+      "axis": {"labelFontSize": 11, "ticks": false, "domain": false}
+    },
+    "x": {
+      "field": "poverty_absolute",
+      "type": "quantitative",
+      "title": "Absolute Poverty Rate (%)",
+      "axis": {
+        "labelFontSize": 10,
+        "titleFontSize": 12,
+        "gridColor": "#e0e0d8",
+        "gridDash": [3,3],
+        "domain": false
+      }
+    },
+    "color": {
+      "field": "poverty_absolute",
+      "type": "quantitative",
+      "scale": {"scheme": "orangered", "domain": [0, 22]},
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "poverty_absolute", "type": "quantitative", "title": "Poverty Rate (%)", "format": ".1f"}
+    ]
+  },
+  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+}
