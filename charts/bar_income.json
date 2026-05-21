@@ -1,0 +1,107 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Median Monthly Household Income by State (2022)",
+      "subtitle": "W.P. Putrajaya, W.P. Kuala Lumpur and Selangor lead the nation",
+      "fontSize": 16,
+      "subtitleFontSize": 12,
+      "subtitleColor": "#666666",
+      "anchor": "start"
+    },
+    "width": "container",
+    "height": 400,
+    "data": {
+      "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
+    },
+    "transform": [
+      {
+        "window": [
+          {
+            "op": "rank",
+            "as": "rank"
+          }
+        ],
+        "sort": [
+          {
+            "field": "income_median",
+            "order": "descending"
+          }
+        ]
+      },
+      {
+        "calculate": "datum.rank <= 3 ? 'Top 3' : 'Others'",
+        "as": "highlight"
+      }
+    ],
+    "mark": {
+      "type": "bar",
+      "cornerRadiusEnd": 4
+    },
+    "encoding": {
+      "y": {
+        "field": "state",
+        "type": "nominal",
+        "title": "State",
+        "sort": "-x",
+        "axis": {
+          "labelFontSize": 12,
+          "titleFontSize": 13
+        }
+      },
+      "x": {
+        "field": "income_median",
+        "type": "quantitative",
+        "title": "Median Monthly Household Income (RM)",
+        "axis": {
+          "format": ",.0f",
+          "labelFontSize": 11,
+          "titleFontSize": 13
+        }
+      },
+      "color": {
+        "field": "highlight",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "Top 3",
+            "Others"
+          ],
+          "range": [
+            "#1a6eb5",
+            "#cccccc"
+          ]
+        },
+        "legend": null
+      },
+      "tooltip": [
+        {
+          "field": "state",
+          "type": "nominal",
+          "title": "State"
+        },
+        {
+          "field": "income_median",
+          "type": "quantitative",
+          "title": "Median Income (RM)",
+          "format": ",.0f"
+        },
+        {
+          "field": "income_mean",
+          "type": "quantitative",
+          "title": "Mean Income (RM)",
+          "format": ",.0f"
+        },
+        {
+          "field": "poverty",
+          "type": "quantitative",
+          "title": "Poverty Rate (%)"
+        }
+      ]
+    },
+    "config": {
+      "view": {
+        "stroke": null
+      },
+      "background": "#ffffff"
+    }
+  }
