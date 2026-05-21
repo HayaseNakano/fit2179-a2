@@ -9,20 +9,16 @@
     "anchor": "start"
   },
   "width": "container",
-  "height": 520,
+  "height": 500,
   "projection": {
     "type": "mercator",
-    "center": [111.0, 4.2],
-    "scale": 2800
+    "center": [110.5, 3.8],
+    "scale": 2200
   },
   "layer": [
     {
       "data": {"sphere": true},
-      "mark": {
-        "type": "geoshape",
-        "fill": "#d6eaf8",
-        "stroke": null
-      }
+      "mark": {"type": "geoshape", "fill": "#d6eaf8", "stroke": null}
     },
     {
       "data": {"graticule": {"step": [2, 2]}},
@@ -54,16 +50,13 @@
       "mark": {
         "type": "geoshape",
         "stroke": "#ffffff",
-        "strokeWidth": 1.0
+        "strokeWidth": 0.8
       },
       "encoding": {
         "color": {
           "field": "income_median",
           "type": "quantitative",
-          "scale": {
-            "scheme": "blues",
-            "domain": [3000, 11000]
-          },
+          "scale": {"scheme": "blues", "domain": [3000, 11000]},
           "legend": {
             "title": "Median Income (RM)",
             "orient": "bottom-right",
@@ -105,13 +98,11 @@
       },
       "mark": {
         "type": "text",
-        "fontSize": 11,
+        "fontSize": 10,
         "fontWeight": "bold",
         "font": "Arial",
-        "color": "#1a1a1a",
-        "stroke": "#ffffff",
-        "strokeWidth": 3,
-        "strokeOpacity": 1.0
+        "color": "#000000",
+        "stroke": null
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
