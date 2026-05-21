@@ -34,6 +34,7 @@
     .csub { font-size: 11px; color: #aaa; margin-bottom: 8px; }
     .ctag { display: inline-block; font-size: 10px; font-weight: 700; color: #1a5fa8; background: #ddeeff; padding: 2px 8px; border-radius: 20px; margin-bottom: 12px; }
 
+    .gbar { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
     .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
     .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
@@ -60,7 +61,7 @@
     <div class="hero-sub">Exploring household income inequality across Malaysia's 16 states — from the Federal Territories to the fringes of Borneo. A data story using the Household Income &amp; Expenditure Survey (HIES 2022) and the UNDP Human Development Report.</div>
   </div>
 
-  <!-- SECTION 1 — National snapshot -->
+  <!-- SECTION 1 — National picture: stat cards + bar chart -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">01</span>
@@ -93,34 +94,35 @@
     </div>
 
     <!-- Bar chart — full width -->
-    <div class="cbox" style="margin-bottom:12px;">
-      <div class="ctitle">Median monthly household income by state</div>
-      <div class="csub">Ranked highest to lowest · 2022 · hies_state.csv</div>
-      <span class="ctag">Bar chart</span>
-      <div id="chart_bar" class="chart-wrap"></div>
+    <div class="gbar">
+      <div class="cbox">
+        <div class="ctitle">Median monthly household income by state</div>
+        <div class="csub">Ranked highest to lowest · 2022 · hies_state.csv</div>
+        <span class="ctag">Bar chart</span>
+        <div id="chart_bar" class="chart-wrap"></div>
+      </div>
     </div>
 
     <div class="narr">W.P. Kuala Lumpur (RM 10,234) earns 2.8× more than Kelantan (RM 3,614). Urban federal territories dominate the top of the ranking, while East Coast Peninsular and Borneo states cluster at the bottom — a geographic divide that mirrors Malaysia's economic development history.</div>
   </div>
 
-  <!-- SECTION 2 — Map -->
+  <!-- SECTION 2 — Choropleth map: full width, own section -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">02</span>
-      <span class="sec-title">Where the divide lives</span>
+      <span class="sec-title">Where the divide falls — geographically</span>
       <div class="sec-line"></div>
-      <span class="sec-hint">Geographic distribution of household income</span>
+      <span class="sec-hint">State-level income mapped across Malaysia</span>
     </div>
 
-    <!-- Map — full width, tall -->
-    <div class="cbox" style="margin-bottom:12px;">
-      <div class="ctitle">Income by state — choropleth map</div>
-      <div class="csub">Shading encodes median monthly household income · mercator projection · hover for details</div>
-      <span class="ctag">Choropleth map · required idiom · hies_state.csv + malaysia_states.geojson</span>
-      <div id="chart_map" class="chart-wrap" style="min-height:500px;"></div>
+    <div class="cbox">
+      <div class="ctitle">Median household income by state — choropleth map</div>
+      <div class="csub">Mercator projection · shading encodes median monthly income · hover for state details · hies_state.csv + malaysia_states.geojson</div>
+      <span class="ctag">Choropleth map · required map idiom</span>
+      <div id="chart_map" class="chart-wrap" style="min-height:520px;"></div>
     </div>
 
-    <div class="narr">The geographic pattern is stark — the west coast corridor from Selangor to Pulau Pinang is Malaysia's economic engine, while Kelantan, Kedah, and Borneo's interior states lag behind. Sabah and Sarawak, despite their vast natural resources, remain among the lowest-income states in the country.</div>
+    <div class="narr">The geographic pattern is stark — the Klang Valley corridor (W.P. Kuala Lumpur, Putrajaya, Selangor) forms a high-income cluster in the west, while the East Coast states of Kelantan, Terengganu, and the Borneo states of Sabah and Sarawak remain significantly behind. This is not just an income gap — it is a geographic one.</div>
   </div>
 
   <!-- SECTION 3 — Trends -->
@@ -212,7 +214,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="fsrc">Data: OpenDOSM CC BY 4.0 · UNDP Human Development Report · Natural Earth boundaries · hies_state.csv · hh_income_state.csv · hh_inequality_state.csv · hh_poverty_state.csv · hh_access_amenities.csv · hies_state_percentile.csv · hdr-data.json</div>
+    <div class="fsrc">Data: OpenDOSM CC BY 4.0 · UNDP Human Development Report · Natural Earth (state boundaries) · hies_state.csv · hh_income_state.csv · hh_inequality_state.csv · hh_poverty_state.csv · hh_access_amenities.csv · hies_state_percentile.csv · hdr-data.json</div>
     <div class="fsrc">Tan Ethan · FIT2179 Data Visualisation 2 · May 2026</div>
   </div>
 
@@ -223,24 +225,24 @@
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
 <script>
-  // Section 01
+  // ── Section 01 ──
   vegaEmbed("#chart_bar", "charts/bar_income.json", {actions: false})
     .catch(function(err) { console.error("bar:", err); });
 
-  // Section 02 — map
+  // ── Section 02 — Choropleth map ──
   vegaEmbed("#chart_map", "charts/choropleth.json", {actions: false})
     .catch(function(err) { console.error("map:", err); });
 
-  // Section 03 — uncomment as you build
+  // ── Section 03 — uncomment as you build ──
   // vegaEmbed("#chart_income_trend",  "charts/income_trend.json",      {actions: false});
   // vegaEmbed("#chart_gini_heatmap",  "charts/gini_heatmap.json",      {actions: false});
 
-  // Section 04
+  // ── Section 04 ──
   // vegaEmbed("#chart_poverty",       "charts/poverty_dot.json",       {actions: false});
   // vegaEmbed("#chart_amenities",     "charts/amenities_scatter.json", {actions: false});
   // vegaEmbed("#chart_poverty_trend", "charts/poverty_area.json",      {actions: false});
 
-  // Section 05
+  // ── Section 05 ──
   // vegaEmbed("#chart_percentile",    "charts/percentile_line.json",   {actions: false});
   // vegaEmbed("#chart_hdi",           "charts/hdi_line.json",          {actions: false});
 </script>

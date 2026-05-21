@@ -3,17 +3,17 @@
   "title": {
     "text": "Median Monthly Household Income by State (2022)",
     "subtitle": "Darker blue = higher median income · Hover over a state for details",
-    "fontSize": 14,
-    "subtitleFontSize": 11,
+    "fontSize": 15,
+    "subtitleFontSize": 12,
     "subtitleColor": "#aaaaaa",
     "anchor": "start"
   },
   "width": "container",
-  "height": 520,
+  "height": 500,
   "projection": {
     "type": "mercator",
     "center": [109.5, 3.8],
-    "scale": 1400
+    "scale": 1600
   },
   "layer": [
     {
@@ -67,10 +67,10 @@
           "legend": {
             "title": "Median Income (RM)",
             "orient": "bottom-right",
-            "titleFontSize": 11,
-            "labelFontSize": 10,
-            "gradientLength": 140,
-            "gradientThickness": 10
+            "titleFontSize": 12,
+            "labelFontSize": 11,
+            "gradientLength": 180,
+            "gradientThickness": 12
           }
         },
         "tooltip": [
