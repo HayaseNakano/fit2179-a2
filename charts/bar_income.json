@@ -15,7 +15,7 @@
     },
     "transform": [
       {
-        "calculate": "datum.state === 'W.P. Kuala Lumpur' || datum.state === 'W.P. Putrajaya' || datum.state === 'Selangor' ? 'Top 3' : 'Others'",
+        "calculate": "indexof(['W.P. Kuala Lumpur', 'W.P. Putrajaya', 'Selangor'], datum.state) >= 0 ? 'Top 3' : 'Others'",
         "as": "highlight"
       }
     ],
@@ -48,46 +48,20 @@
         "field": "highlight",
         "type": "nominal",
         "scale": {
-          "domain": [
-            "Top 3",
-            "Others"
-          ],
-          "range": [
-            "#1a6eb5",
-            "#cccccc"
-          ]
+          "domain": ["Top 3", "Others"],
+          "range": ["#1a6eb5", "#cccccc"]
         },
         "legend": null
       },
       "tooltip": [
-        {
-          "field": "state",
-          "type": "nominal",
-          "title": "State"
-        },
-        {
-          "field": "income_median",
-          "type": "quantitative",
-          "title": "Median Income (RM)",
-          "format": ",.0f"
-        },
-        {
-          "field": "income_mean",
-          "type": "quantitative",
-          "title": "Mean Income (RM)",
-          "format": ",.0f"
-        },
-        {
-          "field": "poverty",
-          "type": "quantitative",
-          "title": "Poverty Rate (%)"
-        }
+        {"field": "state", "type": "nominal", "title": "State"},
+        {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
+        {"field": "income_mean", "type": "quantitative", "title": "Mean Income (RM)", "format": ",.0f"},
+        {"field": "poverty", "type": "quantitative", "title": "Poverty Rate (%)"}
       ]
     },
     "config": {
-      "view": {
-        "stroke": null
-      },
+      "view": {"stroke": null},
       "background": "#ffffff"
     }
   }
