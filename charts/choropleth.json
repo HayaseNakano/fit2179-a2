@@ -13,7 +13,7 @@
   "projection": {
     "type": "mercator",
     "center": [109.5, 3.8],
-    "scale": 1600
+    "scale": 2000
   },
   "layer": [
     {
@@ -25,13 +25,13 @@
       }
     },
     {
-      "data": {"graticule": {"step": [5, 5]}},
+      "data": {"graticule": {"step": [2, 2]}},
       "mark": {
         "type": "geoshape",
         "fill": null,
         "stroke": "#aacce8",
-        "strokeWidth": 0.4,
-        "strokeOpacity": 0.6
+        "strokeWidth": 0.3,
+        "strokeOpacity": 0.5
       }
     },
     {
@@ -80,6 +80,42 @@
           {"field": "poverty", "type": "quantitative", "title": "Poverty Rate (%)"},
           {"field": "gini", "type": "quantitative", "title": "Gini Coefficient", "format": ".3f"}
         ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"label": "Perlis",      "longitude": 100.20, "latitude": 6.52},
+          {"label": "Kedah",       "longitude": 100.60, "latitude": 6.10},
+          {"label": "P. Pinang",   "longitude": 100.33, "latitude": 5.35},
+          {"label": "Perak",       "longitude": 101.00, "latitude": 4.50},
+          {"label": "Selangor",    "longitude": 101.50, "latitude": 3.35},
+          {"label": "KL",          "longitude": 101.69, "latitude": 3.14},
+          {"label": "Putrajaya",   "longitude": 101.85, "latitude": 2.93},
+          {"label": "N. Sembilan", "longitude": 102.10, "latitude": 2.90},
+          {"label": "Melaka",      "longitude": 102.25, "latitude": 2.25},
+          {"label": "Johor",       "longitude": 103.40, "latitude": 1.90},
+          {"label": "Pahang",      "longitude": 102.80, "latitude": 3.70},
+          {"label": "Terengganu", "longitude": 103.10, "latitude": 4.80},
+          {"label": "Kelantan",    "longitude": 101.90, "latitude": 5.70},
+          {"label": "Sabah",       "longitude": 117.00, "latitude": 5.80},
+          {"label": "Sarawak",     "longitude": 113.00, "latitude": 2.80},
+          {"label": "Labuan",      "longitude": 115.23, "latitude": 5.35}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": "bold",
+        "color": "#1a1a1a",
+        "stroke": "#ffffff",
+        "strokeWidth": 2,
+        "strokeOpacity": 0.8
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude":  {"field": "latitude",  "type": "quantitative"},
+        "text":      {"field": "label",      "type": "nominal"}
       }
     }
   ],
