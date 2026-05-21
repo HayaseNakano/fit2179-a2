@@ -1,1 +1,15 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Malaysia Income Inequality</title> <!-- Vega-Lite --> <script src="https://cdn.jsdelivr.net/npm/vega@5"></script> <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script> <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script> <!-- Pure.css for layout --> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3/build/pure-min.css"> <style> body { max-width: 1100px; margin: 0 auto; padding: 20px; font-family: sans-serif; } .chart-container { width: 100%; margin-bottom: 40px; } h1 { font-size: 2rem; margin-bottom: 4px; } p.subtitle { color: #666; margin-top: 0; } </style> </head> <body> <h1>Malaysia's Income Divide</h1> <p class="subtitle">Exploring household income inequality across states — 1970 to 2022</p> <!-- Section 1 --> <h2>The National Picture</h2> <div id="chart_map" class="chart-container"></div> <div id="chart_bar" class="chart-container"></div> <!-- Section 2 --> <h2>How Inequality Has Changed</h2> <div id="chart_gini" class="chart-container"></div> <script> // Load each chart from its JSON file in /charts folder vegaEmbed("#chart_map", "charts/choropleth.json", {actions: false}); vegaEmbed("#chart_bar", "charts/bar_income.json", {actions: false}); vegaEmbed("#chart_gini", "charts/gini_trend.json", {actions: false}); </script> <footer> <p>Data: OpenDOSM (CC BY 4.0) · World Bank Open Data · Your Name · May 2026</p> </footer> </body> </html>
+<body>
+    <h1>Malaysia's Income Divide</h1>
+    <p class="subtitle">Exploring household income inequality across states — 1970 to 2022</p>
+  
+    <h2>The National Picture</h2>
+    <div id="chart_bar" class="chart-container"></div>
+  
+    <script>
+      vegaEmbed("#chart_bar", "charts/bar_income.json", {actions: false});
+    </script>
+  
+    <footer>
+      <p>Data: OpenDOSM (CC BY 4.0) · UNDP HDR · Tan Ethan · May 2026</p>
+    </footer>
+  </body>
