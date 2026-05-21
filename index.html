@@ -6,238 +6,45 @@
   <title>Malaysia's Income Divide</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f5f5f0; font-family: Arial, sans-serif; color: #1a1a1a; }
+    .page { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
 
-    body {
-      background: #f5f5f0;
-      font-family: Arial, sans-serif;
-      color: #1a1a1a;
-    }
+    .hero { background: #ffffff; border-radius: 10px; border: 1px solid #e0e0d8; border-left: 4px solid #1a5fa8; padding: 22px 28px; margin-bottom: 20px; }
+    .hero-eye { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #1a5fa8; margin-bottom: 6px; }
+    .hero-title { font-size: 30px; font-weight: 700; color: #1a1a1a; line-height: 1.15; margin-bottom: 8px; font-family: Georgia, serif; }
+    .hero-sub { font-size: 14px; color: #555; line-height: 1.65; max-width: 640px; }
 
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 28px 24px;
-    }
-
-    /* ── HERO ── */
-    .hero {
-      background: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #e0e0d8;
-      border-left: 4px solid #1a5fa8;
-      padding: 22px 28px;
-      margin-bottom: 20px;
-    }
-    .hero-eye {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #1a5fa8;
-      margin-bottom: 6px;
-    }
-    .hero-title {
-      font-size: 30px;
-      font-weight: 700;
-      color: #1a1a1a;
-      line-height: 1.15;
-      margin-bottom: 8px;
-      font-family: Georgia, serif;
-    }
-    .hero-sub {
-      font-size: 14px;
-      color: #555;
-      line-height: 1.65;
-      max-width: 640px;
-    }
-
-    /* ── SECTION HEADERS ── */
     .sec { margin-bottom: 24px; }
-    .sec-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .sec-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: #1a5fa8;
-      background: #ddeeff;
-      padding: 3px 10px;
-      border-radius: 20px;
-      flex-shrink: 0;
-    }
-    .sec-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #1a1a1a;
-    }
-    .sec-line {
-      flex: 1;
-      height: 1px;
-      background: #e0e0d8;
-    }
-    .sec-hint {
-      font-size: 11px;
-      color: #aaa;
-      white-space: nowrap;
-    }
+    .sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .sec-num { font-size: 11px; font-weight: 700; color: #1a5fa8; background: #ddeeff; padding: 3px 10px; border-radius: 20px; flex-shrink: 0; }
+    .sec-title { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+    .sec-line { flex: 1; height: 1px; background: #e0e0d8; }
+    .sec-hint { font-size: 11px; color: #aaa; white-space: nowrap; }
 
-    /* ── STAT CARDS ── */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .stat {
-      background: #ffffff;
-      border: 1px solid #e0e0d8;
-      border-radius: 8px;
-      padding: 14px 16px;
-    }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+    .stat { background: #ffffff; border: 1px solid #e0e0d8; border-radius: 8px; padding: 14px 16px; }
     .stat.hi { border-top: 3px solid #1a5fa8; }
-    .stat-lbl {
-      font-size: 10px;
-      font-weight: 700;
-      color: #aaa;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      margin-bottom: 5px;
-    }
-    .stat-val {
-      font-size: 22px;
-      font-weight: 700;
-      color: #1a1a1a;
-      line-height: 1.1;
-      margin-bottom: 3px;
-    }
+    .stat-lbl { font-size: 10px; font-weight: 700; color: #aaa; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
+    .stat-val { font-size: 22px; font-weight: 700; color: #1a1a1a; line-height: 1.1; margin-bottom: 3px; }
     .stat.hi .stat-val { color: #1a5fa8; }
     .stat-sub { font-size: 11px; color: #aaa; }
 
-    /* ── CHART BOXES ── */
-    .cbox {
-      background: #ffffff;
-      border: 1px solid #e0e0d8;
-      border-radius: 10px;
-      padding: 16px 18px;
-    }
-    .ctitle {
-      font-size: 13px;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 3px;
-    }
-    .csub {
-      font-size: 11px;
-      color: #aaa;
-      margin-bottom: 8px;
-    }
-    .ctag {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      color: #1a5fa8;
-      background: #ddeeff;
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-    }
+    .cbox { background: #ffffff; border: 1px solid #e0e0d8; border-radius: 10px; padding: 16px 18px; }
+    .ctitle { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 3px; }
+    .csub { font-size: 11px; color: #aaa; margin-bottom: 8px; }
+    .ctag { display: inline-block; font-size: 10px; font-weight: 700; color: #1a5fa8; background: #ddeeff; padding: 2px 8px; border-radius: 20px; margin-bottom: 12px; }
 
-    /* ── GRIDS ── */
-    .gmap {
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .g2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    .g3 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
+    .gmap { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; margin-bottom: 12px; }
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
-    /* ── MAP PLACEHOLDER ── */
-    .map-ph {
-      background: #ddeeff;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      flex: 1;
-      min-height: 280px;
-      margin-top: 4px;
-    }
-    .map-ph-icon { font-size: 36px; }
-    .map-ph-lbl {
-      font-size: 12px;
-      color: #1a5fa8;
-      text-align: center;
-      line-height: 1.5;
-    }
-
-    /* ── VEGA CHART CONTAINERS ── */
     .chart-wrap { width: 100%; }
 
-    /* ── NARRATIVE ── */
-    .narr {
-      background: #ddeeff;
-      border-left: 3px solid #1a5fa8;
-      border-radius: 0 8px 8px 0;
-      padding: 10px 14px;
-      margin-bottom: 18px;
-      font-size: 13px;
-      color: #1a3a6a;
-      line-height: 1.65;
-    }
+    .narr { background: #ddeeff; border-left: 3px solid #1a5fa8; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 18px; font-size: 13px; color: #1a3a6a; line-height: 1.65; }
 
-    /* ── LEGEND ── */
-    .leg {
-      display: flex;
-      gap: 14px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-    .li {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      color: #777;
-    }
-    .ld {
-      width: 10px;
-      height: 10px;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-
-    /* ── FOOTER ── */
-    .footer {
-      background: #ffffff;
-      border: 1px solid #e0e0d8;
-      border-radius: 8px;
-      padding: 12px 18px;
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
+    .footer { background: #ffffff; border: 1px solid #e0e0d8; border-radius: 8px; padding: 12px 18px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
     .fsrc { font-size: 11px; color: #aaa; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 800px) {
       .stats { grid-template-columns: repeat(2, 1fr); }
       .gmap, .g2, .g3 { grid-template-columns: 1fr; }
@@ -251,10 +58,10 @@
   <div class="hero">
     <div class="hero-eye">Malaysia · Household Income · OpenDOSM &amp; UNDP · 2022</div>
     <div class="hero-title">The Income Divide</div>
-    <div class="hero-sub">Exploring household income inequality across Malaysia's 16 states — from the Federal Territories to the fringes of Borneo. A data story using the Household Income & Expenditure Survey (HIES 2022) and the UNDP Human Development Report.</div>
+    <div class="hero-sub">Exploring household income inequality across Malaysia's 16 states — from the Federal Territories to the fringes of Borneo. A data story using the Household Income &amp; Expenditure Survey (HIES 2022) and the UNDP Human Development Report.</div>
   </div>
 
-  <!-- SECTION 1 — National picture -->
+  <!-- SECTION 1 -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">01</span>
@@ -287,7 +94,7 @@
     </div>
 
     <div class="gmap">
-      <!-- Bar chart — real Vega-Lite -->
+      <!-- Bar chart -->
       <div class="cbox">
         <div class="ctitle">Median monthly household income by state</div>
         <div class="csub">Ranked highest to lowest · 2022 · hies_state.csv</div>
@@ -295,33 +102,25 @@
         <div id="chart_bar" class="chart-wrap"></div>
       </div>
 
-      <!-- Choropleth map — placeholder until built -->
+      <!-- Choropleth map — NOW LIVE -->
       <div class="cbox" style="display:flex;flex-direction:column;">
         <div class="ctitle">Income by state — choropleth map</div>
         <div class="csub">Shading encodes median income · mercator projection</div>
         <span class="ctag">Choropleth map · required idiom</span>
-        <div class="map-ph">
-          <div class="map-ph-icon">🗺️</div>
-          <div class="map-ph-lbl">Malaysia state choropleth<br>light → dark blue scale<br><em>Coming soon</em></div>
-        </div>
-        <div class="leg">
-          <div class="li"><div class="ld" style="background:#ddeeff;border:1px solid #aaccee;"></div>Low</div>
-          <div class="li"><div class="ld" style="background:#5599cc;"></div>Mid</div>
-          <div class="li"><div class="ld" style="background:#0c447c;"></div>High</div>
-        </div>
+        <div id="chart_map" class="chart-wrap" style="flex:1;min-height:300px;"></div>
       </div>
     </div>
 
     <div class="narr">W.P. Kuala Lumpur (RM 10,234) earns 2.8× more than Kelantan (RM 3,614). Urban federal territories dominate the top of the ranking, while East Coast Peninsular and Borneo states cluster at the bottom — a geographic divide that mirrors Malaysia's economic development history.</div>
   </div>
 
-  <!-- SECTION 2 — Trends -->
+  <!-- SECTION 2 -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">02</span>
       <span class="sec-title">How the gap has grown</span>
       <div class="sec-line"></div>
-      <span class="sec-hint">Income & inequality trends 1970–2022</span>
+      <span class="sec-hint">Income &amp; inequality trends 1970–2022</span>
     </div>
 
     <div class="g2">
@@ -342,13 +141,13 @@
     <div class="narr">All states have seen income growth since 1970, but KL's median income grew ~40× while Kelantan's grew only ~18×. Gini coefficients remain stubbornly high in Sabah and Kelantan, indicating persistent internal inequality even within poorer states.</div>
   </div>
 
-  <!-- SECTION 3 — Poverty -->
+  <!-- SECTION 3 -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">03</span>
-      <span class="sec-title">Poverty & what low income means</span>
+      <span class="sec-title">Poverty &amp; what low income means</span>
       <div class="sec-line"></div>
-      <span class="sec-hint">Poverty rates & amenity access by state</span>
+      <span class="sec-hint">Poverty rates &amp; amenity access by state</span>
     </div>
 
     <div class="g3">
@@ -360,7 +159,7 @@
       </div>
       <div class="cbox">
         <div class="ctitle">Amenity access vs income</div>
-        <div class="csub">Piped water & electricity · hh_access_amenities.csv</div>
+        <div class="csub">Piped water &amp; electricity · hh_access_amenities.csv</div>
         <span class="ctag">Scatter plot</span>
         <div id="chart_amenities" class="chart-wrap"></div>
       </div>
@@ -375,13 +174,13 @@
     <div class="narr">Sabah has the highest poverty rate at 19.7% despite being rich in natural resources. Higher-income states consistently show near-universal access to piped water and electricity — making the consequences of inequality tangible beyond just income numbers.</div>
   </div>
 
-  <!-- SECTION 4 — Bigger picture -->
+  <!-- SECTION 4 -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">04</span>
       <span class="sec-title">The bigger picture</span>
       <div class="sec-line"></div>
-      <span class="sec-hint">Income distribution & human development</span>
+      <span class="sec-hint">Income distribution &amp; human development</span>
     </div>
 
     <div class="g2">
@@ -404,34 +203,36 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="fsrc">Data: OpenDOSM CC BY 4.0 · UNDP Human Development Report · hies_state.csv · hh_income_state.csv · hh_inequality_state.csv · hh_poverty_state.csv · hh_access_amenities.csv · hies_state_percentile.csv · hdr-data.json</div>
+    <div class="fsrc">Data: OpenDOSM CC BY 4.0 · UNDP Human Development Report · Natural Earth (geoBoundaries) · hies_state.csv · hh_income_state.csv · hh_inequality_state.csv · hh_poverty_state.csv · hh_access_amenities.csv · hies_state_percentile.csv · hdr-data.json</div>
     <div class="fsrc">Tan Ethan · FIT2179 Data Visualisation 2 · May 2026</div>
   </div>
 
 </div>
 
-<!-- Vega-Lite scripts — must be before vegaEmbed calls -->
 <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
 <script>
-  var baseUrl = "https://HayaseNakano.github.io/fit2179-a2/";
-
-  // ── CHART 1: Bar chart (Section 01) ──
+  // ── Section 01 ──
   vegaEmbed("#chart_bar", "charts/bar_income.json", {actions: false})
-    .catch(function(err) { console.error("bar chart:", err); });
+    .catch(function(err) { console.error("bar:", err); });
 
-  // ── Placeholder embed function for charts not yet built ──
-  // Uncomment each line below as you build and add the JSON files
+  vegaEmbed("#chart_map", "charts/choropleth.json", {actions: false})
+    .catch(function(err) { console.error("map:", err); });
 
-  // vegaEmbed("#chart_income_trend",  "charts/income_trend.json",   {actions: false});
-  // vegaEmbed("#chart_gini_heatmap",  "charts/gini_heatmap.json",   {actions: false});
-  // vegaEmbed("#chart_poverty",       "charts/poverty_dot.json",    {actions: false});
+  // ── Section 02 — uncomment as you build each chart ──
+  // vegaEmbed("#chart_income_trend",  "charts/income_trend.json",      {actions: false});
+  // vegaEmbed("#chart_gini_heatmap",  "charts/gini_heatmap.json",      {actions: false});
+
+  // ── Section 03 ──
+  // vegaEmbed("#chart_poverty",       "charts/poverty_dot.json",       {actions: false});
   // vegaEmbed("#chart_amenities",     "charts/amenities_scatter.json", {actions: false});
-  // vegaEmbed("#chart_poverty_trend", "charts/poverty_area.json",   {actions: false});
-  // vegaEmbed("#chart_percentile",    "charts/percentile_line.json", {actions: false});
-  // vegaEmbed("#chart_hdi",           "charts/hdi_line.json",       {actions: false});
+  // vegaEmbed("#chart_poverty_trend", "charts/poverty_area.json",      {actions: false});
+
+  // ── Section 04 ──
+  // vegaEmbed("#chart_percentile",    "charts/percentile_line.json",   {actions: false});
+  // vegaEmbed("#chart_hdi",           "charts/hdi_line.json",          {actions: false});
 </script>
 
 </body>
