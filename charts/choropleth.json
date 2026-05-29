@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Median Monthly Household Income by State (2022)",
-    "subtitle": "Darker green = higher median income · Hover over a state for details",
+    "subtitle": "Darker colour = higher median income · Hover over a state for details",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#aaaaaa",
@@ -42,9 +42,7 @@
         "strokeWidth": 0.6
       },
       "encoding": {
-        "tooltip": [
-          {"field": "properties.name", "type": "nominal", "title": "Country"}
-        ]
+        "tooltip": [{"field": "properties.name", "type": "nominal", "title": "Country"}]
       }
     },
     {
@@ -56,19 +54,13 @@
         {
           "lookup": "properties.state",
           "from": {
-            "data": {
-              "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
-            },
+            "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"},
             "key": "state",
             "fields": ["income_median", "income_mean", "poverty", "gini"]
           }
         }
       ],
-      "mark": {
-        "type": "geoshape",
-        "stroke": "#ffffff",
-        "strokeWidth": 0.8
-      },
+      "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.8},
       "encoding": {
         "color": {
           "field": "income_median",
@@ -95,38 +87,36 @@
     {
       "data": {
         "values": [
-          {"label": "Perlis",      "longitude": 100.48, "latitude": 6.65, "anchor": "start"},
-          {"label": "Kedah",       "longitude": 100.55, "latitude": 5.95, "anchor": "middle"},
-          {"label": "P. Pinang",   "longitude": 100.10, "latitude": 5.22, "anchor": "end"},
-          {"label": "Perak",       "longitude": 100.55, "latitude": 4.75, "anchor": "middle"},
-          {"label": "Selangor",    "longitude": 101.30, "latitude": 3.55, "anchor": "middle"},
-          {"label": "KL",          "longitude": 101.42, "latitude": 3.18, "anchor": "middle"},
-          {"label": "Putrajaya",   "longitude": 102.20, "latitude": 2.96, "anchor": "start"},
-          {"label": "N. Sembilan", "longitude": 102.45, "latitude": 2.75, "anchor": "start"},
-          {"label": "Melaka",      "longitude": 102.55, "latitude": 2.28, "anchor": "start"},
-          {"label": "Johor",       "longitude": 103.45, "latitude": 1.95, "anchor": "middle"},
-          {"label": "Pahang",      "longitude": 102.85, "latitude": 3.85, "anchor": "middle"},
-          {"label": "Terengganu", "longitude": 103.35, "latitude": 5.15, "anchor": "start"},
-          {"label": "Kelantan",    "longitude": 101.75, "latitude": 5.85, "anchor": "middle"},
-          {"label": "Sabah",       "longitude": 117.00, "latitude": 5.90, "anchor": "middle"},
-          {"label": "Sarawak",     "longitude": 113.00, "latitude": 2.60, "anchor": "middle"},
-          {"label": "Labuan",      "longitude": 115.35, "latitude": 5.05, "anchor": "middle"}
+          {"label": "Perlis",      "longitude": 100.48, "latitude": 6.65, "anchor": "start",  "col": "#1a1a1a"},
+          {"label": "Kedah",       "longitude": 100.55, "latitude": 5.95, "anchor": "middle", "col": "#1a1a1a"},
+          {"label": "P. Pinang",   "longitude": 100.10, "latitude": 5.22, "anchor": "end",    "col": "#1a1a1a"},
+          {"label": "Perak",       "longitude": 100.55, "latitude": 4.75, "anchor": "middle", "col": "#1a1a1a"},
+          {"label": "Selangor",    "longitude": 101.30, "latitude": 3.55, "anchor": "middle", "col": "#ffffff"},
+          {"label": "KL",          "longitude": 101.42, "latitude": 3.18, "anchor": "middle", "col": "#ffffff"},
+          {"label": "Putrajaya",   "longitude": 102.20, "latitude": 2.96, "anchor": "start",  "col": "#ffffff"},
+          {"label": "N. Sembilan", "longitude": 102.45, "latitude": 2.75, "anchor": "start",  "col": "#1a1a1a"},
+          {"label": "Melaka",      "longitude": 102.55, "latitude": 2.28, "anchor": "start",  "col": "#1a1a1a"},
+          {"label": "Johor",       "longitude": 103.45, "latitude": 1.95, "anchor": "middle", "col": "#1a1a1a"},
+          {"label": "Pahang",      "longitude": 102.85, "latitude": 3.85, "anchor": "middle", "col": "#1a1a1a"},
+          {"label": "Terengganu", "longitude": 103.35,  "latitude": 5.15, "anchor": "start",  "col": "#1a1a1a"},
+          {"label": "Kelantan",    "longitude": 101.75, "latitude": 5.85, "anchor": "middle", "col": "#1a1a1a"},
+          {"label": "Sabah",       "longitude": 117.00, "latitude": 5.90, "anchor": "middle", "col": "#1a1a1a"},
+          {"label": "Sarawak",     "longitude": 113.00, "latitude": 2.60, "anchor": "middle", "col": "#1a1a1a"},
+          {"label": "Labuan",      "longitude": 115.35, "latitude": 5.05, "anchor": "middle", "col": "#1a1a1a"}
         ]
       },
       "mark": {
         "type": "text",
         "fontSize": 10,
         "fontWeight": "bold",
-        "font": "Arial",
-        "color": "#1a1a1a",
-        "stroke": null,
-        "dy": 0
+        "font": "Arial"
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude":  {"field": "latitude",  "type": "quantitative"},
         "text":      {"field": "label",      "type": "nominal"},
-        "align":     {"field": "anchor",     "type": "nominal"}
+        "align":     {"field": "anchor",     "type": "nominal"},
+        "color":     {"field": "col",        "type": "nominal", "scale": null, "legend": null}
       }
     }
   ],
