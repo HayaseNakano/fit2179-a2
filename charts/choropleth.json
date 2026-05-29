@@ -73,7 +73,7 @@
         "color": {
           "field": "income_median",
           "type": "quantitative",
-          "scale": {"scheme": "ylgn", "domain": [3000, 11000]},
+          "scale": {"scheme": "yellowgreenblue", "domain": [3000, 11000]},
           "legend": {
             "title": "Median Income (RM)",
             "orient": "bottom-right",
