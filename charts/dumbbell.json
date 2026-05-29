@@ -2,14 +2,11 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Mean vs Median Income by State (2022)",
-    "subtitle": "The gap between mean and median shows how much top earners skew the average upward · hies_state.csv",
-    "fontSize": 14,
-    "subtitleFontSize": 11,
-    "subtitleColor": "#aaaaaa",
-    "anchor": "start"
+    "subtitle": "The gap between mean and median reveals how much top earners skew the average upward · hies_state.csv",
+    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
   },
   "width": "container",
-  "height": 400,
+  "height": 460,
   "data": {
     "values": [
       {"state": "Kelantan",         "median": 3614,  "mean": 4885},
@@ -31,47 +28,45 @@
     ]
   },
   "transform": [
-    {"calculate": "datum.mean - datum.median", "as": "skew"},
-    {"fold": ["median", "mean"], "as": ["measure", "value"]}
+    {"fold": ["median","mean"], "as": ["measure","value"]}
   ],
   "layer": [
     {
-      "mark": {"type": "line", "color": "#cccccc", "strokeWidth": 2},
       "transform": [
-        {"aggregate": [
-          {"op": "min", "field": "value", "as": "min_val"},
-          {"op": "max", "field": "value", "as": "max_val"}
-        ], "groupby": ["state"]}
+        {"aggregate": [{"op": "min","field":"value","as":"lo"},{"op":"max","field":"value","as":"hi"}], "groupby": ["state"]}
       ],
+      "mark": {"type": "rule", "color": "#cccccc", "strokeWidth": 2.5},
       "encoding": {
-        "y": {"field": "state", "type": "nominal", "sort": {"field": "min_val", "order": "ascending"}},
-        "x": {"field": "min_val", "type": "quantitative"},
-        "x2": {"field": "max_val"}
+        "y": {"field": "state", "type": "nominal", "sort": {"field": "lo", "order": "ascending"}},
+        "x": {"field": "lo", "type": "quantitative"},
+        "x2": {"field": "hi"}
       }
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 80, "opacity": 0.9},
+      "mark": {"type": "point", "filled": true, "size": 100, "opacity": 0.9},
+      "params": [{"name": "hover", "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}}],
       "encoding": {
         "y": {
-          "field": "state",
-          "type": "nominal",
+          "field": "state", "type": "nominal",
           "sort": {"field": "value", "order": "ascending"},
           "title": null,
-          "axis": {"labelFontSize": 10, "ticks": false, "domain": false, "labelLimit": 150}
+          "axis": {"labelFontSize": 11, "ticks": false, "domain": false, "labelLimit": 160}
         },
         "x": {
-          "field": "value",
-          "type": "quantitative",
+          "field": "value", "type": "quantitative",
           "title": "Monthly Household Income (RM)",
-          "axis": {"format": ",.0f", "labelFontSize": 10, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}
+          "axis": {"format": ",.0f", "labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}
         },
         "color": {
-          "field": "measure",
-          "type": "nominal",
+          "field": "measure", "type": "nominal",
           "scale": {"domain": ["median","mean"], "range": ["#1a5fa8","#cc3333"]},
-          "legend": {"title": null, "labelFontSize": 11,
-            "labelExpr": "datum.value == 'median' ? 'Median income' : 'Mean income (skewed by top earners)'"}
+          "legend": {
+            "title": null, "labelFontSize": 12, "symbolSize": 100,
+            "orient": "top-left",
+            "labelExpr": "datum.value == 'median' ? 'Median income' : 'Mean income (skewed by top earners)'"
+          }
         },
+        "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.8},
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
           {"field": "measure", "type": "nominal", "title": "Measure"},
