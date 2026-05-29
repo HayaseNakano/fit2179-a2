@@ -18,16 +18,37 @@
   "layer": [
     {
       "data": {"sphere": true},
-      "mark": {"type": "geoshape", "fill": "#d6eaf8", "stroke": null}
+      "mark": {
+        "type": "geoshape",
+        "fill": "#b8d4e8",
+        "stroke": null
+      }
     },
     {
       "data": {"graticule": {"step": [2, 2]}},
       "mark": {
         "type": "geoshape",
         "fill": null,
-        "stroke": "#aacce8",
-        "strokeWidth": 0.4,
-        "strokeOpacity": 0.6
+        "stroke": "#8ab4cc",
+        "strokeWidth": 0.3,
+        "strokeOpacity": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "https://HayaseNakano.github.io/fit2179-a2/data/neighbours.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e8e0d0",
+        "stroke": "#ccbfa0",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "Country"}
+        ]
       }
     },
     {
@@ -78,22 +99,22 @@
     {
       "data": {
         "values": [
-          {"label": "Perlis",      "longitude": 100.20, "latitude": 6.45},
-          {"label": "Kedah",       "longitude": 100.65, "latitude": 6.05},
-          {"label": "P. Pinang",   "longitude": 100.45, "latitude": 5.30},
-          {"label": "Perak",       "longitude": 100.95, "latitude": 4.55},
-          {"label": "Selangor",    "longitude": 101.45, "latitude": 3.40},
-          {"label": "KL",          "longitude": 101.69, "latitude": 3.16},
-          {"label": "Putrajaya",   "longitude": 101.95, "latitude": 2.93},
-          {"label": "N. Sembilan", "longitude": 102.15, "latitude": 2.88},
-          {"label": "Melaka",      "longitude": 102.28, "latitude": 2.22},
-          {"label": "Johor",       "longitude": 103.50, "latitude": 1.85},
-          {"label": "Pahang",      "longitude": 102.75, "latitude": 3.72},
-          {"label": "Terengganu", "longitude": 103.15, "latitude": 4.85},
-          {"label": "Kelantan",    "longitude": 101.95, "latitude": 5.68},
-          {"label": "Sabah",       "longitude": 117.20, "latitude": 5.90},
-          {"label": "Sarawak",     "longitude": 113.20, "latitude": 2.55},
-          {"label": "Labuan",      "longitude": 115.23, "latitude": 5.28}
+          {"label": "Perlis",       "longitude": 100.42, "latitude": 6.60},
+          {"label": "Kedah",        "longitude": 100.80, "latitude": 6.18},
+          {"label": "P. Pinang",    "longitude": 100.60, "latitude": 5.22},
+          {"label": "Perak",        "longitude": 100.70, "latitude": 4.70},
+          {"label": "Selangor",     "longitude": 101.85, "latitude": 3.60},
+          {"label": "KL",           "longitude": 101.56, "latitude": 3.22},
+          {"label": "Putrajaya",    "longitude": 102.10, "latitude": 2.98},
+          {"label": "N. Sembilan",  "longitude": 102.40, "latitude": 2.82},
+          {"label": "Melaka",       "longitude": 102.40, "latitude": 2.28},
+          {"label": "Johor",        "longitude": 103.60, "latitude": 1.95},
+          {"label": "Pahang",       "longitude": 102.80, "latitude": 3.80},
+          {"label": "Terengganu",   "longitude": 103.50, "latitude": 5.10},
+          {"label": "Kelantan",     "longitude": 101.80, "latitude": 5.90},
+          {"label": "Sabah",        "longitude": 117.20, "latitude": 5.90},
+          {"label": "Sarawak",      "longitude": 113.50, "latitude": 2.55},
+          {"label": "Labuan",       "longitude": 115.35, "latitude": 5.10}
         ]
       },
       "mark": {
@@ -101,8 +122,10 @@
         "fontSize": 10,
         "fontWeight": "bold",
         "font": "Arial",
-        "color": "#000000",
-        "stroke": null
+        "color": "#1a1a1a",
+        "stroke": "#ffffff",
+        "strokeWidth": 2.5,
+        "strokeOpacity": 0.9
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
