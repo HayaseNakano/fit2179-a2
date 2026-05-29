@@ -73,7 +73,7 @@
         "color": {
           "field": "income_median",
           "type": "quantitative",
-          "scale": {"scheme": "greens", "domain": [3000, 11000]},
+          "scale": {"scheme": "ylgn", "domain": [3000, 11000]},
           "legend": {
             "title": "Median Income (RM)",
             "orient": "bottom-right",
@@ -99,8 +99,8 @@
           {"label": "Kedah",       "longitude": 100.55, "latitude": 5.95, "anchor": "middle"},
           {"label": "P. Pinang",   "longitude": 100.10, "latitude": 5.22, "anchor": "end"},
           {"label": "Perak",       "longitude": 100.55, "latitude": 4.75, "anchor": "middle"},
-          {"label": "Selangor",    "longitude": 100.60, "latitude": 3.55, "anchor": "end"},
-          {"label": "KL",          "longitude": 100.60, "latitude": 3.18, "anchor": "end"},
+          {"label": "Selangor",    "longitude": 101.30, "latitude": 3.55, "anchor": "middle"},
+          {"label": "KL",          "longitude": 101.42, "latitude": 3.18, "anchor": "middle"},
           {"label": "Putrajaya",   "longitude": 102.20, "latitude": 2.96, "anchor": "start"},
           {"label": "N. Sembilan", "longitude": 102.45, "latitude": 2.75, "anchor": "start"},
           {"label": "Melaka",      "longitude": 102.55, "latitude": 2.28, "anchor": "start"},
