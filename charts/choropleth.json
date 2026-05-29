@@ -87,36 +87,55 @@
     {
       "data": {
         "values": [
-          {"label": "Perlis",      "longitude": 100.48, "latitude": 6.65, "anchor": "start",  "col": "#1a1a1a"},
-          {"label": "Kedah",       "longitude": 100.55, "latitude": 5.95, "anchor": "middle", "col": "#1a1a1a"},
-          {"label": "P. Pinang",   "longitude": 100.10, "latitude": 5.22, "anchor": "end",    "col": "#1a1a1a"},
-          {"label": "Perak",       "longitude": 100.55, "latitude": 4.75, "anchor": "middle", "col": "#1a1a1a"},
-          {"label": "Selangor",    "longitude": 101.30, "latitude": 3.55, "anchor": "middle", "col": "#ffffff"},
-          {"label": "KL",          "longitude": 101.42, "latitude": 3.18, "anchor": "middle", "col": "#ffffff"},
-          {"label": "Putrajaya",   "longitude": 102.20, "latitude": 2.96, "anchor": "start",  "col": "#ffffff"},
-          {"label": "N. Sembilan", "longitude": 102.45, "latitude": 2.75, "anchor": "start",  "col": "#1a1a1a"},
-          {"label": "Melaka",      "longitude": 102.55, "latitude": 2.28, "anchor": "start",  "col": "#1a1a1a"},
-          {"label": "Johor",       "longitude": 103.45, "latitude": 1.95, "anchor": "middle", "col": "#1a1a1a"},
-          {"label": "Pahang",      "longitude": 102.85, "latitude": 3.85, "anchor": "middle", "col": "#1a1a1a"},
-          {"label": "Terengganu", "longitude": 103.35,  "latitude": 5.15, "anchor": "start",  "col": "#1a1a1a"},
-          {"label": "Kelantan",    "longitude": 101.75, "latitude": 5.85, "anchor": "middle", "col": "#1a1a1a"},
-          {"label": "Sabah",       "longitude": 117.00, "latitude": 5.90, "anchor": "middle", "col": "#1a1a1a"},
-          {"label": "Sarawak",     "longitude": 113.00, "latitude": 2.60, "anchor": "middle", "col": "#1a1a1a"},
-          {"label": "Labuan",      "longitude": 115.35, "latitude": 5.05, "anchor": "middle", "col": "#1a1a1a"}
+          {"label": "Perlis",      "longitude": 100.48, "latitude": 6.65},
+          {"label": "Kedah",       "longitude": 100.55, "latitude": 5.95},
+          {"label": "P. Pinang",   "longitude": 100.10, "latitude": 5.22},
+          {"label": "Perak",       "longitude": 100.55, "latitude": 4.75},
+          {"label": "Putrajaya",   "longitude": 102.20, "latitude": 2.96},
+          {"label": "N. Sembilan", "longitude": 102.45, "latitude": 2.75},
+          {"label": "Melaka",      "longitude": 102.55, "latitude": 2.28},
+          {"label": "Johor",       "longitude": 103.45, "latitude": 1.95},
+          {"label": "Pahang",      "longitude": 102.85, "latitude": 3.85},
+          {"label": "Terengganu", "longitude": 103.35,  "latitude": 5.15},
+          {"label": "Kelantan",    "longitude": 101.75, "latitude": 5.85},
+          {"label": "Sabah",       "longitude": 117.00, "latitude": 5.90},
+          {"label": "Sarawak",     "longitude": 113.00, "latitude": 2.60},
+          {"label": "Labuan",      "longitude": 115.35, "latitude": 5.05}
         ]
       },
       "mark": {
         "type": "text",
         "fontSize": 10,
         "fontWeight": "bold",
-        "font": "Arial"
+        "font": "Arial",
+        "align": "center",
+        "color": "#1a1a1a"
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude":  {"field": "latitude",  "type": "quantitative"},
-        "text":      {"field": "label",      "type": "nominal"},
-        "align":     {"field": "anchor",     "type": "nominal"},
-        "color":     {"field": "col",        "type": "nominal", "scale": null, "legend": null}
+        "text":      {"field": "label",      "type": "nominal"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"label": "Selangor", "longitude": 101.30, "latitude": 3.55},
+          {"label": "KL",       "longitude": 101.42, "latitude": 3.18}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "font": "Arial",
+        "align": "center",
+        "color": "#ffffff"
+      },
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude":  {"field": "latitude",  "type": "quantitative"},
+        "text":      {"field": "label",      "type": "nominal"}
       }
     }
   ],
