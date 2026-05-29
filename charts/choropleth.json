@@ -9,29 +9,25 @@
     "anchor": "start"
   },
   "width": "container",
-  "height": 500,
+  "height": 520,
   "projection": {
     "type": "mercator",
-    "center": [110.5, 3.8],
-    "scale": 2200
+    "center": [110.0, 4.0],
+    "scale": 2400
   },
   "layer": [
     {
       "data": {"sphere": true},
-      "mark": {
-        "type": "geoshape",
-        "fill": "#4a90c4",
-        "stroke": null
-      }
+      "mark": {"type": "geoshape", "fill": "#a8d4f0", "stroke": null}
     },
     {
       "data": {"graticule": {"step": [2, 2]}},
       "mark": {
         "type": "geoshape",
         "fill": null,
-        "stroke": "#6aaad4",
+        "stroke": "#88b8d8",
         "strokeWidth": 0.3,
-        "strokeOpacity": 0.5
+        "strokeOpacity": 0.6
       }
     },
     {
@@ -41,8 +37,8 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#c8c8c8",
-        "stroke": "#aaaaaa",
+        "fill": "#d4d4d4",
+        "stroke": "#b0b0b0",
         "strokeWidth": 0.6
       },
       "encoding": {
@@ -77,10 +73,7 @@
         "color": {
           "field": "income_median",
           "type": "quantitative",
-          "scale": {
-            "scheme": "greens",
-            "domain": [3000, 11000]
-          },
+          "scale": {"scheme": "greens", "domain": [3000, 11000]},
           "legend": {
             "title": "Median Income (RM)",
             "orient": "bottom-right",
@@ -102,22 +95,22 @@
     {
       "data": {
         "values": [
-          {"label": "Perlis",       "longitude": 100.42, "latitude": 6.60},
-          {"label": "Kedah",        "longitude": 100.80, "latitude": 6.18},
-          {"label": "P. Pinang",    "longitude": 100.20, "latitude": 5.22},
-          {"label": "Perak",        "longitude": 100.70, "latitude": 4.70},
-          {"label": "Selangor",     "longitude": 101.90, "latitude": 3.60},
-          {"label": "KL",           "longitude": 101.56, "latitude": 3.22},
-          {"label": "Putrajaya",    "longitude": 102.15, "latitude": 2.98},
-          {"label": "N. Sembilan",  "longitude": 102.45, "latitude": 2.80},
-          {"label": "Melaka",       "longitude": 102.50, "latitude": 2.28},
-          {"label": "Johor",        "longitude": 103.60, "latitude": 1.95},
-          {"label": "Pahang",       "longitude": 102.85, "latitude": 3.85},
-          {"label": "Terengganu",   "longitude": 103.50, "latitude": 5.10},
-          {"label": "Kelantan",     "longitude": 101.70, "latitude": 5.90},
-          {"label": "Sabah",        "longitude": 117.20, "latitude": 5.90},
-          {"label": "Sarawak",      "longitude": 113.50, "latitude": 2.55},
-          {"label": "Labuan",       "longitude": 115.35, "latitude": 5.10}
+          {"label": "Perlis",      "longitude": 100.48, "latitude": 6.65, "anchor": "start"},
+          {"label": "Kedah",       "longitude": 100.55, "latitude": 5.95, "anchor": "middle"},
+          {"label": "P. Pinang",   "longitude": 100.10, "latitude": 5.22, "anchor": "end"},
+          {"label": "Perak",       "longitude": 100.55, "latitude": 4.75, "anchor": "middle"},
+          {"label": "Selangor",    "longitude": 101.30, "latitude": 3.55, "anchor": "middle"},
+          {"label": "KL",          "longitude": 101.42, "latitude": 3.18, "anchor": "middle"},
+          {"label": "Putrajaya",   "longitude": 102.20, "latitude": 2.96, "anchor": "start"},
+          {"label": "N. Sembilan", "longitude": 102.45, "latitude": 2.75, "anchor": "start"},
+          {"label": "Melaka",      "longitude": 102.55, "latitude": 2.28, "anchor": "start"},
+          {"label": "Johor",       "longitude": 103.45, "latitude": 1.95, "anchor": "middle"},
+          {"label": "Pahang",      "longitude": 102.85, "latitude": 3.85, "anchor": "middle"},
+          {"label": "Terengganu", "longitude": 103.35, "latitude": 5.15, "anchor": "start"},
+          {"label": "Kelantan",    "longitude": 101.75, "latitude": 5.85, "anchor": "middle"},
+          {"label": "Sabah",       "longitude": 117.00, "latitude": 5.90, "anchor": "middle"},
+          {"label": "Sarawak",     "longitude": 113.00, "latitude": 2.60, "anchor": "middle"},
+          {"label": "Labuan",      "longitude": 115.35, "latitude": 5.05, "anchor": "middle"}
         ]
       },
       "mark": {
@@ -126,14 +119,14 @@
         "fontWeight": "bold",
         "font": "Arial",
         "color": "#1a1a1a",
-        "stroke": "#ffffff",
-        "strokeWidth": 2.5,
-        "strokeOpacity": 0.9
+        "stroke": null,
+        "dy": 0
       },
       "encoding": {
         "longitude": {"field": "longitude", "type": "quantitative"},
         "latitude":  {"field": "latitude",  "type": "quantitative"},
-        "text":      {"field": "label",      "type": "nominal"}
+        "text":      {"field": "label",      "type": "nominal"},
+        "align":     {"field": "anchor",     "type": "nominal"}
       }
     }
   ],
