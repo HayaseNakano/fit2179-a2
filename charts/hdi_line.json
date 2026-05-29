@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Malaysia's Human Development Index (1990–2023)",
+    "subtitle": "HDI value · UNDP Human Development Report (second source) · hdr-data.json",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hdr-data.json"
+  },
+  "transform": [
+    {"filter": "datum.indicatorCode == 'hdi'"},
+    {"calculate": "toNumber(datum.value)", "as": "hdi_value"},
+    {"calculate": "toNumber(datum.year)", "as": "year_num"}
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "line": {"color": "#1a5fa8", "strokeWidth": 2.5},
+        "color": "#ddeeff",
+        "opacity": 0.6
+      },
+      "encoding": {
+        "x": {
+          "field": "year_num",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": {
+            "format": "d",
+            "labelFontSize": 10,
+            "titleFontSize": 12,
+            "grid": false,
+            "tickCount": 8
+          }
+        },
+        "y": {
+          "field": "hdi_value",
+          "type": "quantitative",
+          "title": "HDI Value",
+          "scale": {"domain": [0.6, 0.85]},
+          "axis": {
+            "labelFontSize": 10,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [3, 3],
+            "format": ".3f"
+          }
+        },
+        "tooltip": [
+          {"field": "year_num", "type": "quantitative", "title": "Year", "format": "d"},
+          {"field": "hdi_value", "type": "quantitative", "title": "HDI Value", "format": ".3f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 40, "color": "#1a5fa8", "opacity": 0.7},
+      "encoding": {
+        "x": {"field": "year_num", "type": "quantitative"},
+        "y": {"field": "hdi_value", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -6, "fontSize": 10, "fontWeight": "bold", "color": "#0c447c"},
+      "transform": [{"filter": "datum.year_num == 1990 || datum.year_num == 2023"}],
+      "encoding": {
+        "x": {"field": "year_num", "type": "quantitative"},
+        "y": {"field": "hdi_value", "type": "quantitative"},
+        "text": {"field": "hdi_value", "type": "quantitative", "format": ".3f"}
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+}
