@@ -34,9 +34,9 @@
     .csub { font-size: 11px; color: #aaa; margin-bottom: 8px; }
     .ctag { display: inline-block; font-size: 10px; font-weight: 700; color: #1a5fa8; background: #ddeeff; padding: 2px 8px; border-radius: 20px; margin-bottom: 12px; }
 
-    .gbar { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
-    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .gbar  { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+    .g2    { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .g3    { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
 
     .chart-wrap { width: 100%; }
 
@@ -56,12 +56,12 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-eye">Malaysia · Household Income ·</div>
+    <div class="hero-eye">Malaysia · Household Income · OpenDOSM &amp; UNDP · 2022</div>
     <div class="hero-title">The Income Divide</div>
-    <div class="hero-sub">Exploring household income inequality across Malaysia's 16 states from the Federal Territories to the fringes of Borneo. A data story using the Household Income &amp; Expenditure Survey (HIES 2022) and the UNDP Human Development Report.</div>
+    <div class="hero-sub">Exploring household income inequality across Malaysia's 16 states — from the Federal Territories to the fringes of Borneo. A data story using the Household Income &amp; Expenditure Survey (HIES 2022) and the UNDP Human Development Report.</div>
   </div>
 
-  <!-- SECTION 1 — National picture: stat cards + bar chart -->
+  <!-- SECTION 1 -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">01</span>
@@ -93,7 +93,6 @@
       </div>
     </div>
 
-    <!-- Bar chart — full width -->
     <div class="gbar">
       <div class="cbox">
         <div class="ctitle">Median monthly household income by state</div>
@@ -103,43 +102,45 @@
       </div>
     </div>
 
-    <div class="narr">W.P. Kuala Lumpur (RM 10,234) earns 2.8× more than Kelantan (RM 3,614). Urban federal territories dominate the top of the ranking, while East Coast Peninsular and Borneo states cluster at the bottom a geographic divide that mirrors Malaysia's economic development history.</div>
+    <div class="narr">W.P. Kuala Lumpur (RM 10,234) earns 2.8× more than Kelantan (RM 3,614). Urban federal territories dominate the top of the ranking, while East Coast Peninsular and Borneo states cluster at the bottom — a geographic divide that mirrors Malaysia's economic development history.</div>
   </div>
 
-  <!-- SECTION 2 — Choropleth map: full width, own section -->
+  <!-- SECTION 2 — Choropleth map -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">02</span>
-      <span class="sec-title">Where the divide falls geographically</span>
+      <span class="sec-title">Where the divide falls — geographically</span>
       <div class="sec-line"></div>
       <span class="sec-hint">State-level income mapped across Malaysia</span>
     </div>
 
-    <div class="cbox">
-      <div class="ctitle">Median household income by state choropleth map</div>
+    <div class="cbox" style="margin-bottom:12px;">
+      <div class="ctitle">Median household income by state — choropleth map</div>
       <div class="csub">Mercator projection · shading encodes median monthly income · hover for state details · hies_state.csv + malaysia_states.geojson</div>
-      <span class="ctag">Choropleth map </span>
+      <span class="ctag">Choropleth map · required map idiom</span>
       <div id="chart_map" class="chart-wrap" style="min-height:520px;"></div>
     </div>
 
     <div class="narr">The geographic pattern is stark — the Klang Valley corridor (W.P. Kuala Lumpur, Putrajaya, Selangor) forms a high-income cluster in the west, while the East Coast states of Kelantan, Terengganu, and the Borneo states of Sabah and Sarawak remain significantly behind. This is not just an income gap — it is a geographic one.</div>
   </div>
 
-  <!-- Diverging bar -->
-  <div class="cbox">
-    <div class="ctitle">Income relative to national average</div>
-    <div class="csub">Difference from national median of RM 6,338 · 2022 · hies_state.csv</div>
-    <span class="ctag">Diverging bar chart · derived data</span>
-    <div id="chart_diverging" class="chart-wrap"></div>
-  </div>
-
-  <!-- SECTION 3 — Trends -->
+  <!-- SECTION 3 — Diverging + trends -->
   <div class="sec">
     <div class="sec-head">
       <span class="sec-num">03</span>
       <span class="sec-title">How the gap has grown</span>
       <div class="sec-line"></div>
       <span class="sec-hint">Income &amp; inequality trends 1970–2022</span>
+    </div>
+
+    <!-- Diverging bar — full width -->
+    <div class="gbar">
+      <div class="cbox">
+        <div class="ctitle">State income relative to national median</div>
+        <div class="csub">Difference from national median of RM 6,338 · 2022 · hies_state.csv</div>
+        <span class="ctag">Diverging bar chart · derived data</span>
+        <div id="chart_diverging" class="chart-wrap"></div>
+      </div>
     </div>
 
     <div class="g2">
@@ -157,7 +158,23 @@
       </div>
     </div>
 
-    <div class="narr">All states have seen income growth since 1970, but KL's median income grew ~40× while Kelantan's grew only ~18×. Gini coefficients remain stubbornly high in Sabah and Kelantan, indicating persistent internal inequality even within poorer states.</div>
+    <!-- Slope + Dumbbell side by side -->
+    <div class="g2">
+      <div class="cbox">
+        <div class="ctitle">State income rankings: 1974 vs 2022</div>
+        <div class="csub">Which states climbed or fell over 48 years · hh_income_state.csv</div>
+        <span class="ctag">Slope chart · derived rankings</span>
+        <div id="chart_slope" class="chart-wrap"></div>
+      </div>
+      <div class="cbox">
+        <div class="ctitle">Mean vs median income gap by state</div>
+        <div class="csub">Gap shows how top earners skew the average upward · 2022 · hies_state.csv</div>
+        <span class="ctag">Dumbbell chart · derived data</span>
+        <div id="chart_dumbbell" class="chart-wrap"></div>
+      </div>
+    </div>
+
+    <div class="narr">All states have seen income growth since 1970, but KL's median income grew ~40× while Kelantan's grew only ~18×. Terengganu climbed dramatically from rank 10 to rank 5 — driven by oil revenue. Gini coefficients remain stubbornly high in Sabah and Kelantan, indicating persistent internal inequality even within poorer states. The mean-median gap reveals that in high-income states, a small number of very wealthy households pull the average far above what most residents actually earn.</div>
   </div>
 
   <!-- SECTION 4 — Poverty -->
@@ -178,7 +195,7 @@
       </div>
       <div class="cbox">
         <div class="ctitle">Amenity access vs income</div>
-        <div class="csub">Piped water &amp; electricity · hh_access_amenities.csv</div>
+        <div class="csub">Piped water &amp; electricity · hh_access_amenities.csv + hies_state.csv</div>
         <span class="ctag">Scatter plot</span>
         <div id="chart_amenities" class="chart-wrap"></div>
       </div>
@@ -211,7 +228,7 @@
       </div>
       <div class="cbox">
         <div class="ctitle">Malaysia's Human Development Index</div>
-        <div class="csub">1990–2023 · UNDP Human Development Report · hdr-data.json</div>
+        <div class="csub">1990–2023 · UNDP Human Development Report · hdi_clean.csv</div>
         <span class="ctag">Line chart · second source</span>
         <div id="chart_hdi" class="chart-wrap"></div>
       </div>
@@ -222,7 +239,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="fsrc">Data: OpenDOSM CC BY 4.0 · UNDP Human Development Report · Natural Earth (state boundaries) · hies_state.csv · hh_income_state.csv · hh_inequality_state.csv · hh_poverty_state.csv · hh_access_amenities.csv · hies_state_percentile.csv · hdr-data.json</div>
+    <div class="fsrc">Data: OpenDOSM CC BY 4.0 · UNDP Human Development Report · Natural Earth (state boundaries) · hies_state.csv · hh_income_state.csv · hh_inequality_state.csv · hh_poverty_state.csv · hh_access_amenities.csv · hies_state_percentile.csv · hdi_clean.csv</div>
     <div class="fsrc">Tan Ethan · FIT2179 Data Visualisation 2 · May 2026</div>
   </div>
 
@@ -233,28 +250,27 @@
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
 <script>
-  // ── Section 01 ──
-  vegaEmbed("#chart_bar", "charts/bar_income.json", {actions: false})
-    .catch(function(err) { console.error("bar:", err); });
+  // Section 01
+  vegaEmbed("#chart_bar",      "charts/bar_income.json",       {actions: false}).catch(function(e){ console.error("bar:", e); });
 
-  // ── Section 02 — Choropleth map ──
-  vegaEmbed("#chart_map", "charts/choropleth.json", {actions: false})
-    .catch(function(err) { console.error("map:", err); });
+  // Section 02
+  vegaEmbed("#chart_map",      "charts/choropleth.json",       {actions: false}).catch(function(e){ console.error("map:", e); });
 
-    vegaEmbed("#chart_diverging", "charts/diverging_bar.json", {actions: false});
+  // Section 03
+  vegaEmbed("#chart_diverging",    "charts/diverging_bar.json",    {actions: false}).catch(function(e){ console.error("diverging:", e); });
+  vegaEmbed("#chart_income_trend", "charts/income_trend.json",     {actions: false}).catch(function(e){ console.error("trend:", e); });
+  vegaEmbed("#chart_gini_heatmap", "charts/gini_heatmap.json",     {actions: false}).catch(function(e){ console.error("gini:", e); });
+  vegaEmbed("#chart_slope",        "charts/slope_chart.json",      {actions: false}).catch(function(e){ console.error("slope:", e); });
+  vegaEmbed("#chart_dumbbell",     "charts/dumbbell.json",         {actions: false}).catch(function(e){ console.error("dumbbell:", e); });
 
-  // ── Section 03 — uncomment as you build ──
-   vegaEmbed("#chart_income_trend",  "charts/income_trend.json",      {actions: false});
-   vegaEmbed("#chart_gini_heatmap",  "charts/gini_heatmap.json",      {actions: false});
+  // Section 04
+  vegaEmbed("#chart_poverty",       "charts/poverty_dot.json",       {actions: false}).catch(function(e){ console.error("poverty:", e); });
+  vegaEmbed("#chart_amenities",     "charts/amenities_scatter.json", {actions: false}).catch(function(e){ console.error("amenities:", e); });
+  vegaEmbed("#chart_poverty_trend", "charts/poverty_area.json",      {actions: false}).catch(function(e){ console.error("poverty_trend:", e); });
 
-  // ── Section 04 ──
-   vegaEmbed("#chart_poverty",       "charts/poverty_dot.json",       {actions: false});
-   vegaEmbed("#chart_amenities",     "charts/amenities_scatter.json", {actions: false});
-   vegaEmbed("#chart_poverty_trend", "charts/poverty_area.json",      {actions: false});
-
-  // ── Section 05 ──
-   vegaEmbed("#chart_percentile",    "charts/percentile_line.json",   {actions: false});
-  vegaEmbed("#chart_hdi",           "charts/hdi_line.json",          {actions: false});
+  // Section 05
+  vegaEmbed("#chart_percentile",    "charts/percentile_line.json",   {actions: false}).catch(function(e){ console.error("percentile:", e); });
+  vegaEmbed("#chart_hdi",           "charts/hdi_line.json",          {actions: false}).catch(function(e){ console.error("hdi:", e); });
 </script>
 
 </body>

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Mean vs Median Income by State (2022)",
+    "subtitle": "The gap between mean and median shows how much top earners skew the average upward · hies_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 400,
+  "data": {
+    "values": [
+      {"state": "Kelantan",         "median": 3614,  "mean": 4885},
+      {"state": "Kedah",            "median": 4402,  "mean": 5550},
+      {"state": "Perak",            "median": 4494,  "mean": 5779},
+      {"state": "Sabah",            "median": 4577,  "mean": 6171},
+      {"state": "Perlis",           "median": 4713,  "mean": 5664},
+      {"state": "Pahang",           "median": 4753,  "mean": 5777},
+      {"state": "Sarawak",          "median": 4978,  "mean": 6457},
+      {"state": "Negeri Sembilan",  "median": 5226,  "mean": 6788},
+      {"state": "Terengganu",       "median": 5878,  "mean": 7248},
+      {"state": "Melaka",           "median": 6210,  "mean": 8057},
+      {"state": "Pulau Pinang",     "median": 6502,  "mean": 8267},
+      {"state": "Johor",            "median": 6879,  "mean": 8517},
+      {"state": "W.P. Labuan",      "median": 6904,  "mean": 8250},
+      {"state": "Selangor",         "median": 9983,  "mean": 12233},
+      {"state": "W.P. Putrajaya",   "median": 10056, "mean": 13473},
+      {"state": "W.P. Kuala Lumpur","median": 10234, "mean": 13325}
+    ]
+  },
+  "transform": [
+    {"calculate": "datum.mean - datum.median", "as": "skew"},
+    {"fold": ["median", "mean"], "as": ["measure", "value"]}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "line", "color": "#cccccc", "strokeWidth": 2},
+      "transform": [
+        {"aggregate": [
+          {"op": "min", "field": "value", "as": "min_val"},
+          {"op": "max", "field": "value", "as": "max_val"}
+        ], "groupby": ["state"]}
+      ],
+      "encoding": {
+        "y": {"field": "state", "type": "nominal", "sort": {"field": "min_val", "order": "ascending"}},
+        "x": {"field": "min_val", "type": "quantitative"},
+        "x2": {"field": "max_val"}
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 80, "opacity": 0.9},
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {"field": "value", "order": "ascending"},
+          "title": null,
+          "axis": {"labelFontSize": 10, "ticks": false, "domain": false, "labelLimit": 150}
+        },
+        "x": {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Monthly Household Income (RM)",
+          "axis": {"format": ",.0f", "labelFontSize": 10, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}
+        },
+        "color": {
+          "field": "measure",
+          "type": "nominal",
+          "scale": {"domain": ["median","mean"], "range": ["#1a5fa8","#cc3333"]},
+          "legend": {"title": null, "labelFontSize": 11,
+            "labelExpr": "datum.value == 'median' ? 'Median income' : 'Mean income (skewed by top earners)'"}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "measure", "type": "nominal", "title": "Measure"},
+          {"field": "value", "type": "quantitative", "title": "Income (RM)", "format": ",.0f"}
+        ]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+}

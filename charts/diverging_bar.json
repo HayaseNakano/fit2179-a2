@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "State Income Relative to National Median (2022)",
-    "subtitle": "Each bar shows how far a state's median income is above or below the national median of RM 6,338",
+    "subtitle": "Positive = above RM 6,338 national median · Negative = below · hies_state.csv",
     "fontSize": 14,
     "subtitleFontSize": 11,
     "subtitleColor": "#aaaaaa",
@@ -12,91 +12,82 @@
   "height": 420,
   "data": {
     "values": [
-      {"state": "Kelantan",        "income_median": 3614,  "diff": -2724, "side": "Below average"},
-      {"state": "Kedah",           "income_median": 4402,  "diff": -1936, "side": "Below average"},
-      {"state": "Perak",           "income_median": 4494,  "diff": -1844, "side": "Below average"},
-      {"state": "Sabah",           "income_median": 4577,  "diff": -1761, "side": "Below average"},
-      {"state": "Perlis",          "income_median": 4713,  "diff": -1625, "side": "Below average"},
-      {"state": "Pahang",          "income_median": 4753,  "diff": -1585, "side": "Below average"},
-      {"state": "Sarawak",         "income_median": 4978,  "diff": -1360, "side": "Below average"},
-      {"state": "Negeri Sembilan", "income_median": 5226,  "diff": -1112, "side": "Below average"},
-      {"state": "Terengganu",      "income_median": 5878,  "diff": -460,  "side": "Below average"},
-      {"state": "Melaka",          "income_median": 6210,  "diff": -128,  "side": "Below average"},
-      {"state": "Pulau Pinang",    "income_median": 6502,  "diff": 164,   "side": "Above average"},
-      {"state": "Johor",           "income_median": 6879,  "diff": 541,   "side": "Above average"},
-      {"state": "W.P. Labuan",     "income_median": 6904,  "diff": 566,   "side": "Above average"},
-      {"state": "Selangor",        "income_median": 9983,  "diff": 3645,  "side": "Above average"},
-      {"state": "W.P. Putrajaya",  "income_median": 10056, "diff": 3718,  "side": "Above average"},
-      {"state": "W.P. Kuala Lumpur","income_median": 10234, "diff": 3896, "side": "Above average"}
+      {"state": "Kelantan",         "diff": -2724, "side": "Below"},
+      {"state": "Kedah",            "diff": -1936, "side": "Below"},
+      {"state": "Perak",            "diff": -1844, "side": "Below"},
+      {"state": "Sabah",            "diff": -1761, "side": "Below"},
+      {"state": "Perlis",           "diff": -1625, "side": "Below"},
+      {"state": "Pahang",           "diff": -1585, "side": "Below"},
+      {"state": "Sarawak",          "diff": -1360, "side": "Below"},
+      {"state": "Negeri Sembilan",  "diff": -1112, "side": "Below"},
+      {"state": "Terengganu",       "diff": -460,  "side": "Below"},
+      {"state": "Melaka",           "diff": -128,  "side": "Below"},
+      {"state": "Pulau Pinang",     "diff": 164,   "side": "Above"},
+      {"state": "Johor",            "diff": 541,   "side": "Above"},
+      {"state": "W.P. Labuan",      "diff": 566,   "side": "Above"},
+      {"state": "Selangor",         "diff": 3645,  "side": "Above"},
+      {"state": "W.P. Putrajaya",   "diff": 3718,  "side": "Above"},
+      {"state": "W.P. Kuala Lumpur","diff": 3896,  "side": "Above"}
     ]
   },
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 2},
+      "mark": {"type": "bar", "cornerRadiusEnd": 3},
       "encoding": {
         "y": {
           "field": "state",
           "type": "nominal",
-          "axis": null, 
-          "sort": {"field": "diff", "order": "descending"}
+          "sort": {"field": "diff", "order": "ascending"},
+          "title": null,
+          "axis": {
+            "labelFontSize": 11,
+            "labelColor": "#333333",
+            "domain": false,
+            "ticks": false,
+            "grid": false,
+            "labelLimit": 150
+          }
         },
         "x": {
           "field": "diff",
           "type": "quantitative",
           "title": "Difference from National Median (RM)",
           "axis": {
-            "grid": true,
+            "format": "+,.0f",
+            "labelFontSize": 10,
+            "titleFontSize": 12,
             "gridColor": "#e0e0d8",
-            "domain": false
+            "gridDash": [3,3],
+            "domain": false,
+            "tickCount": 7
           }
         },
         "color": {
-          "condition": {
-            "test": "datum.diff > 0",
-            "value": "#1a5fa8"
+          "field": "side",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Above", "Below"],
+            "range": ["#1a5fa8", "#cc3333"]
           },
-          "value": "#c44536"
+          "legend": {
+            "title": null,
+            "orient": "top-left",
+            "labelFontSize": 11,
+            "symbolSize": 80,
+            "values": ["Above", "Below"],
+            "labelExpr": "datum.value == 'Above' ? 'Above national median' : 'Below national median'"
+          }
         },
         "tooltip": [
           {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)"},
-          {"field": "diff", "type": "quantitative", "title": "Gap from Average (RM)"}
+          {"field": "diff", "type": "quantitative", "title": "vs National Median (RM)", "format": "+,.0f"}
         ]
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "baseline": "middle",
-        "font": "Arial",
-        "fontSize": 11,
-        "fontWeight": "bold"
-      },
-      "encoding": {
-        "x": {"datum": 0}, 
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "sort": {"field": "diff", "order": "descending"}
-        },
-        "text": {"field": "state", "type": "nominal"},
-        "align": {
-          "condition": {"test": "datum.diff > 0", "value": "right"},
-          "value": "left"
-        },
-        "dx": {
-          "condition": {"test": "datum.diff > 0", "value": -5},
-          "value": 5
-        },
-        "color": {
-          "value": "#333333"
-        }
-      }
+      "mark": {"type": "rule", "color": "#333333", "strokeWidth": 1.5, "strokeDash": [4,2]},
+      "encoding": {"x": {"datum": 0}}
     }
   ],
-  "config": {
-    "view": {"stroke": null},
-    "background": "#ffffff",
-    "bar": {"binSpacing": 2}
-  }
+  "config": {"view": {"stroke": null}, "background": "#ffffff"}
 }
