@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Median Monthly Household Income by State (2022)",
-    "subtitle": "Darker blue = higher median income · Hover over a state for details",
+    "subtitle": "Darker green = higher median income · Hover over a state for details",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#aaaaaa",
@@ -20,7 +20,7 @@
       "data": {"sphere": true},
       "mark": {
         "type": "geoshape",
-        "fill": "#b8d4e8",
+        "fill": "#4a90c4",
         "stroke": null
       }
     },
@@ -29,7 +29,7 @@
       "mark": {
         "type": "geoshape",
         "fill": null,
-        "stroke": "#8ab4cc",
+        "stroke": "#6aaad4",
         "strokeWidth": 0.3,
         "strokeOpacity": 0.5
       }
@@ -41,9 +41,9 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#e8e0d0",
-        "stroke": "#ccbfa0",
-        "strokeWidth": 0.8
+        "fill": "#c8c8c8",
+        "stroke": "#aaaaaa",
+        "strokeWidth": 0.6
       },
       "encoding": {
         "tooltip": [
@@ -77,7 +77,10 @@
         "color": {
           "field": "income_median",
           "type": "quantitative",
-          "scale": {"scheme": "blues", "domain": [3000, 11000]},
+          "scale": {
+            "scheme": "greens",
+            "domain": [3000, 11000]
+          },
           "legend": {
             "title": "Median Income (RM)",
             "orient": "bottom-right",
@@ -101,17 +104,17 @@
         "values": [
           {"label": "Perlis",       "longitude": 100.42, "latitude": 6.60},
           {"label": "Kedah",        "longitude": 100.80, "latitude": 6.18},
-          {"label": "P. Pinang",    "longitude": 100.60, "latitude": 5.22},
+          {"label": "P. Pinang",    "longitude": 100.20, "latitude": 5.22},
           {"label": "Perak",        "longitude": 100.70, "latitude": 4.70},
-          {"label": "Selangor",     "longitude": 101.85, "latitude": 3.60},
+          {"label": "Selangor",     "longitude": 101.90, "latitude": 3.60},
           {"label": "KL",           "longitude": 101.56, "latitude": 3.22},
-          {"label": "Putrajaya",    "longitude": 102.10, "latitude": 2.98},
-          {"label": "N. Sembilan",  "longitude": 102.40, "latitude": 2.82},
-          {"label": "Melaka",       "longitude": 102.40, "latitude": 2.28},
+          {"label": "Putrajaya",    "longitude": 102.15, "latitude": 2.98},
+          {"label": "N. Sembilan",  "longitude": 102.45, "latitude": 2.80},
+          {"label": "Melaka",       "longitude": 102.50, "latitude": 2.28},
           {"label": "Johor",        "longitude": 103.60, "latitude": 1.95},
-          {"label": "Pahang",       "longitude": 102.80, "latitude": 3.80},
+          {"label": "Pahang",       "longitude": 102.85, "latitude": 3.85},
           {"label": "Terengganu",   "longitude": 103.50, "latitude": 5.10},
-          {"label": "Kelantan",     "longitude": 101.80, "latitude": 5.90},
+          {"label": "Kelantan",     "longitude": 101.70, "latitude": 5.90},
           {"label": "Sabah",        "longitude": 117.20, "latitude": 5.90},
           {"label": "Sarawak",      "longitude": 113.50, "latitude": 2.55},
           {"label": "Labuan",       "longitude": 115.35, "latitude": 5.10}
