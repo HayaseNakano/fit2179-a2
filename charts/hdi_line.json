@@ -9,7 +9,7 @@
     "anchor": "start"
   },
   "width": "container",
-  "height": 300,
+  "height": 280,
   "data": {
     "url": "https://HayaseNakano.github.io/fit2179-a2/data/hdr-data.json"
   },
@@ -24,13 +24,14 @@
         "type": "area",
         "line": {"color": "#1a5fa8", "strokeWidth": 2.5},
         "color": "#ddeeff",
-        "opacity": 0.6
+        "opacity": 0.7
       },
       "encoding": {
         "x": {
           "field": "year_num",
           "type": "quantitative",
           "title": "Year",
+          "scale": {"domain": [1990, 2023]},
           "axis": {
             "format": "d",
             "labelFontSize": 10,
@@ -43,13 +44,13 @@
           "field": "hdi_value",
           "type": "quantitative",
           "title": "HDI Value",
-          "scale": {"domain": [0.6, 0.85]},
+          "scale": {"domain": [0.62, 0.82]},
           "axis": {
             "labelFontSize": 10,
             "titleFontSize": 12,
             "gridColor": "#e0e0d8",
             "gridDash": [3, 3],
-            "format": ".3f"
+            "format": ".2f"
           }
         },
         "tooltip": [
@@ -59,15 +60,37 @@
       }
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 40, "color": "#1a5fa8", "opacity": 0.7},
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -8,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#0c447c"
+      },
+      "transform": [
+        {"filter": "datum.year_num == 1990"}
+      ],
       "encoding": {
         "x": {"field": "year_num", "type": "quantitative"},
-        "y": {"field": "hdi_value", "type": "quantitative"}
+        "y": {"field": "hdi_value", "type": "quantitative"},
+        "text": {"field": "hdi_value", "type": "quantitative", "format": ".3f"}
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -6, "fontSize": 10, "fontWeight": "bold", "color": "#0c447c"},
-      "transform": [{"filter": "datum.year_num == 1990 || datum.year_num == 2023"}],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -5,
+        "dy": -8,
+        "fontSize": 10,
+        "fontWeight": "bold",
+        "color": "#0c447c"
+      },
+      "transform": [
+        {"filter": "datum.year_num == 2023"}
+      ],
       "encoding": {
         "x": {"field": "year_num", "type": "quantitative"},
         "y": {"field": "hdi_value", "type": "quantitative"},
@@ -75,5 +98,8 @@
       }
     }
   ],
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {"stroke": null},
+    "background": "#ffffff"
+  }
 }
