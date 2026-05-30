@@ -1,38 +1,136 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "National Poverty Rate Decline (1970–2022)",
-    "subtitle": "Average absolute poverty rate across all states · hh_poverty_state.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "text": "National Poverty Rate Decline (1970\u20132022)",
+    "subtitle": "Average absolute poverty rate across all states \u00b7 hh_poverty_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 380,
-  "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_poverty_state.csv"},
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_poverty_state.csv"
+  },
   "transform": [
-    {"filter": "datum.poverty_absolute != null"},
-    {"aggregate": [{"op": "mean", "field": "poverty_absolute", "as": "national_poverty"}], "groupby": ["date"]}
+    {
+      "filter": "datum.poverty_absolute != null"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "mean",
+          "field": "poverty_absolute",
+          "as": "national_poverty"
+        }
+      ],
+      "groupby": [
+        "date"
+      ]
+    }
   ],
   "layer": [
     {
-      "mark": {"type": "area", "line": {"color": "#0c447c", "strokeWidth": 2.5}, "color": "#ddeeff", "opacity": 0.8},
+      "mark": {
+        "type": "area",
+        "line": {
+          "color": "#0c447c",
+          "strokeWidth": 2.5
+        },
+        "color": "#ddeeff",
+        "opacity": 0.8
+      },
       "encoding": {
-        "x": {"field": "date", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 11, "titleFontSize": 12, "grid": false}},
-        "y": {"field": "national_poverty", "type": "quantitative", "title": "Average Poverty Rate (%)", "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}},
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {
+            "format": "%Y",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "grid": false
+          },
+          "scale": {
+            "domain": [
+              "1970-01-01",
+              "2022-12-31"
+            ]
+          }
+        },
+        "y": {
+          "field": "national_poverty",
+          "type": "quantitative",
+          "title": "Average Poverty Rate (%)",
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ]
+          },
+          "scale": {
+            "domain": [
+              0,
+              58
+            ]
+          }
+        },
         "tooltip": [
-          {"field": "date", "type": "temporal", "title": "Year", "format": "%Y"},
-          {"field": "national_poverty", "type": "quantitative", "title": "Avg Poverty Rate (%)", "format": ".1f"}
+          {
+            "field": "date",
+            "type": "temporal",
+            "title": "Year",
+            "format": "%Y"
+          },
+          {
+            "field": "national_poverty",
+            "type": "quantitative",
+            "title": "Avg Poverty Rate (%)",
+            "format": ".1f"
+          }
         ]
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 5, "dy": -8, "fontSize": 11, "fontWeight": "bold", "color": "#0c447c"},
-      "transform": [{"filter": "year(datum.date) == 1970"}],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "dy": -8,
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#0c447c"
+      },
+      "transform": [
+        {
+          "filter": "year(datum.date) == 1970"
+        }
+      ],
       "encoding": {
-        "x": {"field": "date", "type": "temporal"},
-        "y": {"field": "national_poverty", "type": "quantitative"},
-        "text": {"field": "national_poverty", "type": "quantitative", "format": ".1f"}
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "national_poverty",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "national_poverty",
+          "type": "quantitative",
+          "format": ".1f"
+        }
       }
     }
   ],
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
 }

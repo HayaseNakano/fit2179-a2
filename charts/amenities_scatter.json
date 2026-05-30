@@ -2,53 +2,152 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Piped Water Access vs Median Income (2022)",
-    "subtitle": "Each point = one state · Bubble size = poverty rate · hh_access_amenities.csv + hies_state.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "subtitle": "Each point = one state \u00b7 Bubble size = poverty rate \u00b7 hh_access_amenities.csv + hies_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 380,
-  "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_access_amenities.csv"},
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_access_amenities.csv"
+  },
   "transform": [
-    {"filter": "datum.date == '2022-01-01'"},
-    {"filter": "datum.district == 'All Districts'"},
+    {
+      "filter": "datum.date == '2022-01-01'"
+    },
+    {
+      "filter": "datum.district == 'All Districts'"
+    },
     {
       "lookup": "state",
       "from": {
-        "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"},
+        "data": {
+          "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
+        },
         "key": "state",
-        "fields": ["income_median", "poverty"]
+        "fields": [
+          "income_median",
+          "poverty"
+        ]
       }
     }
   ],
-  "mark": {"type": "point", "filled": true},
-  "params": [{"name": "hover", "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}}],
+  "mark": {
+    "type": "point",
+    "filled": true
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "mouseover",
+        "clear": "mouseout"
+      }
+    }
+  ],
   "encoding": {
     "x": {
-      "field": "income_median", "type": "quantitative", "title": "Median Monthly Income (RM)",
-      "axis": {"format": ",.0f", "labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}
+      "field": "income_median",
+      "type": "quantitative",
+      "title": "Median Monthly Income (RM)",
+      "axis": {
+        "format": ",.0f",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gridColor": "#e0e0d8",
+        "gridDash": [
+          3,
+          3
+        ]
+      }
     },
     "y": {
-      "field": "piped_water", "type": "quantitative", "title": "Piped Water Access (%)",
-      "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]},
-      "scale": {"domain": [60, 102]}
+      "field": "piped_water",
+      "type": "quantitative",
+      "title": "Piped Water Access (%)",
+      "axis": {
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gridColor": "#e0e0d8",
+        "gridDash": [
+          3,
+          3
+        ]
+      },
+      "scale": {
+        "domain": [
+          0,
+          102
+        ]
+      }
     },
     "color": {
-      "field": "income_median", "type": "quantitative",
-      "scale": {"scheme": "blues", "domain": [3000, 11000]},
+      "field": "income_median",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "blues",
+        "domain": [
+          3000,
+          11000
+        ]
+      },
       "legend": null
     },
     "size": {
-      "field": "poverty", "type": "quantitative",
-      "scale": {"range": [40, 400]},
-      "legend": {"title": "Poverty Rate (%)", "labelFontSize": 11, "titleFontSize": 11, "orient": "bottom-right"}
+      "field": "poverty",
+      "type": "quantitative",
+      "scale": {
+        "range": [
+          40,
+          400
+        ]
+      },
+      "legend": {
+        "title": "Poverty Rate (%)",
+        "labelFontSize": 11,
+        "titleFontSize": 11,
+        "orient": "top-left"
+      }
     },
-    "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.7},
+    "opacity": {
+      "condition": {
+        "param": "hover",
+        "value": 1
+      },
+      "value": 0.7
+    },
     "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
-      {"field": "piped_water", "type": "quantitative", "title": "Piped Water Access (%)", "format": ".1f"},
-      {"field": "poverty", "type": "quantitative", "title": "Poverty Rate (%)"}
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "income_median",
+        "type": "quantitative",
+        "title": "Median Income (RM)",
+        "format": ",.0f"
+      },
+      {
+        "field": "piped_water",
+        "type": "quantitative",
+        "title": "Piped Water Access (%)",
+        "format": ".1f"
+      },
+      {
+        "field": "poverty",
+        "type": "quantitative",
+        "title": "Poverty Rate (%)"
+      }
     ]
   },
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
 }

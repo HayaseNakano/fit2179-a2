@@ -1,52 +1,209 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Malaysia's Human Development Index (1990–2023)",
-    "subtitle": "HDI combines income, education and life expectancy · UNDP HDR · hdi_clean.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "text": "Malaysia's Human Development Index (1990\u20132023)",
+    "subtitle": "HDI combines income, education and life expectancy \u00b7 UNDP HDR \u00b7 hdi_clean.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 320,
-  "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hdi_clean.csv"},
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hdi_clean.csv"
+  },
   "layer": [
     {
-      "mark": {"type": "area", "line": {"color": "#1a5fa8", "strokeWidth": 2.5}, "color": "#ddeeff", "opacity": 0.6},
+      "mark": {
+        "type": "area",
+        "line": {
+          "color": "#1a5fa8",
+          "strokeWidth": 2.5
+        },
+        "color": "#ddeeff",
+        "opacity": 0.6
+      },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "title": "Year", "scale": {"domain": [1990, 2023]}, "axis": {"format": "d", "labelFontSize": 11, "titleFontSize": 12, "grid": false, "tickCount": 8}},
-        "y": {"field": "hdi", "type": "quantitative", "title": "HDI Value", "scale": {"domain": [0.62, 0.84]}, "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3], "format": ".2f"}},
-        "tooltip": [{"field": "year", "type": "quantitative", "title": "Year", "format": "d"}, {"field": "hdi", "type": "quantitative", "title": "HDI Value", "format": ".3f"}]
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": "Year",
+          "scale": {
+            "domain": [
+              1990,
+              2023
+            ]
+          },
+          "axis": {
+            "format": "d",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "grid": false,
+            "tickCount": 8
+          }
+        },
+        "y": {
+          "field": "hdi",
+          "type": "quantitative",
+          "title": "HDI Value",
+          "scale": {
+            "domain": [
+              0,
+              0.85
+            ]
+          },
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ],
+            "format": ".2f"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "year",
+            "type": "quantitative",
+            "title": "Year",
+            "format": "d"
+          },
+          {
+            "field": "hdi",
+            "type": "quantitative",
+            "title": "HDI Value",
+            "format": ".3f"
+          }
+        ]
       }
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 40, "color": "#1a5fa8", "opacity": 0.7},
-      "encoding": {"x": {"field": "year", "type": "quantitative"}, "y": {"field": "hdi", "type": "quantitative"}}
-    },
-    {
-      "transform": [{"filter": "datum.year == 1990"}],
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#0c447c", "align": "left", "dx": 8, "dy": 4},
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 40,
+        "color": "#1a5fa8",
+        "opacity": 0.7
+      },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative"},
-        "y": {"field": "hdi", "type": "quantitative"},
-        "text": {"field": "hdi", "type": "quantitative", "format": ".3f"}
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "hdi",
+          "type": "quantitative"
+        }
       }
     },
     {
-      "transform": [{"filter": "datum.year == 2023"}],
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold", "color": "#0c447c", "align": "right", "dx": -8, "dy": -10},
+      "transform": [
+        {
+          "filter": "datum.year == 1990"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#0c447c",
+        "align": "left",
+        "dx": 8,
+        "dy": 4
+      },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative"},
-        "y": {"field": "hdi", "type": "quantitative"},
-        "text": {"field": "hdi", "type": "quantitative", "format": ".3f"}
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "hdi",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "hdi",
+          "type": "quantitative",
+          "format": ".3f"
+        }
       }
     },
     {
-      "mark": {"type": "rule", "color": "#cc3333", "strokeDash": [4,3], "strokeWidth": 1.2},
-      "encoding": {"y": {"datum": 0.8}}
+      "transform": [
+        {
+          "filter": "datum.year == 2023"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#0c447c",
+        "align": "right",
+        "dx": -8,
+        "dy": -10
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "hdi",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "hdi",
+          "type": "quantitative",
+          "format": ".3f"
+        }
+      }
     },
     {
-      "mark": {"type": "text", "align": "left", "dx": 4, "dy": -8, "fontSize": 10, "color": "#cc3333", "fontStyle": "italic"},
-      "encoding": {"x": {"datum": 1990}, "y": {"datum": 0.8}, "text": {"value": "High Human Development threshold (0.800)"}}
+      "mark": {
+        "type": "rule",
+        "color": "#cc3333",
+        "strokeDash": [
+          4,
+          3
+        ],
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "y": {
+          "datum": 0.8
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": -8,
+        "fontSize": 10,
+        "color": "#cc3333",
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {
+          "datum": 1990
+        },
+        "y": {
+          "datum": 0.8
+        },
+        "text": {
+          "value": "High Human Development threshold (0.800)"
+        }
+      }
     }
   ],
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
 }

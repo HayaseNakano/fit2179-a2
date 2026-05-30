@@ -3,71 +3,217 @@
   "title": {
     "text": "State Income Relative to National Median (2022)",
     "subtitle": "Each bar shows how far a state's median income sits above or below the national median of RM 6,338",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 460,
   "data": {
     "values": [
-      {"state": "Kelantan",         "diff": -2724, "side": "Below national median"},
-      {"state": "Kedah",            "diff": -1936, "side": "Below national median"},
-      {"state": "Perak",            "diff": -1844, "side": "Below national median"},
-      {"state": "Sabah",            "diff": -1761, "side": "Below national median"},
-      {"state": "Perlis",           "diff": -1625, "side": "Below national median"},
-      {"state": "Pahang",           "diff": -1585, "side": "Below national median"},
-      {"state": "Sarawak",          "diff": -1360, "side": "Below national median"},
-      {"state": "Negeri Sembilan",  "diff": -1112, "side": "Below national median"},
-      {"state": "Terengganu",       "diff": -460,  "side": "Below national median"},
-      {"state": "Melaka",           "diff": -128,  "side": "Below national median"},
-      {"state": "Pulau Pinang",     "diff": 164,   "side": "Above national median"},
-      {"state": "Johor",            "diff": 541,   "side": "Above national median"},
-      {"state": "W.P. Labuan",      "diff": 566,   "side": "Above national median"},
-      {"state": "Selangor",         "diff": 3645,  "side": "Above national median"},
-      {"state": "W.P. Putrajaya",   "diff": 3718,  "side": "Above national median"},
-      {"state": "W.P. Kuala Lumpur","diff": 3896,  "side": "Above national median"}
+      {
+        "state": "Kelantan",
+        "diff": -2724,
+        "side": "Below national median"
+      },
+      {
+        "state": "Kedah",
+        "diff": -1936,
+        "side": "Below national median"
+      },
+      {
+        "state": "Perak",
+        "diff": -1844,
+        "side": "Below national median"
+      },
+      {
+        "state": "Sabah",
+        "diff": -1761,
+        "side": "Below national median"
+      },
+      {
+        "state": "Perlis",
+        "diff": -1625,
+        "side": "Below national median"
+      },
+      {
+        "state": "Pahang",
+        "diff": -1585,
+        "side": "Below national median"
+      },
+      {
+        "state": "Sarawak",
+        "diff": -1360,
+        "side": "Below national median"
+      },
+      {
+        "state": "Negeri Sembilan",
+        "diff": -1112,
+        "side": "Below national median"
+      },
+      {
+        "state": "Terengganu",
+        "diff": -460,
+        "side": "Below national median"
+      },
+      {
+        "state": "Melaka",
+        "diff": -128,
+        "side": "Below national median"
+      },
+      {
+        "state": "Pulau Pinang",
+        "diff": 164,
+        "side": "Above national median"
+      },
+      {
+        "state": "Johor",
+        "diff": 541,
+        "side": "Above national median"
+      },
+      {
+        "state": "W.P. Labuan",
+        "diff": 566,
+        "side": "Above national median"
+      },
+      {
+        "state": "Selangor",
+        "diff": 3645,
+        "side": "Above national median"
+      },
+      {
+        "state": "W.P. Putrajaya",
+        "diff": 3718,
+        "side": "Above national median"
+      },
+      {
+        "state": "W.P. Kuala Lumpur",
+        "diff": 3896,
+        "side": "Above national median"
+      }
     ]
   },
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 3},
-      "params": [{"name": "hover", "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}}],
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 3
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ],
       "encoding": {
         "y": {
-          "field": "state", "type": "nominal",
-          "sort": {"field": "diff", "order": "ascending"},
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "diff",
+            "order": "ascending"
+          },
           "title": null,
-          "axis": {"labelFontSize": 12, "domain": false, "ticks": false, "grid": false, "labelLimit": 160}
-        },
-        "x": {
-          "field": "diff", "type": "quantitative",
-          "title": "Difference from National Median (RM)",
-          "axis": {"format": "+,.0f", "labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3], "domain": false, "tickCount": 7}
-        },
-        "color": {
-          "field": "side", "type": "nominal",
-          "scale": {"domain": ["Above national median","Below national median"], "range": ["#1a5fa8","#cc3333"]},
-          "legend": {
-            "title": null,
-            "orient": "none",
-            "legendX": 80,
-            "legendY": -30,
-            "labelFontSize": 11,
-            "symbolSize": 100,
-            "direction": "horizontal"
+          "axis": {
+            "labelFontSize": 12,
+            "domain": false,
+            "ticks": false,
+            "grid": false,
+            "labelLimit": 160
           }
         },
-        "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.8},
+        "x": {
+          "field": "diff",
+          "type": "quantitative",
+          "title": "Difference from National Median (RM)",
+          "axis": {
+            "format": "+,.0f",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ],
+            "domain": false,
+            "tickCount": 7
+          }
+        },
+        "color": {
+          "field": "side",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Above national median",
+              "Below national median"
+            ],
+            "range": [
+              "#1a5fa8",
+              "#cc3333"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "top-right",
+            "labelFontSize": 11,
+            "symbolSize": 100,
+            "direction": "horizontal",
+            "offset": 10
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "value": 1
+          },
+          "value": 0.8
+        },
         "tooltip": [
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "diff", "type": "quantitative", "title": "vs National Median (RM)", "format": "+,.0f"},
-          {"field": "side", "type": "nominal", "title": "Status"}
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "diff",
+            "type": "quantitative",
+            "title": "vs National Median (RM)",
+            "format": "+,.0f"
+          },
+          {
+            "field": "side",
+            "type": "nominal",
+            "title": "Status"
+          }
         ]
       }
     },
     {
-      "mark": {"type": "rule", "color": "#333333", "strokeWidth": 1.5, "strokeDash": [4,2]},
-      "encoding": {"x": {"datum": 0}}
+      "mark": {
+        "type": "rule",
+        "color": "#333333",
+        "strokeWidth": 1.5,
+        "strokeDash": [
+          4,
+          2
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 0
+        }
+      }
     }
   ],
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
 }
