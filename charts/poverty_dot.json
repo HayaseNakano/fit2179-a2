@@ -2,38 +2,195 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Poverty Rate by State (2022)",
-    "subtitle": "Absolute poverty rate · Hover for details · hh_poverty_state.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "subtitle": "Absolute poverty rate \u00b7 Hover for details \u00b7 hh_poverty_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 380,
-  "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_poverty_state.csv"},
-  "transform": [
-    {"filter": "datum.date == '2022-01-01'"},
-    {"filter": "datum.poverty_absolute != null"}
-  ],
-  "mark": {"type": "point", "filled": true, "size": 150},
-  "params": [{"name": "hover", "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}}],
-  "encoding": {
-    "y": {
-      "field": "state", "type": "nominal", "title": null,
-      "sort": {"field": "poverty_absolute", "order": "descending"},
-      "axis": {"labelFontSize": 11, "ticks": false, "domain": false}
-    },
-    "x": {
-      "field": "poverty_absolute", "type": "quantitative", "title": "Absolute Poverty Rate (%)",
-      "axis": {"labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3], "domain": false}
-    },
-    "color": {
-      "field": "poverty_absolute", "type": "quantitative",
-      "scale": {"scheme": "orangered", "domain": [0, 22]},
-      "legend": {"title": "Poverty Rate (%)", "orient": "bottom", "gradientLength": 180, "gradientThickness": 12, "labelFontSize": 11, "titleFontSize": 11, "direction": "horizontal"}
-    },
-    "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.75},
-    "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "poverty_absolute", "type": "quantitative", "title": "Poverty Rate (%)", "format": ".1f"}
-    ]
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_poverty_state.csv"
   },
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "transform": [
+    {
+      "filter": "datum.date == '2022-01-01'"
+    },
+    {
+      "filter": "datum.poverty_absolute != null"
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 150
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": null,
+          "sort": {
+            "field": "poverty_absolute",
+            "order": "descending"
+          },
+          "axis": {
+            "labelFontSize": 11,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "x": {
+          "field": "poverty_absolute",
+          "type": "quantitative",
+          "title": "Absolute Poverty Rate (%)",
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ],
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "poverty_absolute",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "orangered",
+            "domain": [
+              0,
+              22
+            ]
+          },
+          "legend": {
+            "title": "Poverty Rate (%)",
+            "orient": "bottom",
+            "gradientLength": 180,
+            "gradientThickness": 12,
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "direction": "horizontal"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "value": 1
+          },
+          "value": 0.75
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "poverty_absolute",
+            "type": "quantitative",
+            "title": "Poverty Rate (%)",
+            "format": ".1f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Sabah",
+            "poverty_absolute": 19.7,
+            "label": "Was just 2.9% in 2016 \u2014"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -8,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "poverty_absolute",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "poverty_absolute",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Sabah",
+            "poverty_absolute": 19.7,
+            "label": "a sharp post-pandemic regression"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": 6,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "poverty_absolute",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "poverty_absolute",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }

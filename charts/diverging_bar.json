@@ -208,6 +208,52 @@
           "datum": 0
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Selangor",
+            "diff": 2300,
+            "label": "10 of 16 states (62%) fall below"
+          },
+          {
+            "state": "W.P. Putrajaya",
+            "diff": 2300,
+            "label": "the national median \u2014 the top 3"
+          },
+          {
+            "state": "W.P. Kuala Lumpur",
+            "diff": 2300,
+            "label": "territories pull the figure up"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555555"
+      },
+      "encoding": {
+        "x": {
+          "field": "diff",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "diff",
+            "order": "ascending"
+          }
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
     }
   ],
   "config": {

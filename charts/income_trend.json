@@ -2,42 +2,198 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Median Household Income by State Over Time",
-    "subtitle": "Click a state in the legend to highlight · 1970–2022 · hh_income_state.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "subtitle": "Click a state in the legend to highlight \u00b7 1970\u20132022 \u00b7 hh_income_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 360,
-  "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_income_state.csv"},
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_income_state.csv"
+  },
   "transform": [
-    {"filter": "indexof(['W.P. Kuala Lumpur','Selangor','Johor','Sabah','Kelantan','Perak'], datum.state) >= 0"},
-    {"filter": "datum.income_median != null"}
-  ],
-  "params": [
     {
-      "name": "state_select",
-      "select": {"type": "point", "fields": ["state"]},
-      "bind": "legend"
+      "filter": "indexof(['W.P. Kuala Lumpur','Selangor','Johor','Sabah','Kelantan','Perak'], datum.state) >= 0"
+    },
+    {
+      "filter": "datum.income_median != null"
     }
   ],
-  "mark": {"type": "line", "point": false, "interpolate": "monotone"},
-  "encoding": {
-    "x": {"field": "date", "type": "temporal", "title": "Year", "axis": {"format": "%Y", "labelFontSize": 11, "titleFontSize": 12, "grid": false}},
-    "y": {"field": "income_median", "type": "quantitative", "title": "Median Monthly Income (RM)", "axis": {"format": ",.0f", "labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}},
-    "color": {
-      "field": "state", "type": "nominal",
-      "scale": {"domain": ["W.P. Kuala Lumpur","Selangor","Johor","Perak","Sabah","Kelantan"], "range": ["#0c447c","#1a5fa8","#5599cc","#aaaaaa","#888888","#cc3333"]},
-      "legend": {"title": "State", "labelFontSize": 11, "titleFontSize": 12, "orient": "right"}
+  "config": {
+    "view": {
+      "stroke": null
     },
-    "opacity": {"condition": {"param": "state_select", "value": 1}, "value": 0.15},
-    "strokeWidth": {
-      "condition": {"param": "state_select", "value": 3},
-      "value": 1.5
-    },
-    "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "date", "type": "temporal", "title": "Year", "format": "%Y"},
-      {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"}
-    ]
+    "background": "#ffffff"
   },
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": false,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Year",
+          "axis": {
+            "format": "%Y",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "grid": false
+          }
+        },
+        "y": {
+          "field": "income_median",
+          "type": "quantitative",
+          "title": "Median Monthly Income (RM)",
+          "axis": {
+            "format": ",.0f",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ]
+          }
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "W.P. Kuala Lumpur",
+              "Selangor",
+              "Johor",
+              "Perak",
+              "Sabah",
+              "Kelantan"
+            ],
+            "range": [
+              "#0c447c",
+              "#1a5fa8",
+              "#5599cc",
+              "#aaaaaa",
+              "#888888",
+              "#cc3333"
+            ]
+          },
+          "legend": {
+            "title": "State",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "orient": "right"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "state_select",
+            "value": 1
+          },
+          "value": 0.15
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "state_select",
+            "value": 3
+          },
+          "value": 1.5
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "date",
+            "type": "temporal",
+            "title": "Year",
+            "format": "%Y"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "state_select",
+          "select": {
+            "type": "point",
+            "fields": [
+              "state"
+            ]
+          },
+          "bind": "legend"
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2007-01-01",
+            "label": "Petroleum royalties\naccelerate Terengganu's rise"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#bbbbbb",
+        "strokeDash": [
+          3,
+          2
+        ],
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2007-01-01",
+            "income_median": 2200,
+            "label": "Petroleum royalties\naccelerate Terengganu's rise"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#888888",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "income_median",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }

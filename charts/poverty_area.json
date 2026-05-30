@@ -125,6 +125,67 @@
           "format": ".1f"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2020-01-01",
+            "national_poverty": 9.0
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80,
+        "color": "#cc3333"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "national_poverty",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2020-01-01",
+            "national_poverty": 9.0,
+            "label": "COVID-19 reverses\ndecades of progress"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": -18,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "national_poverty",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
     }
   ],
   "config": {

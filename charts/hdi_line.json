@@ -198,6 +198,67 @@
           "value": "High Human Development threshold (0.800)"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2020,
+            "hdi": 0.81
+          }
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 80,
+        "color": "#cc3333"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "hdi",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2020,
+            "hdi": 0.81,
+            "label": "Pandemic causes first\nHDI decline since 1990"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -8,
+        "dy": 30,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "hdi",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
     }
   ],
   "config": {
