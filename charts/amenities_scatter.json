@@ -109,7 +109,7 @@
         "title": "Poverty Rate (%)",
         "labelFontSize": 11,
         "titleFontSize": 11,
-        "orient": "top-left"
+        "orient": "bottom-right"
       }
     },
     "opacity": {

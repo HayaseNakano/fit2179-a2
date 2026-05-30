@@ -215,7 +215,7 @@
             "title": null,
             "labelFontSize": 12,
             "symbolSize": 100,
-            "orient": "bottom-right",
+            "orient": "top-right",
             "labelExpr": "datum.value == 'median' ? 'Median income' : 'Mean income (skewed by top earners)'",
             "offset": 5
           }
