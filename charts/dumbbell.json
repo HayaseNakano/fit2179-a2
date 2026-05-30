@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Mean vs Median Income by State (2022)",
-    "subtitle": "The gap between mean and median reveals how much top earners skew the average upward \u00b7 hies_state.csv",
+    "subtitle": "Gap between mean and median shows how much top earners skew the average upward \u00b7 hies_state.csv",
     "fontSize": 14,
     "subtitleFontSize": 11,
     "subtitleColor": "#aaaaaa",
@@ -218,10 +218,10 @@
             "orient": "none",
             "labelExpr": "datum.value == 'median' ? 'Median income' : 'Mean income (skewed by top earners)'",
             "offset": 5,
-            "legendX": 250,
-            "legendY": 430,
+            "legendX": 0,
+            "legendY": -50,
             "direction": "horizontal",
-            "labelLimit": 300
+            "labelLimit": 400
           }
         },
         "opacity": {
@@ -257,5 +257,11 @@
       "stroke": null
     },
     "background": "#ffffff"
+  },
+  "padding": {
+    "top": 20,
+    "bottom": 10,
+    "left": 10,
+    "right": 10
   }
 }
