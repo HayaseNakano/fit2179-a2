@@ -9,7 +9,7 @@
     "anchor": "start"
   },
   "width": "container",
-  "height": 460,
+  "height": 500,
   "data": {
     "values": [
       {
@@ -215,9 +215,13 @@
             "title": null,
             "labelFontSize": 12,
             "symbolSize": 100,
-            "orient": "top-right",
+            "orient": "none",
             "labelExpr": "datum.value == 'median' ? 'Median income' : 'Mean income (skewed by top earners)'",
-            "offset": 5
+            "offset": 5,
+            "legendX": 250,
+            "legendY": 430,
+            "direction": "horizontal",
+            "labelLimit": 300
           }
         },
         "opacity": {
