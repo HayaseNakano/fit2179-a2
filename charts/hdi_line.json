@@ -231,7 +231,7 @@
           {
             "year": 2020,
             "hdi": 0.81,
-            "label": "Pandemic causes first\nHDI decline since 1990"
+            "label": "Pandemic causes first HDI decline since 1990"
           }
         ]
       },
@@ -242,8 +242,7 @@
         "dy": 30,
         "fontSize": 10,
         "fontStyle": "italic",
-        "color": "#cc3333",
-        "lineBreak": "\n"
+        "color": "#cc3333"
       },
       "encoding": {
         "x": {

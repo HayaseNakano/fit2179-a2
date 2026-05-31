@@ -322,66 +322,6 @@
           "legend": null
         }
       }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "label": "N. Sembilan was once\nricher than Johor\nand Pulau Pinang"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "dx": -10,
-        "fontSize": 10,
-        "fontStyle": "italic",
-        "color": "#cc3333",
-        "lineBreak": "\n"
-      },
-      "encoding": {
-        "x": {
-          "datum": "1974"
-        },
-        "y": {
-          "datum": 2
-        },
-        "text": {
-          "field": "label",
-          "type": "nominal"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "label": "Perak fell from\n6th to 9th \u2014\nmanufacturing decline"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 10,
-        "fontSize": 10,
-        "fontStyle": "italic",
-        "color": "#cc3333",
-        "lineBreak": "\n"
-      },
-      "encoding": {
-        "x": {
-          "datum": "2022"
-        },
-        "y": {
-          "datum": 9
-        },
-        "text": {
-          "field": "label",
-          "type": "nominal"
-        }
-      }
     }
   ],
   "config": {

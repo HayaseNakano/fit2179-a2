@@ -15,16 +15,82 @@
   },
   "transform": [
     {
-      "filter": "indexof(['W.P. Labuan','W.P. Putrajaya'], datum.state) < 0"
-    },
-    {
       "calculate": "year(datum.date)",
       "as": "year"
+    },
+    {
+      "filter": "indexof(['W.P. Labuan','W.P. Putrajaya'], datum.state) < 0"
     },
     {
       "filter": "datum.year >= year_min && datum.year <= year_max"
     }
   ],
+  "mark": {
+    "type": "rect"
+  },
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x",
+      "axis": {
+        "labelFontSize": 11,
+        "ticks": false,
+        "domain": false
+      }
+    },
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelFontSize": 9,
+        "titleFontSize": 12,
+        "labelAngle": -45,
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "color": {
+      "field": "gini",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "orangered",
+        "domain": [
+          0.28,
+          0.52
+        ]
+      },
+      "legend": {
+        "title": "Gini Coefficient",
+        "orient": "bottom",
+        "titleFontSize": 11,
+        "labelFontSize": 11,
+        "gradientLength": 200,
+        "gradientThickness": 12,
+        "direction": "horizontal"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "gini",
+        "type": "quantitative",
+        "title": "Gini Coefficient",
+        "format": ".3f"
+      }
+    ]
+  },
   "config": {
     "view": {
       "stroke": null
@@ -52,120 +118,6 @@
         "max": 2022,
         "step": 1,
         "name": "To year: "
-      }
-    }
-  ],
-  "layer": [
-    {
-      "mark": {
-        "type": "rect"
-      },
-      "encoding": {
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "title": null,
-          "sort": "-x",
-          "axis": {
-            "labelFontSize": 11,
-            "ticks": false,
-            "domain": false
-          }
-        },
-        "x": {
-          "field": "year",
-          "type": "ordinal",
-          "title": "Year",
-          "axis": {
-            "labelFontSize": 9,
-            "titleFontSize": 12,
-            "labelAngle": -45,
-            "domain": false,
-            "ticks": false
-          }
-        },
-        "color": {
-          "field": "gini",
-          "type": "quantitative",
-          "scale": {
-            "scheme": "orangered",
-            "domain": [
-              0.28,
-              0.52
-            ]
-          },
-          "legend": {
-            "title": "Gini Coefficient",
-            "orient": "bottom",
-            "titleFontSize": 11,
-            "labelFontSize": 11,
-            "gradientLength": 200,
-            "gradientThickness": 12,
-            "direction": "horizontal"
-          }
-        },
-        "tooltip": [
-          {
-            "field": "state",
-            "type": "nominal",
-            "title": "State"
-          },
-          {
-            "field": "year",
-            "type": "ordinal",
-            "title": "Year"
-          },
-          {
-            "field": "gini",
-            "type": "quantitative",
-            "title": "Gini Coefficient",
-            "format": ".3f"
-          }
-        ]
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "state": "Sabah",
-            "year": 1975,
-            "label": "Data from 1979"
-          },
-          {
-            "state": "Sarawak",
-            "year": 1975,
-            "label": "Data from 1979"
-          },
-          {
-            "state": "W.P. Kuala Lumpur",
-            "year": 1976,
-            "label": "Data from 1984"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "fontSize": 9,
-        "fontStyle": "italic",
-        "color": "#aaaaaa",
-        "align": "left",
-        "dx": 2
-      },
-      "encoding": {
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "sort": "-x"
-        },
-        "x": {
-          "field": "year",
-          "type": "ordinal"
-        },
-        "text": {
-          "field": "label",
-          "type": "nominal"
-        }
       }
     }
   ]

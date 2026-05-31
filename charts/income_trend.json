@@ -21,211 +21,116 @@
       "filter": "datum.income_median != null"
     }
   ],
+  "params": [
+    {
+      "name": "state_select",
+      "select": {
+        "type": "point",
+        "fields": [
+          "state"
+        ]
+      },
+      "bind": "legend"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": false,
+    "interpolate": "monotone"
+  },
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {
+        "format": "%Y",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "grid": false
+      }
+    },
+    "y": {
+      "field": "income_median",
+      "type": "quantitative",
+      "title": "Median Monthly Income (RM)",
+      "axis": {
+        "format": ",.0f",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gridColor": "#e0e0d8",
+        "gridDash": [
+          3,
+          3
+        ]
+      }
+    },
+    "color": {
+      "field": "state",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "W.P. Kuala Lumpur",
+          "Selangor",
+          "Johor",
+          "Perak",
+          "Sabah",
+          "Kelantan"
+        ],
+        "range": [
+          "#0c447c",
+          "#1a5fa8",
+          "#5599cc",
+          "#aaaaaa",
+          "#888888",
+          "#cc3333"
+        ]
+      },
+      "legend": {
+        "title": "State",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "orient": "right"
+      }
+    },
+    "opacity": {
+      "condition": {
+        "param": "state_select",
+        "value": 1
+      },
+      "value": 0.15
+    },
+    "strokeWidth": {
+      "condition": {
+        "param": "state_select",
+        "value": 3
+      },
+      "value": 1.5
+    },
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "date",
+        "type": "temporal",
+        "title": "Year",
+        "format": "%Y"
+      },
+      {
+        "field": "income_median",
+        "type": "quantitative",
+        "title": "Median Income (RM)",
+        "format": ",.0f"
+      }
+    ]
+  },
   "config": {
     "view": {
       "stroke": null
     },
     "background": "#ffffff"
-  },
-  "layer": [
-    {
-      "mark": {
-        "type": "line",
-        "point": false,
-        "interpolate": "monotone"
-      },
-      "encoding": {
-        "x": {
-          "field": "date",
-          "type": "temporal",
-          "title": "Year",
-          "axis": {
-            "format": "%Y",
-            "labelFontSize": 11,
-            "titleFontSize": 12,
-            "grid": false
-          }
-        },
-        "y": {
-          "field": "income_median",
-          "type": "quantitative",
-          "title": "Median Monthly Income (RM)",
-          "axis": {
-            "format": ",.0f",
-            "labelFontSize": 11,
-            "titleFontSize": 12,
-            "gridColor": "#e0e0d8",
-            "gridDash": [
-              3,
-              3
-            ]
-          }
-        },
-        "color": {
-          "field": "state",
-          "type": "nominal",
-          "scale": {
-            "domain": [
-              "W.P. Kuala Lumpur",
-              "Selangor",
-              "Johor",
-              "Perak",
-              "Sabah",
-              "Kelantan"
-            ],
-            "range": [
-              "#0c447c",
-              "#1a5fa8",
-              "#5599cc",
-              "#aaaaaa",
-              "#888888",
-              "#cc3333"
-            ]
-          },
-          "legend": {
-            "title": "State",
-            "labelFontSize": 11,
-            "titleFontSize": 12,
-            "orient": "right"
-          }
-        },
-        "opacity": {
-          "condition": {
-            "param": "state_select",
-            "value": 1
-          },
-          "value": 0.15
-        },
-        "strokeWidth": {
-          "condition": {
-            "param": "state_select",
-            "value": 3
-          },
-          "value": 1.5
-        },
-        "tooltip": [
-          {
-            "field": "state",
-            "type": "nominal",
-            "title": "State"
-          },
-          {
-            "field": "date",
-            "type": "temporal",
-            "title": "Year",
-            "format": "%Y"
-          },
-          {
-            "field": "income_median",
-            "type": "quantitative",
-            "title": "Median Income (RM)",
-            "format": ",.0f"
-          }
-        ]
-      },
-      "params": [
-        {
-          "name": "state_select",
-          "select": {
-            "type": "point",
-            "fields": [
-              "state"
-            ]
-          },
-          "bind": "legend"
-        }
-      ]
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "date": "2007-01-01",
-            "label": "Petroleum royalties\naccelerate Terengganu's rise"
-          }
-        ]
-      },
-      "mark": {
-        "type": "rule",
-        "color": "#bbbbbb",
-        "strokeDash": [
-          3,
-          2
-        ],
-        "strokeWidth": 1
-      },
-      "encoding": {
-        "x": {
-          "field": "date",
-          "type": "temporal"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "date": "2007-01-01",
-            "income_median": 2200,
-            "label": "Petroleum royalties\naccelerate Terengganu's rise"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 6,
-        "fontSize": 10,
-        "fontStyle": "italic",
-        "color": "#888888",
-        "lineBreak": "\n"
-      },
-      "encoding": {
-        "x": {
-          "field": "date",
-          "type": "temporal"
-        },
-        "y": {
-          "field": "income_median",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "label",
-          "type": "nominal"
-        }
-      }
-    },
-    {
-      "data": {
-        "values": [
-          {
-            "date": "1974-01-01",
-            "label": "Kelantan grew 33\u00d7 yet never caught any other state"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 6,
-        "dy": -8,
-        "fontSize": 10,
-        "fontStyle": "italic",
-        "color": "#cc3333"
-      },
-      "encoding": {
-        "x": {
-          "field": "date",
-          "type": "temporal"
-        },
-        "y": {
-          "datum": 400
-        },
-        "text": {
-          "field": "label",
-          "type": "nominal"
-        }
-      }
-    }
-  ]
+  }
 }
