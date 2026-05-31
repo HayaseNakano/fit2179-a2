@@ -238,7 +238,7 @@
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 10,
+        "dx": 7,
         "dy": 15,
         "fontSize": 10,
         "fontStyle": "italic",
