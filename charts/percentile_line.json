@@ -2,48 +2,175 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Income Distribution Within States (2024)",
-    "subtitle": "Each line = income at each percentile for a state · steeper curve = more unequal · click legend to highlight · hies_state_percentile.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "subtitle": "Each line = income at each percentile for a state \u00b7 steeper curve = more unequal \u00b7 click legend to highlight \u00b7 hies_state_percentile.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 360,
-  "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state_percentile.csv"},
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state_percentile.csv"
+  },
   "transform": [
-    {"filter": "datum.variable == 'median'"},
-    {"filter": "indexof(['W.P. Kuala Lumpur','Selangor','Johor','Sabah','Kelantan'], datum.state) >= 0"},
-    {"filter": "datum.income != null"},
-    {"filter": "datum.income <= 30000"}
+    {
+      "filter": "datum.date == year_select"
+    },
+    {
+      "filter": "datum.variable == 'median'"
+    },
+    {
+      "filter": "indexof(['W.P. Kuala Lumpur','Selangor','Johor','Sabah','Kelantan'], datum.state) >= 0"
+    },
+    {
+      "filter": "datum.income != null"
+    },
+    {
+      "filter": "datum.income <= 30000"
+    }
   ],
   "params": [
     {
       "name": "state_select",
-      "select": {"type": "point", "fields": ["state"]},
+      "select": {
+        "type": "point",
+        "fields": [
+          "state"
+        ]
+      },
       "bind": "legend"
+    },
+    {
+      "name": "year_select",
+      "value": "2024-01-01",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2019-01-01",
+          "2022-01-01",
+          "2024-01-01"
+        ],
+        "labels": [
+          "2019",
+          "2022",
+          "2024"
+        ],
+        "name": "Year: "
+      }
     }
   ],
-  "mark": {"type": "line", "interpolate": "monotone"},
+  "mark": {
+    "type": "line",
+    "interpolate": "monotone"
+  },
   "encoding": {
     "x": {
-      "field": "percentile", "type": "quantitative", "title": "Income Percentile (1 = lowest earners, 100 = highest)",
-      "axis": {"labelFontSize": 11, "titleFontSize": 12, "grid": false, "values": [10,20,30,40,50,60,70,80,90,100]}
+      "field": "percentile",
+      "type": "quantitative",
+      "title": "Income Percentile (1 = lowest earners, 100 = highest)",
+      "axis": {
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "grid": false,
+        "values": [
+          10,
+          20,
+          30,
+          40,
+          50,
+          60,
+          70,
+          80,
+          90,
+          100
+        ]
+      }
     },
     "y": {
-      "field": "income", "type": "quantitative", "title": "Monthly Income (RM)",
-      "scale": {"domain": [0, 30000]},
-      "axis": {"format": ",.0f", "labelFontSize": 11, "titleFontSize": 12, "gridColor": "#e0e0d8", "gridDash": [3,3]}
+      "field": "income",
+      "type": "quantitative",
+      "title": "Monthly Income (RM)",
+      "scale": {
+        "domain": [
+          0,
+          30000
+        ]
+      },
+      "axis": {
+        "format": ",.0f",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "gridColor": "#e0e0d8",
+        "gridDash": [
+          3,
+          3
+        ]
+      }
     },
     "color": {
-      "field": "state", "type": "nominal",
-      "scale": {"domain": ["W.P. Kuala Lumpur","Selangor","Johor","Sabah","Kelantan"], "range": ["#0c447c","#1a5fa8","#5599cc","#aaaaaa","#cc3333"]},
-      "legend": {"title": "State", "labelFontSize": 11, "titleFontSize": 12, "orient": "top-left"}
+      "field": "state",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "W.P. Kuala Lumpur",
+          "Selangor",
+          "Johor",
+          "Sabah",
+          "Kelantan"
+        ],
+        "range": [
+          "#0c447c",
+          "#1a5fa8",
+          "#5599cc",
+          "#aaaaaa",
+          "#cc3333"
+        ]
+      },
+      "legend": {
+        "title": "State",
+        "labelFontSize": 11,
+        "titleFontSize": 12,
+        "orient": "top-left"
+      }
     },
-    "opacity": {"condition": {"param": "state_select", "value": 1}, "value": 0.15},
-    "strokeWidth": {"condition": {"param": "state_select", "value": 3}, "value": 1.5},
+    "opacity": {
+      "condition": {
+        "param": "state_select",
+        "value": 1
+      },
+      "value": 0.15
+    },
+    "strokeWidth": {
+      "condition": {
+        "param": "state_select",
+        "value": 3
+      },
+      "value": 1.5
+    },
     "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "percentile", "type": "quantitative", "title": "Percentile"},
-      {"field": "income", "type": "quantitative", "title": "Income (RM)", "format": ",.0f"}
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "percentile",
+        "type": "quantitative",
+        "title": "Percentile"
+      },
+      {
+        "field": "income",
+        "type": "quantitative",
+        "title": "Income (RM)",
+        "format": ",.0f"
+      }
     ]
   },
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
 }
