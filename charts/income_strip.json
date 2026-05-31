@@ -1,0 +1,175 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Has the income gap always been this wide?",
+    "subtitle": "Each dot = one state \u00b7 vertical spread shows the income gap between richest and poorest \u00b7 hh_income_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 360,
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_income_state.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.income_median != null && datum.income_median != ''"
+    },
+    {
+      "calculate": "year(datum.date)",
+      "as": "year"
+    },
+    {
+      "calculate": "indexof(['W.P. Kuala Lumpur','W.P. Putrajaya','Selangor'], datum.state) >= 0 ? 'Federal / Selangor' : indexof(['Sabah','Sarawak','W.P. Labuan'], datum.state) >= 0 ? 'Borneo' : indexof(['Kelantan','Terengganu','Pahang'], datum.state) >= 0 ? 'East Coast' : 'Peninsular (other)'",
+      "as": "region"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#dddddd",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "labelAngle": -45,
+            "labelFontSize": 10,
+            "titleFontSize": 12,
+            "title": "Year",
+            "grid": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "aggregate": "min",
+          "field": "income_median",
+          "type": "quantitative"
+        },
+        "y2": {
+          "aggregate": "max",
+          "field": "income_median"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 70,
+        "opacity": 0.85
+      },
+      "params": [
+        {
+          "name": "hover_strip",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "labelAngle": -45,
+            "labelFontSize": 10,
+            "titleFontSize": 12,
+            "title": "Year",
+            "grid": false,
+            "domain": false
+          }
+        },
+        "y": {
+          "field": "income_median",
+          "type": "quantitative",
+          "title": "Median Monthly Income (RM)",
+          "scale": {
+            "domain": [
+              0,
+              12000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ]
+          }
+        },
+        "color": {
+          "field": "region",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Federal / Selangor",
+              "Peninsular (other)",
+              "East Coast",
+              "Borneo"
+            ],
+            "range": [
+              "#0c447c",
+              "#5599cc",
+              "#cc3333",
+              "#f4a261"
+            ]
+          },
+          "legend": {
+            "title": "Region",
+            "orient": "top-left",
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "symbolSize": 80
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover_strip",
+            "value": 1
+          },
+          "value": 0.75
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "region",
+            "type": "nominal",
+            "title": "Region"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
+}
