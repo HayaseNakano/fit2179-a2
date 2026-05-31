@@ -181,13 +181,13 @@
           },
           {
             "label": "Putrajaya",
-            "longitude": 102.2,
-            "latitude": 2.96
+            "longitude": 101.9,
+            "latitude": 3.08
           },
           {
             "label": "N. Sembilan",
-            "longitude": 102.45,
-            "latitude": 2.75
+            "longitude": 102.65,
+            "latitude": 2.68
           },
           {
             "label": "Melaka",
@@ -275,7 +275,7 @@
         "fontWeight": "bold",
         "font": "Arial",
         "align": "center",
-        "color": "#ffffff"
+        "color": "#1a1a1a"
       },
       "encoding": {
         "longitude": {
