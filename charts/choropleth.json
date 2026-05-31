@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Median Monthly Household Income by State (2022)",
-    "subtitle": "Darker colour = higher median income \u00b7 Hover over a state for details",
+    "text": "Absolute Poverty Rate by State (2022)",
+    "subtitle": "Darker colour = higher poverty rate \u00b7 Hover over a state for details",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#aaaaaa",
@@ -102,21 +102,17 @@
       },
       "encoding": {
         "color": {
-          "field": "income_median",
+          "field": "poverty",
           "type": "quantitative",
           "scale": {
-            "range": [
-              "#c7e9c0",
-              "#74c476",
-              "#238b45"
-            ],
+            "scheme": "orangered",
             "domain": [
-              3000,
-              11000
+              0,
+              22
             ]
           },
           "legend": {
-            "title": "Median Income (RM)",
+            "title": "Poverty Rate (%)",
             "orient": "bottom-right",
             "titleFontSize": 12,
             "labelFontSize": 11,
@@ -131,6 +127,12 @@
             "title": "State"
           },
           {
+            "field": "poverty",
+            "type": "quantitative",
+            "title": "Poverty Rate (%)",
+            "format": ".1f"
+          },
+          {
             "field": "income_median",
             "type": "quantitative",
             "title": "Median Income (RM)",
@@ -141,11 +143,6 @@
             "type": "quantitative",
             "title": "Mean Income (RM)",
             "format": ",.0f"
-          },
-          {
-            "field": "poverty",
-            "type": "quantitative",
-            "title": "Poverty Rate (%)"
           },
           {
             "field": "gini",

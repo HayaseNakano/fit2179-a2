@@ -1,0 +1,339 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Expenditure as a Share of Income by State (2022)",
+    "subtitle": "Higher % = less money left over each month \u00b7 hies_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 380,
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.expenditure_mean / datum.income_median * 100",
+      "as": "expenditure_ratio"
+    },
+    {
+      "calculate": "datum.expenditure_mean / datum.income_median * 100 >= 85 ? 'High burden' : 'Lower burden'",
+      "as": "burden"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#cc3333",
+        "strokeDash": [
+          4,
+          3
+        ],
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "x": {
+          "datum": 85
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": -6,
+        "fontSize": 10,
+        "color": "#cc3333",
+        "fontStyle": "italic"
+      },
+      "encoding": {
+        "x": {
+          "datum": 85
+        },
+        "y": {
+          "datum": "Pahang"
+        },
+        "text": {
+          "value": "85% threshold \u2014 savings become negligible"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 130
+      },
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ],
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": null,
+          "sort": {
+            "field": "expenditure_ratio",
+            "order": "descending"
+          },
+          "axis": {
+            "labelFontSize": 11,
+            "ticks": false,
+            "domain": false
+          }
+        },
+        "x": {
+          "field": "expenditure_ratio",
+          "type": "quantitative",
+          "title": "Expenditure as % of Median Income",
+          "scale": {
+            "domain": [
+              0,
+              105
+            ]
+          },
+          "axis": {
+            "format": ".0f",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ],
+            "domain": false,
+            "values": [
+              0,
+              20,
+              40,
+              60,
+              80,
+              100
+            ]
+          }
+        },
+        "color": {
+          "field": "burden",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "High burden",
+              "Lower burden"
+            ],
+            "range": [
+              "#cc3333",
+              "#1a5fa8"
+            ]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom-right",
+            "labelFontSize": 11,
+            "symbolSize": 100
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "value": 1
+          },
+          "value": 0.8
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "expenditure_ratio",
+            "type": "quantitative",
+            "title": "Expenditure Ratio (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "expenditure_mean",
+            "type": "quantitative",
+            "title": "Mean Expenditure (RM)",
+            "format": ",.0f"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Kelantan",
+            "expenditure_ratio": 97.0,
+            "label": "Just RM 109 left per month \u2014"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -7,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "expenditure_ratio",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "expenditure_ratio",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Kelantan",
+            "expenditure_ratio": 97.0,
+            "label": "less than a daily RM 4 meal"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": 6,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "expenditure_ratio",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "expenditure_ratio",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "W.P. Labuan",
+            "expenditure_ratio": 60.5,
+            "label": "Lowest ratio \u2014 lower cost of living,"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -7,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#1a5fa8"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "expenditure_ratio",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "expenditure_ratio",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "W.P. Labuan",
+            "expenditure_ratio": 60.5,
+            "label": "not higher income, drives the gap"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": 6,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#1a5fa8"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "expenditure_ratio",
+            "order": "descending"
+          }
+        },
+        "x": {
+          "field": "expenditure_ratio",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
+}
