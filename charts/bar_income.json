@@ -13,81 +13,146 @@
   "data": {
     "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
   },
-  "transform": [
-    {
-      "calculate": "indexof(['W.P. Kuala Lumpur', 'W.P. Putrajaya', 'Selangor'], datum.state) >= 0 ? 'Top 3' : 'Others'",
-      "as": "highlight"
-    }
-  ],
-  "mark": {
-    "type": "bar",
-    "cornerRadiusEnd": 4
-  },
-  "encoding": {
-    "y": {
-      "field": "state",
-      "type": "nominal",
-      "title": "State",
-      "sort": "-x",
-      "axis": {
-        "labelFontSize": 12,
-        "titleFontSize": 13
-      }
-    },
-    "x": {
-      "field": "income_median",
-      "type": "quantitative",
-      "title": "Median Monthly Household Income (RM)",
-      "axis": {
-        "format": ",.0f",
-        "labelFontSize": 11,
-        "titleFontSize": 13
-      }
-    },
-    "color": {
-      "field": "highlight",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "Top 3",
-          "Others"
-        ],
-        "range": [
-          "#1a6eb5",
-          "#cccccc"
-        ]
-      },
-      "legend": null
-    },
-    "tooltip": [
-      {
-        "field": "state",
-        "type": "nominal",
-        "title": "State"
-      },
-      {
-        "field": "income_median",
-        "type": "quantitative",
-        "title": "Median Income (RM)",
-        "format": ",.0f"
-      },
-      {
-        "field": "income_mean",
-        "type": "quantitative",
-        "title": "Mean Income (RM)",
-        "format": ",.0f"
-      },
-      {
-        "field": "poverty",
-        "type": "quantitative",
-        "title": "Poverty Rate (%)"
-      }
-    ]
-  },
   "config": {
     "view": {
       "stroke": null
     },
     "background": "#ffffff"
-  }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "sort": "-x",
+          "axis": {
+            "labelFontSize": 12,
+            "titleFontSize": 13
+          }
+        },
+        "x": {
+          "field": "income_median",
+          "type": "quantitative",
+          "title": "Median Monthly Household Income (RM)",
+          "axis": {
+            "format": ",.0f",
+            "labelFontSize": 11,
+            "titleFontSize": 13
+          }
+        },
+        "color": {
+          "field": "highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Top 3",
+              "Others"
+            ],
+            "range": [
+              "#1a6eb5",
+              "#cccccc"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_mean",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "poverty",
+            "type": "quantitative",
+            "title": "Poverty Rate (%)"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "calculate": "indexof(['W.P. Kuala Lumpur', 'W.P. Putrajaya', 'Selangor'], datum.state) >= 0 ? 'Top 3' : 'Others'",
+          "as": "highlight"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#333333",
+        "strokeWidth": 1.5,
+        "strokeDash": [
+          4,
+          3
+        ]
+      },
+      "encoding": {
+        "x": {
+          "datum": 6338
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": -6,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#333333",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {
+          "datum": 6338
+        },
+        "y": {
+          "datum": "Kelantan"
+        },
+        "text": {
+          "value": "National median RM 6,338"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 4,
+        "dy": 8,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#555555"
+      },
+      "encoding": {
+        "x": {
+          "datum": 6338
+        },
+        "y": {
+          "datum": "Kelantan"
+        },
+        "text": {
+          "value": "10 of 16 states fall below this line"
+        }
+      }
+    }
+  ]
 }
