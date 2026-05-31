@@ -2,73 +2,414 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "State Income Rankings: 1974 vs 2022",
-    "subtitle": "Lines show which states climbed or fell in income ranking over 48 years · hh_income_state.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "subtitle": "Lines show which states climbed or fell in income ranking over 48 years \u00b7 hh_income_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 460,
   "data": {
     "values": [
-      {"state": "Johor",           "rank_1974": 3,  "rank_2022": 2,  "moved": "Climbed"},
-      {"state": "Kedah",           "rank_1974": 8,  "rank_2022": 10, "moved": "Fell"},
-      {"state": "Kelantan",        "rank_1974": 11, "rank_2022": 11, "moved": "Stayed"},
-      {"state": "Melaka",          "rank_1974": 4,  "rank_2022": 4,  "moved": "Stayed"},
-      {"state": "Negeri Sembilan", "rank_1974": 2,  "rank_2022": 6,  "moved": "Fell"},
-      {"state": "Pahang",          "rank_1974": 7,  "rank_2022": 7,  "moved": "Stayed"},
-      {"state": "Perak",           "rank_1974": 6,  "rank_2022": 9,  "moved": "Fell"},
-      {"state": "Perlis",          "rank_1974": 9,  "rank_2022": 8,  "moved": "Climbed"},
-      {"state": "Pulau Pinang",    "rank_1974": 5,  "rank_2022": 3,  "moved": "Climbed"},
-      {"state": "Selangor",        "rank_1974": 1,  "rank_2022": 1,  "moved": "Stayed"},
-      {"state": "Terengganu",      "rank_1974": 10, "rank_2022": 5,  "moved": "Climbed"}
+      {
+        "state": "Johor",
+        "rank_1974": 3,
+        "rank_2022": 2,
+        "moved": "Climbed"
+      },
+      {
+        "state": "Kedah",
+        "rank_1974": 8,
+        "rank_2022": 10,
+        "moved": "Fell"
+      },
+      {
+        "state": "Kelantan",
+        "rank_1974": 11,
+        "rank_2022": 11,
+        "moved": "Stayed"
+      },
+      {
+        "state": "Melaka",
+        "rank_1974": 4,
+        "rank_2022": 4,
+        "moved": "Stayed"
+      },
+      {
+        "state": "Negeri Sembilan",
+        "rank_1974": 2,
+        "rank_2022": 6,
+        "moved": "Fell"
+      },
+      {
+        "state": "Pahang",
+        "rank_1974": 7,
+        "rank_2022": 7,
+        "moved": "Stayed"
+      },
+      {
+        "state": "Perak",
+        "rank_1974": 6,
+        "rank_2022": 9,
+        "moved": "Fell"
+      },
+      {
+        "state": "Perlis",
+        "rank_1974": 9,
+        "rank_2022": 8,
+        "moved": "Climbed"
+      },
+      {
+        "state": "Pulau Pinang",
+        "rank_1974": 5,
+        "rank_2022": 3,
+        "moved": "Climbed"
+      },
+      {
+        "state": "Selangor",
+        "rank_1974": 1,
+        "rank_2022": 1,
+        "moved": "Stayed"
+      },
+      {
+        "state": "Terengganu",
+        "rank_1974": 10,
+        "rank_2022": 5,
+        "moved": "Climbed"
+      }
     ]
   },
   "transform": [
-    {"fold": ["rank_1974","rank_2022"], "as": ["year_label","rank"]},
-    {"calculate": "datum.year_label == 'rank_1974' ? 1974 : 2022", "as": "year"}
+    {
+      "fold": [
+        "rank_1974",
+        "rank_2022"
+      ],
+      "as": [
+        "year_label",
+        "rank"
+      ]
+    },
+    {
+      "calculate": "datum.year_label == 'rank_1974' ? 1974 : 2022",
+      "as": "year"
+    }
   ],
   "layer": [
     {
-      "mark": {"type": "line", "strokeWidth": 2.5},
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.5
+      },
       "encoding": {
-        "x": {"field": "year", "type": "ordinal", "title": null, "axis": {"labelFontSize": 14, "labelFontWeight": "bold", "domain": false, "ticks": false, "grid": false}},
-        "y": {"field": "rank", "type": "quantitative", "sort": "ascending", "scale": {"domain": [0.5, 11.5], "reverse": true}, "title": "Income Rank (1 = Highest)", "axis": {"labelFontSize": 11, "titleFontSize": 12, "tickCount": 11, "grid": false, "domain": false}},
-        "color": {
-          "field": "moved", "type": "nominal",
-          "scale": {"domain": ["Climbed","Fell","Stayed"], "range": ["#1a5fa8","#cc3333","#aaaaaa"]},
-          "legend": {"title": "Ranking change", "labelFontSize": 12, "titleFontSize": 12, "orient": "right"}
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {
+            "labelFontSize": 14,
+            "labelFontWeight": "bold",
+            "domain": false,
+            "ticks": false,
+            "grid": false
+          }
         },
-        "detail": {"field": "state", "type": "nominal"},
-        "tooltip": [{"field": "state", "type": "nominal", "title": "State"}, {"field": "moved", "type": "nominal", "title": "Change"}]
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "sort": "ascending",
+          "scale": {
+            "domain": [
+              0.5,
+              11.5
+            ],
+            "reverse": true
+          },
+          "title": "Income Rank (1 = Highest)",
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "tickCount": 11,
+            "grid": false,
+            "domain": false
+          }
+        },
+        "color": {
+          "field": "moved",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Climbed",
+              "Fell",
+              "Stayed"
+            ],
+            "range": [
+              "#1a5fa8",
+              "#cc3333",
+              "#aaaaaa"
+            ]
+          },
+          "legend": {
+            "title": "Ranking change",
+            "labelFontSize": 12,
+            "titleFontSize": 12,
+            "orient": "right"
+          }
+        },
+        "detail": {
+          "field": "state",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "moved",
+            "type": "nominal",
+            "title": "Change"
+          }
+        ]
       }
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 100},
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 100
+      },
       "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "rank", "type": "quantitative", "sort": "ascending", "scale": {"domain": [0.5, 11.5], "reverse": true}},
-        "color": {"field": "moved", "type": "nominal", "scale": {"domain": ["Climbed","Fell","Stayed"], "range": ["#1a5fa8","#cc3333","#aaaaaa"]}, "legend": null}
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "sort": "ascending",
+          "scale": {
+            "domain": [
+              0.5,
+              11.5
+            ],
+            "reverse": true
+          }
+        },
+        "color": {
+          "field": "moved",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Climbed",
+              "Fell",
+              "Stayed"
+            ],
+            "range": [
+              "#1a5fa8",
+              "#cc3333",
+              "#aaaaaa"
+            ]
+          },
+          "legend": null
+        }
       }
     },
     {
-      "transform": [{"filter": "datum.year_label == 'rank_1974'"}],
-      "mark": {"type": "text", "align": "right", "dx": -10, "fontSize": 11, "fontWeight": "bold"},
+      "transform": [
+        {
+          "filter": "datum.year_label == 'rank_1974'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
       "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "rank", "type": "quantitative", "sort": "ascending", "scale": {"domain": [0.5, 11.5], "reverse": true}},
-        "text": {"field": "state", "type": "nominal"},
-        "color": {"field": "moved", "type": "nominal", "scale": {"domain": ["Climbed","Fell","Stayed"], "range": ["#1a5fa8","#cc3333","#888888"]}, "legend": null}
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "sort": "ascending",
+          "scale": {
+            "domain": [
+              0.5,
+              11.5
+            ],
+            "reverse": true
+          }
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "moved",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Climbed",
+              "Fell",
+              "Stayed"
+            ],
+            "range": [
+              "#1a5fa8",
+              "#cc3333",
+              "#888888"
+            ]
+          },
+          "legend": null
+        }
       }
     },
     {
-      "transform": [{"filter": "datum.year_label == 'rank_2022'"}],
-      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 11, "fontWeight": "bold"},
+      "transform": [
+        {
+          "filter": "datum.year_label == 'rank_2022'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
       "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "rank", "type": "quantitative", "sort": "ascending", "scale": {"domain": [0.5, 11.5], "reverse": true}},
-        "text": {"field": "state", "type": "nominal"},
-        "color": {"field": "moved", "type": "nominal", "scale": {"domain": ["Climbed","Fell","Stayed"], "range": ["#1a5fa8","#cc3333","#888888"]}, "legend": null}
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "sort": "ascending",
+          "scale": {
+            "domain": [
+              0.5,
+              11.5
+            ],
+            "reverse": true
+          }
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "moved",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Climbed",
+              "Fell",
+              "Stayed"
+            ],
+            "range": [
+              "#1a5fa8",
+              "#cc3333",
+              "#888888"
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 1974,
+            "rank": 2,
+            "label": "N. Sembilan was\nricher than Johor\nand Pulau Pinang"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -10,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0.5,
+              11.5
+            ],
+            "reverse": true
+          }
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "year": 2022,
+            "rank": 9,
+            "label": "Perak fell from\n6th to 9th \u2014\nmanufacturing decline"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal"
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0.5,
+              11.5
+            ],
+            "reverse": true
+          }
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
       }
     }
   ],
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  }
 }

@@ -194,6 +194,41 @@
           "type": "nominal"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "date": "1974-01-01",
+            "income_median": 108,
+            "label": "Kelantan grew 33\u00d7 yet\nnever caught any other state"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "dy": 0,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "income_median",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
     }
   ]
 }

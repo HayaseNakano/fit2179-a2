@@ -1,67 +1,132 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {
-      "text": "Median Monthly Household Income by State (2022)",
-      "subtitle": "W.P. Kuala Lumpur, W.P. Putrajaya and Selangor lead the nation",
-      "fontSize": 16,
-      "subtitleFontSize": 12,
-      "subtitleColor": "#666666",
-      "anchor": "start"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Median Monthly Household Income by State (2022)",
+    "subtitle": "W.P. Kuala Lumpur, W.P. Putrajaya and Selangor lead the nation",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#666666",
+    "anchor": "start"
+  },
+  "width": "container",
+  "height": 400,
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
+  },
+  "config": {
+    "view": {
+      "stroke": null
     },
-    "width": "container",
-    "height": 400,
-    "data": {
-      "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
-    },
-    "transform": [
-      {
-        "calculate": "indexof(['W.P. Kuala Lumpur', 'W.P. Putrajaya', 'Selangor'], datum.state) >= 0 ? 'Top 3' : 'Others'",
-        "as": "highlight"
-      }
-    ],
-    "mark": {
-      "type": "bar",
-      "cornerRadiusEnd": 4
-    },
-    "encoding": {
-      "y": {
-        "field": "state",
-        "type": "nominal",
-        "title": "State",
-        "sort": "-x",
-        "axis": {
-          "labelFontSize": 12,
-          "titleFontSize": 13
-        }
+    "background": "#ffffff"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4
       },
-      "x": {
-        "field": "income_median",
-        "type": "quantitative",
-        "title": "Median Monthly Household Income (RM)",
-        "axis": {
-          "format": ",.0f",
-          "labelFontSize": 11,
-          "titleFontSize": 13
-        }
-      },
-      "color": {
-        "field": "highlight",
-        "type": "nominal",
-        "scale": {
-          "domain": ["Top 3", "Others"],
-          "range": ["#1a6eb5", "#cccccc"]
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "sort": "-x",
+          "axis": {
+            "labelFontSize": 12,
+            "titleFontSize": 13
+          }
         },
-        "legend": null
+        "x": {
+          "field": "income_median",
+          "type": "quantitative",
+          "title": "Median Monthly Household Income (RM)",
+          "axis": {
+            "format": ",.0f",
+            "labelFontSize": 11,
+            "titleFontSize": 13
+          }
+        },
+        "color": {
+          "field": "highlight",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Top 3",
+              "Others"
+            ],
+            "range": [
+              "#1a6eb5",
+              "#cccccc"
+            ]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_mean",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "poverty",
+            "type": "quantitative",
+            "title": "Poverty Rate (%)"
+          }
+        ]
       },
-      "tooltip": [
-        {"field": "state", "type": "nominal", "title": "State"},
-        {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
-        {"field": "income_mean", "type": "quantitative", "title": "Mean Income (RM)", "format": ",.0f"},
-        {"field": "poverty", "type": "quantitative", "title": "Poverty Rate (%)"}
+      "transform": [
+        {
+          "calculate": "indexof(['W.P. Kuala Lumpur', 'W.P. Putrajaya', 'Selangor'], datum.state) >= 0 ? 'Top 3' : 'Others'",
+          "as": "highlight"
+        }
       ]
     },
-    "config": {
-      "view": {"stroke": null},
-      "background": "#ffffff"
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Sabah",
+            "income_median": 4577,
+            "label": "All 4 bottom states earn less\nthan half of KL's median"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#888888",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "income_median",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
     }
-  }
+  ]
+}

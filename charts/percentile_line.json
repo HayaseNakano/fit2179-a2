@@ -30,147 +30,186 @@
       "filter": "datum.income <= 30000"
     }
   ],
-  "params": [
-    {
-      "name": "state_select",
-      "select": {
-        "type": "point",
-        "fields": [
-          "state"
-        ]
-      },
-      "bind": "legend"
-    },
-    {
-      "name": "year_select",
-      "value": "2024-01-01",
-      "bind": {
-        "input": "select",
-        "options": [
-          "2019-01-01",
-          "2022-01-01",
-          "2024-01-01"
-        ],
-        "labels": [
-          "2019",
-          "2022",
-          "2024"
-        ],
-        "name": "Year: "
-      }
-    }
-  ],
-  "mark": {
-    "type": "line",
-    "interpolate": "monotone"
-  },
-  "encoding": {
-    "x": {
-      "field": "percentile",
-      "type": "quantitative",
-      "title": "Income Percentile (1 = lowest earners, 100 = highest)",
-      "axis": {
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "grid": false,
-        "values": [
-          10,
-          20,
-          30,
-          40,
-          50,
-          60,
-          70,
-          80,
-          90,
-          100
-        ]
-      }
-    },
-    "y": {
-      "field": "income",
-      "type": "quantitative",
-      "title": "Monthly Income (RM)",
-      "scale": {
-        "domain": [
-          0,
-          30000
-        ]
-      },
-      "axis": {
-        "format": ",.0f",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "gridColor": "#e0e0d8",
-        "gridDash": [
-          3,
-          3
-        ]
-      }
-    },
-    "color": {
-      "field": "state",
-      "type": "nominal",
-      "scale": {
-        "domain": [
-          "W.P. Kuala Lumpur",
-          "Selangor",
-          "Johor",
-          "Sabah",
-          "Kelantan"
-        ],
-        "range": [
-          "#0c447c",
-          "#1a5fa8",
-          "#5599cc",
-          "#aaaaaa",
-          "#cc3333"
-        ]
-      },
-      "legend": {
-        "title": "State",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "orient": "top-left"
-      }
-    },
-    "opacity": {
-      "condition": {
-        "param": "state_select",
-        "value": 1
-      },
-      "value": 0.15
-    },
-    "strokeWidth": {
-      "condition": {
-        "param": "state_select",
-        "value": 3
-      },
-      "value": 1.5
-    },
-    "tooltip": [
-      {
-        "field": "state",
-        "type": "nominal",
-        "title": "State"
-      },
-      {
-        "field": "percentile",
-        "type": "quantitative",
-        "title": "Percentile"
-      },
-      {
-        "field": "income",
-        "type": "quantitative",
-        "title": "Income (RM)",
-        "format": ",.0f"
-      }
-    ]
-  },
   "config": {
     "view": {
       "stroke": null
     },
     "background": "#ffffff"
-  }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "percentile",
+          "type": "quantitative",
+          "title": "Income Percentile (1 = lowest earners, 100 = highest)",
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "grid": false,
+            "values": [
+              10,
+              20,
+              30,
+              40,
+              50,
+              60,
+              70,
+              80,
+              90,
+              100
+            ]
+          }
+        },
+        "y": {
+          "field": "income",
+          "type": "quantitative",
+          "title": "Monthly Income (RM)",
+          "scale": {
+            "domain": [
+              0,
+              30000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ]
+          }
+        },
+        "color": {
+          "field": "state",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "W.P. Kuala Lumpur",
+              "Selangor",
+              "Johor",
+              "Sabah",
+              "Kelantan"
+            ],
+            "range": [
+              "#0c447c",
+              "#1a5fa8",
+              "#5599cc",
+              "#aaaaaa",
+              "#cc3333"
+            ]
+          },
+          "legend": {
+            "title": "State",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "orient": "top-left"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "state_select",
+            "value": 1
+          },
+          "value": 0.15
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "state_select",
+            "value": 3
+          },
+          "value": 1.5
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "percentile",
+            "type": "quantitative",
+            "title": "Percentile"
+          },
+          {
+            "field": "income",
+            "type": "quantitative",
+            "title": "Income (RM)",
+            "format": ",.0f"
+          }
+        ]
+      },
+      "params": [
+        {
+          "name": "state_select",
+          "select": {
+            "type": "point",
+            "fields": [
+              "state"
+            ]
+          },
+          "bind": "legend"
+        },
+        {
+          "name": "year_select",
+          "value": "2024-01-01",
+          "bind": {
+            "input": "select",
+            "options": [
+              "2019-01-01",
+              "2022-01-01",
+              "2024-01-01"
+            ],
+            "labels": [
+              "2019",
+              "2022",
+              "2024"
+            ],
+            "name": "Year: "
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "percentile": 88,
+            "income": 11500,
+            "label": "Top 10% in Kelantan\nnearly match KL's top \u2014\nthe gap widens at the bottom half"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "dx": -4,
+        "dy": -5,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#888888",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "percentile",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "income",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }

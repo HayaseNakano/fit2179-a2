@@ -13,187 +13,226 @@
   "data": {
     "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_access_amenities.csv"
   },
-  "params": [
-    {
-      "name": "amenity_select",
-      "value": "piped_water",
-      "bind": {
-        "input": "select",
-        "options": [
-          "piped_water",
-          "electricity",
-          "sanitation"
-        ],
-        "labels": [
-          "Piped Water Access (%)",
-          "Electricity Access (%)",
-          "Sanitation Access (%)"
-        ],
-        "name": "Amenity: "
-      }
-    },
-    {
-      "name": "year_select",
-      "value": "2022-01-01",
-      "bind": {
-        "input": "select",
-        "options": [
-          "2016-01-01",
-          "2019-01-01",
-          "2022-01-01"
-        ],
-        "labels": [
-          "2016",
-          "2019",
-          "2022"
-        ],
-        "name": "Year: "
-      }
-    },
-    {
-      "name": "hover",
-      "select": {
-        "type": "point",
-        "on": "mouseover",
-        "clear": "mouseout"
-      }
-    }
-  ],
-  "transform": [
-    {
-      "filter": "datum.date == year_select"
-    },
-    {
-      "filter": "datum.district == 'All Districts'"
-    },
-    {
-      "lookup": "state",
-      "from": {
-        "data": {
-          "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
-        },
-        "key": "state",
-        "fields": [
-          "income_median",
-          "poverty"
-        ]
-      }
-    },
-    {
-      "calculate": "datum[amenity_select]",
-      "as": "selected_amenity"
-    }
-  ],
-  "mark": {
-    "type": "point",
-    "filled": true
-  },
-  "encoding": {
-    "x": {
-      "field": "income_median",
-      "type": "quantitative",
-      "title": "Median Monthly Income (RM)",
-      "scale": {
-        "domain": [
-          0,
-          12000
-        ]
-      },
-      "axis": {
-        "format": ",.0f",
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "gridColor": "#e0e0d8",
-        "gridDash": [
-          3,
-          3
-        ]
-      }
-    },
-    "y": {
-      "field": "selected_amenity",
-      "type": "quantitative",
-      "title": "Access (%)",
-      "scale": {
-        "domain": [
-          0,
-          102
-        ]
-      },
-      "axis": {
-        "labelFontSize": 11,
-        "titleFontSize": 12,
-        "gridColor": "#e0e0d8",
-        "gridDash": [
-          3,
-          3
-        ]
-      }
-    },
-    "color": {
-      "field": "income_median",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "blues",
-        "domain": [
-          3000,
-          11000
-        ]
-      },
-      "legend": null
-    },
-    "size": {
-      "field": "poverty",
-      "type": "quantitative",
-      "scale": {
-        "range": [
-          40,
-          400
-        ]
-      },
-      "legend": {
-        "title": "Poverty Rate (%)",
-        "labelFontSize": 11,
-        "titleFontSize": 11,
-        "orient": "bottom-right"
-      }
-    },
-    "opacity": {
-      "condition": {
-        "param": "hover",
-        "value": 1
-      },
-      "value": 0.7
-    },
-    "tooltip": [
-      {
-        "field": "state",
-        "type": "nominal",
-        "title": "State"
-      },
-      {
-        "field": "income_median",
-        "type": "quantitative",
-        "title": "Median Income (RM)",
-        "format": ",.0f"
-      },
-      {
-        "field": "selected_amenity",
-        "type": "quantitative",
-        "title": "Access (%)",
-        "format": ".1f"
-      },
-      {
-        "field": "poverty",
-        "type": "quantitative",
-        "title": "Poverty Rate (%)"
-      }
-    ]
-  },
   "config": {
     "view": {
       "stroke": null
     },
     "background": "#ffffff"
-  }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "params": [
+        {
+          "name": "amenity_select",
+          "value": "piped_water",
+          "bind": {
+            "input": "select",
+            "options": [
+              "piped_water",
+              "electricity",
+              "sanitation"
+            ],
+            "labels": [
+              "Piped Water Access (%)",
+              "Electricity Access (%)",
+              "Sanitation Access (%)"
+            ],
+            "name": "Amenity: "
+          }
+        },
+        {
+          "name": "year_select",
+          "value": "2022-01-01",
+          "bind": {
+            "input": "select",
+            "options": [
+              "2016-01-01",
+              "2019-01-01",
+              "2022-01-01"
+            ],
+            "labels": [
+              "2016",
+              "2019",
+              "2022"
+            ],
+            "name": "Year: "
+          }
+        },
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "income_median",
+          "type": "quantitative",
+          "title": "Median Monthly Income (RM)",
+          "scale": {
+            "domain": [
+              0,
+              12000
+            ]
+          },
+          "axis": {
+            "format": ",.0f",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ]
+          }
+        },
+        "y": {
+          "field": "selected_amenity",
+          "type": "quantitative",
+          "title": "Access (%)",
+          "scale": {
+            "domain": [
+              0,
+              102
+            ]
+          },
+          "axis": {
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "gridColor": "#e0e0d8",
+            "gridDash": [
+              3,
+              3
+            ]
+          }
+        },
+        "color": {
+          "field": "income_median",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues",
+            "domain": [
+              3000,
+              11000
+            ]
+          },
+          "legend": null
+        },
+        "size": {
+          "field": "poverty",
+          "type": "quantitative",
+          "scale": {
+            "range": [
+              40,
+              400
+            ]
+          },
+          "legend": {
+            "title": "Poverty Rate (%)",
+            "labelFontSize": 11,
+            "titleFontSize": 11,
+            "orient": "bottom-right"
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "hover",
+            "value": 1
+          },
+          "value": 0.7
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "selected_amenity",
+            "type": "quantitative",
+            "title": "Access (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "poverty",
+            "type": "quantitative",
+            "title": "Poverty Rate (%)"
+          }
+        ]
+      },
+      "transform": [
+        {
+          "filter": "datum.date == year_select"
+        },
+        {
+          "filter": "datum.district == 'All Districts'"
+        },
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
+            },
+            "key": "state",
+            "fields": [
+              "income_median",
+              "poverty"
+            ]
+          }
+        },
+        {
+          "calculate": "datum[amenity_select]",
+          "as": "selected_amenity"
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "income_median": 3614,
+            "selected_amenity": 70.2,
+            "label": "Kelantan: only state\nwhere water lags electricity\n(70% vs 70% water, 99% sanitation)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "dy": -5,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#cc3333",
+        "lineBreak": "\n"
+      },
+      "encoding": {
+        "x": {
+          "field": "income_median",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "selected_amenity",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
 }

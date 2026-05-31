@@ -250,6 +250,82 @@
           }
         ]
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "Sabah",
+            "value": 6171,
+            "label": "35% skew \u2014 as unequal\nas KL despite lower income"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -7,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#888888"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "value",
+            "order": "ascending"
+          }
+        },
+        "x": {
+          "field": "value",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "state": "W.P. Putrajaya",
+            "value": 13473,
+            "label": "Largest gap (RM 3,417) \u2014\ngovernment salaries inflate the mean"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 8,
+        "dy": -7,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#888888"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "value",
+            "order": "ascending"
+          }
+        },
+        "x": {
+          "field": "value",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
+      }
     }
   ],
   "config": {
