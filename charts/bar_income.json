@@ -118,7 +118,7 @@
         "fontStyle": "italic",
         "color": "#333333",
         "fontWeight": "bold",
-        "y": 8
+        "y": 210
       },
       "encoding": {
         "x": {
@@ -137,7 +137,7 @@
         "fontSize": 10,
         "fontStyle": "italic",
         "color": "#555555",
-        "y": 22
+        "y": 225
       },
       "encoding": {
         "x": {
