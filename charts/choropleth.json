@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Median Monthly Household Income by State (2022)",
-    "subtitle": "Darker colour = higher median income · Hover over a state for details",
+    "subtitle": "Darker colour = higher median income \u00b7 Hover over a state for details",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#aaaaaa",
@@ -12,16 +12,32 @@
   "height": 520,
   "projection": {
     "type": "mercator",
-    "center": [110.0, 4.0],
+    "center": [
+      110.0,
+      4.0
+    ],
     "scale": 2400
   },
   "layer": [
     {
-      "data": {"sphere": true},
-      "mark": {"type": "geoshape", "fill": "#a8d4f0", "stroke": null}
+      "data": {
+        "sphere": true
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#a8d4f0",
+        "stroke": null
+      }
     },
     {
-      "data": {"graticule": {"step": [2, 2]}},
+      "data": {
+        "graticule": {
+          "step": [
+            2,
+            2
+          ]
+        }
+      },
       "mark": {
         "type": "geoshape",
         "fill": null,
@@ -33,7 +49,10 @@
     {
       "data": {
         "url": "https://HayaseNakano.github.io/fit2179-a2/data/neighbours.geojson",
-        "format": {"type": "json", "property": "features"}
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
       },
       "mark": {
         "type": "geoshape",
@@ -42,30 +61,60 @@
         "strokeWidth": 0.6
       },
       "encoding": {
-        "tooltip": [{"field": "properties.name", "type": "nominal", "title": "Country"}]
+        "tooltip": [
+          {
+            "field": "properties.name",
+            "type": "nominal",
+            "title": "Country"
+          }
+        ]
       }
     },
     {
       "data": {
         "url": "https://HayaseNakano.github.io/fit2179-a2/data/malaysia_states.geojson",
-        "format": {"type": "json", "property": "features"}
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
       },
       "transform": [
         {
           "lookup": "properties.state",
           "from": {
-            "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"},
+            "data": {
+              "url": "https://HayaseNakano.github.io/fit2179-a2/data/hies_state.csv"
+            },
             "key": "state",
-            "fields": ["income_median", "income_mean", "poverty", "gini"]
+            "fields": [
+              "income_median",
+              "income_mean",
+              "poverty",
+              "gini"
+            ]
           }
         }
       ],
-      "mark": {"type": "geoshape", "stroke": "#ffffff", "strokeWidth": 0.8},
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8
+      },
       "encoding": {
         "color": {
           "field": "income_median",
           "type": "quantitative",
-          "scale": {"scheme": "yellowgreenblue", "domain": [3000, 11000]},
+          "scale": {
+            "range": [
+              "#c7e9c0",
+              "#74c476",
+              "#238b45"
+            ],
+            "domain": [
+              3000,
+              11000
+            ]
+          },
           "legend": {
             "title": "Median Income (RM)",
             "orient": "bottom-right",
@@ -76,31 +125,110 @@
           }
         },
         "tooltip": [
-          {"field": "properties.state", "type": "nominal", "title": "State"},
-          {"field": "income_median", "type": "quantitative", "title": "Median Income (RM)", "format": ",.0f"},
-          {"field": "income_mean", "type": "quantitative", "title": "Mean Income (RM)", "format": ",.0f"},
-          {"field": "poverty", "type": "quantitative", "title": "Poverty Rate (%)"},
-          {"field": "gini", "type": "quantitative", "title": "Gini Coefficient", "format": ".3f"}
+          {
+            "field": "properties.state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "income_mean",
+            "type": "quantitative",
+            "title": "Mean Income (RM)",
+            "format": ",.0f"
+          },
+          {
+            "field": "poverty",
+            "type": "quantitative",
+            "title": "Poverty Rate (%)"
+          },
+          {
+            "field": "gini",
+            "type": "quantitative",
+            "title": "Gini Coefficient",
+            "format": ".3f"
+          }
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"label": "Perlis",      "longitude": 100.48, "latitude": 6.65},
-          {"label": "Kedah",       "longitude": 100.55, "latitude": 5.95},
-          {"label": "P. Pinang",   "longitude": 100.10, "latitude": 5.22},
-          {"label": "Perak",       "longitude": 100.55, "latitude": 4.75},
-          {"label": "Putrajaya",   "longitude": 102.20, "latitude": 2.96},
-          {"label": "N. Sembilan", "longitude": 102.45, "latitude": 2.75},
-          {"label": "Melaka",      "longitude": 102.55, "latitude": 2.28},
-          {"label": "Johor",       "longitude": 103.45, "latitude": 1.95},
-          {"label": "Pahang",      "longitude": 102.85, "latitude": 3.85},
-          {"label": "Terengganu", "longitude": 103.35,  "latitude": 5.15},
-          {"label": "Kelantan",    "longitude": 101.75, "latitude": 5.85},
-          {"label": "Sabah",       "longitude": 117.00, "latitude": 5.90},
-          {"label": "Sarawak",     "longitude": 113.00, "latitude": 2.60},
-          {"label": "Labuan",      "longitude": 115.35, "latitude": 5.05}
+          {
+            "label": "Perlis",
+            "longitude": 100.48,
+            "latitude": 6.65
+          },
+          {
+            "label": "Kedah",
+            "longitude": 100.55,
+            "latitude": 5.95
+          },
+          {
+            "label": "P. Pinang",
+            "longitude": 100.1,
+            "latitude": 5.22
+          },
+          {
+            "label": "Perak",
+            "longitude": 100.55,
+            "latitude": 4.75
+          },
+          {
+            "label": "Putrajaya",
+            "longitude": 102.2,
+            "latitude": 2.96
+          },
+          {
+            "label": "N. Sembilan",
+            "longitude": 102.45,
+            "latitude": 2.75
+          },
+          {
+            "label": "Melaka",
+            "longitude": 102.55,
+            "latitude": 2.28
+          },
+          {
+            "label": "Johor",
+            "longitude": 103.45,
+            "latitude": 1.95
+          },
+          {
+            "label": "Pahang",
+            "longitude": 102.85,
+            "latitude": 3.85
+          },
+          {
+            "label": "Terengganu",
+            "longitude": 103.35,
+            "latitude": 5.15
+          },
+          {
+            "label": "Kelantan",
+            "longitude": 101.75,
+            "latitude": 5.85
+          },
+          {
+            "label": "Sabah",
+            "longitude": 117.0,
+            "latitude": 5.9
+          },
+          {
+            "label": "Sarawak",
+            "longitude": 113.0,
+            "latitude": 2.6
+          },
+          {
+            "label": "Labuan",
+            "longitude": 115.35,
+            "latitude": 5.05
+          }
         ]
       },
       "mark": {
@@ -112,16 +240,33 @@
         "color": "#1a1a1a"
       },
       "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude":  {"field": "latitude",  "type": "quantitative"},
-        "text":      {"field": "label",      "type": "nominal"}
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
       }
     },
     {
       "data": {
         "values": [
-          {"label": "Selangor", "longitude": 101.30, "latitude": 3.55},
-          {"label": "KL",       "longitude": 101.42, "latitude": 3.18}
+          {
+            "label": "Selangor",
+            "longitude": 101.3,
+            "latitude": 3.55
+          },
+          {
+            "label": "KL",
+            "longitude": 101.42,
+            "latitude": 3.18
+          }
         ]
       },
       "mark": {
@@ -133,14 +278,25 @@
         "color": "#ffffff"
       },
       "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude":  {"field": "latitude",  "type": "quantitative"},
-        "text":      {"field": "label",      "type": "nominal"}
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "label",
+          "type": "nominal"
+        }
       }
     }
   ],
   "config": {
-    "view": {"stroke": null},
+    "view": {
+      "stroke": null
+    },
     "background": "#ffffff"
   }
 }
