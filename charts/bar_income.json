@@ -25,6 +25,12 @@
         "type": "bar",
         "cornerRadiusEnd": 4
       },
+      "transform": [
+        {
+          "calculate": "indexof(['W.P. Kuala Lumpur', 'W.P. Putrajaya', 'Selangor'], datum.state) >= 0 ? 'Top 3' : 'Others'",
+          "as": "highlight"
+        }
+      ],
       "encoding": {
         "y": {
           "field": "state",
@@ -85,13 +91,7 @@
             "title": "Poverty Rate (%)"
           }
         ]
-      },
-      "transform": [
-        {
-          "calculate": "indexof(['W.P. Kuala Lumpur', 'W.P. Putrajaya', 'Selangor'], datum.state) >= 0 ? 'Top 3' : 'Others'",
-          "as": "highlight"
-        }
-      ]
+      }
     },
     {
       "mark": {
@@ -114,18 +114,15 @@
         "type": "text",
         "align": "left",
         "dx": 4,
-        "dy": -6,
         "fontSize": 10,
         "fontStyle": "italic",
         "color": "#333333",
-        "fontWeight": "bold"
+        "fontWeight": "bold",
+        "y": 8
       },
       "encoding": {
         "x": {
           "datum": 6338
-        },
-        "y": {
-          "datum": "Kelantan"
         },
         "text": {
           "value": "National median RM 6,338"
@@ -137,20 +134,17 @@
         "type": "text",
         "align": "left",
         "dx": 4,
-        "dy": 8,
         "fontSize": 10,
         "fontStyle": "italic",
-        "color": "#555555"
+        "color": "#555555",
+        "y": 22
       },
       "encoding": {
         "x": {
           "datum": 6338
         },
-        "y": {
-          "datum": "Kelantan"
-        },
         "text": {
-          "value": "10 of 16 states fall below this line"
+          "value": "10 of 16 states fall below"
         }
       }
     }
