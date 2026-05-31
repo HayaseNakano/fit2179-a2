@@ -58,7 +58,7 @@
   <div class="hero">
     <div class="hero-eye">Malaysia · Household Income · OpenDOSM &amp; UNDP · 2022</div>
     <div class="hero-title">The Income Divide</div>
-    <div class="hero-sub">Exploring household income inequality across Malaysia's 16 states — from the Federal Territories to the fringes of Borneo. A data story using the Household Income &amp; Expenditure Survey (HIES 2022) and the UNDP Human Development Report.</div>
+    <div class="hero-sub">Exploring household income inequality across Malaysia's 16 states from the Federal Territories to the fringes of Borneo. A data story using the Household Income &amp; Expenditure Survey (HIES 2022) and the UNDP Human Development Report.</div>
   </div>
 
   <!-- SECTION 1 -->
@@ -96,7 +96,7 @@
     <div class="gbar">
       <div class="cbox">
         <div class="ctitle">Median monthly household income by state</div>
-        <div class="csub">Ranked highest to lowest · 2022 · hies_state.csv</div>
+        <div class="csub">Ranked highest to lowest · 2022</div>
         <span class="ctag">Bar chart</span>
         <div id="chart_bar" class="chart-wrap"></div>
       </div>
@@ -116,12 +116,12 @@
 
     <div class="cbox" style="margin-bottom:12px;">
       <div class="ctitle">Median household income by state — choropleth map</div>
-      <div class="csub">Mercator projection · shading encodes median monthly income · hover for state details · hies_state.csv + malaysia_states.geojson</div>
-      <span class="ctag">Choropleth map · required map idiom</span>
+      <div class="csub">Mercator projection · shading encodes median monthly income · hover for state details</div>
+      <span class="ctag">Choropleth map </span>
       <div id="chart_map" class="chart-wrap" style="min-height:520px;"></div>
     </div>
 
-    <div class="narr">The geographic pattern is stark — the Klang Valley corridor<br>(W.P. Kuala Lumpur, Putrajaya, Selangor) forms a high-income<br>cluster in the west, while the East Coast states of<br>Kelantan, Terengganu, and the Borneo states of Sabah and<br>Sarawak remain significantly behind. This is not just an<br>income gap — it is a geographic one.</div>
+    <div class="narr">The geographic pattern is stark the Klang Valley corridor<br>(W.P. Kuala Lumpur, Putrajaya, Selangor) forms a high-income<br>cluster in the west, while the East Coast states of<br>Kelantan, Terengganu, and the Borneo states of Sabah and<br>Sarawak remain significantly behind. This is not just an<br>income gap — it is a geographic one.</div>
   </div>
 
   <!-- SECTION 3 — Diverging + trends -->
@@ -137,8 +137,8 @@
     <div class="gbar">
       <div class="cbox">
         <div class="ctitle">State income relative to national median</div>
-        <div class="csub">Difference from national median of RM 6,338 · 2022 · hies_state.csv</div>
-        <span class="ctag">Diverging bar chart · derived data</span>
+        <div class="csub">Difference from national median of RM 6,338 · 2022</div>
+        <span class="ctag">Diverging bar chart</span>
         <div id="chart_diverging" class="chart-wrap"></div>
       </div>
     </div>
@@ -146,13 +146,13 @@
     <div class="g2">
       <div class="cbox">
         <div class="ctitle">Median income over time by state</div>
-        <div class="csub">Selected states · 1970–2022 · hh_income_state.csv</div>
+        <div class="csub">Selected states · 1970–2022</div>
         <span class="ctag">Multi-line chart</span>
         <div id="chart_income_trend" class="chart-wrap"></div>
       </div>
       <div class="cbox">
         <div class="ctitle">Gini coefficient by state over time</div>
-        <div class="csub">Higher = more unequal · 1974–2022 · hh_inequality_state.csv</div>
+        <div class="csub">Higher = more unequal · 1974–2022</div>
         <span class="ctag">Heatmap</span>
         <div id="chart_gini_heatmap" class="chart-wrap"></div>
       </div>
@@ -162,14 +162,14 @@
     <div class="g2">
       <div class="cbox">
         <div class="ctitle">State income rankings: 1974 vs 2022</div>
-        <div class="csub">Which states climbed or fell over 48 years · hh_income_state.csv</div>
-        <span class="ctag">Slope chart · derived rankings</span>
+        <div class="csub">Which states climbed or fell over 48 years</div>
+        <span class="ctag">Slope chart</span>
         <div id="chart_slope" class="chart-wrap"></div>
       </div>
       <div class="cbox">
         <div class="ctitle">Mean vs median income gap by state</div>
-        <div class="csub">Gap shows how top earners skew the average upward · 2022 · hies_state.csv</div>
-        <span class="ctag">Dumbbell chart · derived data</span>
+        <div class="csub">Gap shows how top earners skew the average upward · 2022</div>
+        <span class="ctag">Dumbbell chart</span>
         <div id="chart_dumbbell" class="chart-wrap"></div>
       </div>
     </div>
@@ -189,13 +189,13 @@
     <div class="g2">
       <div class="cbox">
         <div class="ctitle">Poverty rate by state (2022)</div>
-        <div class="csub">Absolute poverty · hh_poverty_state.csv</div>
+        <div class="csub">Absolute poverty</div>
         <span class="ctag">Dot plot</span>
         <div id="chart_poverty" class="chart-wrap"></div>
       </div>
       <div class="cbox">
         <div class="ctitle">Amenity access vs income</div>
-        <div class="csub">Piped water &amp; electricity · hh_access_amenities.csv + hies_state.csv</div>
+        <div class="csub">Piped water &amp; electricity</div>
         <span class="ctag">Scatter plot</span>
         <div id="chart_amenities" class="chart-wrap"></div>
       </div>
@@ -204,7 +204,7 @@
     <div class="gbar">
       <div class="cbox">
         <div class="ctitle">National poverty decline 1970–2022</div>
-        <div class="csub">Absolute poverty rate · hh_poverty_state.csv</div>
+        <div class="csub">Absolute poverty rate</div>
         <span class="ctag">Area chart</span>
         <div id="chart_poverty_trend" class="chart-wrap"></div>
       </div>
@@ -225,14 +225,14 @@
     <div class="g2">
       <div class="cbox">
         <div class="ctitle">Income distribution within states</div>
-        <div class="csub">Percentile curves · 2024 · hies_state_percentile.csv</div>
+        <div class="csub">Percentile curves · 2024</div>
         <span class="ctag">Percentile line chart</span>
         <div id="chart_percentile" class="chart-wrap"></div>
       </div>
       <div class="cbox">
         <div class="ctitle">Malaysia's Human Development Index</div>
-        <div class="csub">1990–2023 · UNDP Human Development Report · hdi_clean.csv</div>
-        <span class="ctag">Line chart · second source</span>
+        <div class="csub">1990–2023 · UNDP Human Development Report</div>
+        <span class="ctag">Line chart</span>
         <div id="chart_hdi" class="chart-wrap"></div>
       </div>
     </div>
