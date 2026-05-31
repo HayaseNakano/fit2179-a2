@@ -239,7 +239,7 @@
         "type": "text",
         "align": "right",
         "dx": -8,
-        "dy": 15,
+        "dy": -15,
         "fontSize": 10,
         "fontStyle": "italic",
         "color": "#cc3333"
