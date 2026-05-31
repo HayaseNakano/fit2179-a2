@@ -2,33 +2,162 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Gini Coefficient by State Over Time",
-    "subtitle": "Higher value = more unequal income distribution · Hover for details · hh_inequality_state.csv",
-    "fontSize": 14, "subtitleFontSize": 11, "subtitleColor": "#aaaaaa", "anchor": "start"
+    "subtitle": "Higher value = more unequal income distribution \u00b7 Hover for details \u00b7 hh_inequality_state.csv",
+    "fontSize": 14,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#aaaaaa",
+    "anchor": "start"
   },
   "width": "container",
   "height": 360,
-  "data": {"url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_inequality_state.csv"},
-  "transform": [{"calculate": "year(datum.date)", "as": "year"}],
-  "mark": {"type": "rect"},
+  "data": {
+    "url": "https://HayaseNakano.github.io/fit2179-a2/data/hh_inequality_state.csv"
+  },
+  "transform": [
+    {
+      "calculate": "year(datum.date)",
+      "as": "year"
+    },
+    {
+      "filter": "datum.year >= year_min && datum.year <= year_max"
+    }
+  ],
+  "mark": {
+    "type": "rect"
+  },
   "encoding": {
     "y": {
-      "field": "state", "type": "nominal", "title": null, "sort": "-x",
-      "axis": {"labelFontSize": 11, "ticks": false, "domain": false}
+      "field": "state",
+      "type": "nominal",
+      "title": null,
+      "sort": "-x",
+      "axis": {
+        "labelFontSize": 11,
+        "ticks": false,
+        "domain": false
+      }
     },
     "x": {
-      "field": "year", "type": "ordinal", "title": "Year",
-      "axis": {"labelFontSize": 9, "titleFontSize": 12, "labelAngle": -45, "domain": false, "ticks": false}
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "axis": {
+        "labelFontSize": 9,
+        "titleFontSize": 12,
+        "labelAngle": -45,
+        "domain": false,
+        "ticks": false
+      }
     },
     "color": {
-      "field": "gini", "type": "quantitative",
-      "scale": {"scheme": "orangered", "domain": [0.28, 0.52]},
-      "legend": {"title": "Gini Coefficient", "orient": "bottom", "titleFontSize": 11, "labelFontSize": 11, "gradientLength": 200, "gradientThickness": 12, "direction": "horizontal"}
+      "field": "gini",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "orangered",
+        "domain": [
+          0.28,
+          0.52
+        ]
+      },
+      "legend": {
+        "title": "Gini Coefficient",
+        "orient": "bottom",
+        "titleFontSize": 11,
+        "labelFontSize": 11,
+        "gradientLength": 200,
+        "gradientThickness": 12,
+        "direction": "horizontal"
+      }
     },
     "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "year", "type": "ordinal", "title": "Year"},
-      {"field": "gini", "type": "quantitative", "title": "Gini Coefficient", "format": ".3f"}
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "gini",
+        "type": "quantitative",
+        "title": "Gini Coefficient",
+        "format": ".3f"
+      }
     ]
   },
-  "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "background": "#ffffff"
+  },
+  "params": [
+    {
+      "name": "year_min",
+      "value": 1974,
+      "bind": {
+        "input": "range",
+        "min": 1974,
+        "max": 2016,
+        "step": 1,
+        "name": "From year: "
+      }
+    },
+    {
+      "name": "year_max",
+      "value": 2022,
+      "bind": {
+        "input": "range",
+        "min": 1979,
+        "max": 2022,
+        "step": 1,
+        "name": "To year: "
+      }
+    },
+    {
+      "name": "state_filter",
+      "value": [],
+      "bind": {
+        "input": "select",
+        "options": [
+          [],
+          [
+            "Sabah"
+          ],
+          [
+            "Kelantan"
+          ],
+          [
+            "Selangor"
+          ],
+          [
+            "W.P. Kuala Lumpur"
+          ],
+          [
+            "Sarawak"
+          ],
+          [
+            "Perak"
+          ],
+          [
+            "Kedah"
+          ]
+        ],
+        "labels": [
+          "All states",
+          "Sabah",
+          "Kelantan",
+          "Selangor",
+          "W.P. Kuala Lumpur",
+          "Sarawak",
+          "Perak",
+          "Kedah"
+        ],
+        "name": "Highlight state: "
+      }
+    }
+  ]
 }

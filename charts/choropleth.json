@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Absolute Poverty Rate by State (2022)",
-    "subtitle": "Darker colour = higher poverty rate \u00b7 Hover over a state for details",
+    "text": "State-Level Welfare Indicators (2022)",
+    "subtitle": "Use dropdown to switch metric \u00b7 Hover over a state for details",
     "fontSize": 15,
     "subtitleFontSize": 12,
     "subtitleColor": "#aaaaaa",
@@ -90,9 +90,18 @@
               "income_median",
               "income_mean",
               "poverty",
-              "gini"
+              "gini",
+              "expenditure_mean"
             ]
           }
+        },
+        {
+          "calculate": "datum.expenditure_mean / datum.income_median * 100",
+          "as": "expenditure_ratio"
+        },
+        {
+          "calculate": "datum[metric]",
+          "as": "selected_metric"
         }
       ],
       "mark": {
@@ -102,17 +111,18 @@
       },
       "encoding": {
         "color": {
-          "field": "poverty",
+          "field": "selected_metric",
           "type": "quantitative",
           "scale": {
             "scheme": "orangered",
-            "domain": [
-              0,
-              22
-            ]
+            "domain": {
+              "expr": "metric == 'gini' ? [0.28, 0.52] : metric == 'expenditure_ratio' ? [60, 100] : [0, 22]"
+            }
           },
           "legend": {
-            "title": "Poverty Rate (%)",
+            "title": {
+              "expr": "metric == 'poverty' ? 'Poverty Rate (%)' : metric == 'gini' ? 'Gini Coefficient' : 'Expenditure Ratio (%)'"
+            },
             "orient": "bottom-right",
             "titleFontSize": 12,
             "labelFontSize": 11,
@@ -133,22 +143,22 @@
             "format": ".1f"
           },
           {
-            "field": "income_median",
-            "type": "quantitative",
-            "title": "Median Income (RM)",
-            "format": ",.0f"
-          },
-          {
-            "field": "income_mean",
-            "type": "quantitative",
-            "title": "Mean Income (RM)",
-            "format": ",.0f"
-          },
-          {
             "field": "gini",
             "type": "quantitative",
             "title": "Gini Coefficient",
             "format": ".3f"
+          },
+          {
+            "field": "expenditure_ratio",
+            "type": "quantitative",
+            "title": "Expenditure Ratio (%)",
+            "format": ".1f"
+          },
+          {
+            "field": "income_median",
+            "type": "quantitative",
+            "title": "Median Income (RM)",
+            "format": ",.0f"
           }
         ]
       }
@@ -295,5 +305,25 @@
       "stroke": null
     },
     "background": "#ffffff"
-  }
+  },
+  "params": [
+    {
+      "name": "metric",
+      "value": "poverty",
+      "bind": {
+        "input": "select",
+        "options": [
+          "poverty",
+          "gini",
+          "expenditure_ratio"
+        ],
+        "labels": [
+          "Poverty Rate (%)",
+          "Gini Coefficient",
+          "Expenditure Ratio (%)"
+        ],
+        "name": "Show: "
+      }
+    }
+  ]
 }
