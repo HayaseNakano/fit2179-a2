@@ -116,48 +116,6 @@
         "step": 1,
         "name": "To year: "
       }
-    },
-    {
-      "name": "state_filter",
-      "value": [],
-      "bind": {
-        "input": "select",
-        "options": [
-          [],
-          [
-            "Sabah"
-          ],
-          [
-            "Kelantan"
-          ],
-          [
-            "Selangor"
-          ],
-          [
-            "W.P. Kuala Lumpur"
-          ],
-          [
-            "Sarawak"
-          ],
-          [
-            "Perak"
-          ],
-          [
-            "Kedah"
-          ]
-        ],
-        "labels": [
-          "All states",
-          "Sabah",
-          "Kelantan",
-          "Selangor",
-          "W.P. Kuala Lumpur",
-          "Sarawak",
-          "Perak",
-          "Kedah"
-        ],
-        "name": "Highlight state: "
-      }
     }
   ]
 }

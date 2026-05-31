@@ -40,7 +40,7 @@
 
     .chart-wrap { width: 100%; }
 
-    .narr { background: #ddeeff; border-left: 3px solid #1a5fa8; border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 18px; font-size: 13px; color: #1a3a6a; line-height: 1.65; display: flex; gap: 18px; align-items: flex-start; }
+    .narr { background: #ddeeff; border-left: 3px solid #1a5fa8; border-radius: 0 8px 8px 0; padding: 8px 14px; margin-bottom: 14px; font-size: 13px; color: #1a3a6a; line-height: 1.6; display: flex; gap: 18px; align-items: flex-start; }
     .narr-text { flex: 1; min-width: 0; }
     .narr-ctrl { flex: 1; min-width: 0; background: #ffffff; border: 1px solid #c8d8f0; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #1a1a1a; }
     .narr-ctrl .ctrl-title { font-size: 11px; font-weight: 700; color: #1a5fa8; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
@@ -180,7 +180,7 @@
       </div>
     </div>
 
-    <div class="narr"><div class="narr-text">All states have seen income growth since 1970, but KL's<br>median income grew ~40× while Kelantan's grew only ~18×.<br>Terengganu climbed dramatically from rank 10 to rank 5 —<br>driven by oil revenue. Gini coefficients remain stubbornly<br>high in Sabah and Kelantan, indicating persistent internal<br>inequality even within poorer states. The mean-median gap<br>reveals that in high-income states, a small number of very<br>wealthy households pull the average far above what most<br>residents actually earn.</div><div class="narr-ctrl"><div class="ctrl-title">&#9881; Gini Heatmap Controls</div><label>From year: <span id="gini_from_val">1974</span></label><input type="range" min="1974" max="2016" step="1" value="1974" oninput="updateGiniFrom(this.value)"><label>To year: <span id="gini_to_val">2022</span></label><input type="range" min="1979" max="2022" step="1" value="2022" oninput="updateGiniTo(this.value)"></div></div>
+    <div class="narr"><div class="narr-text">All states have seen income growth since 1970, but KL's<br>median income grew ~40× while Kelantan's grew only ~18×.<br>Terengganu climbed dramatically from rank 10 to rank 5 —<br>driven by oil revenue. Gini coefficients remain stubbornly<br>high in Sabah and Kelantan, indicating persistent internal<br>inequality even within poorer states. The mean-median gap<br>reveals that in high-income states, a small number of very<br>wealthy households pull the average far above what most<br>residents actually earn.</div></div>
   </div>
 
   <!-- SECTION 4 — Poverty -->
@@ -216,7 +216,7 @@
       </div>
     </div>
 
-    <div class="narr"><div class="narr-text">Low income translates directly into financial fragility.<br>Kelantan households retain just RM 109 per month after<br>spending — barely enough to absorb any unexpected cost.<br>Meanwhile, piped water access in low-income states can fall<br>below 70%, showing that the divide extends well beyond take-<br>home pay.</div><div class="narr-ctrl"><div class="ctrl-title">&#9881; Amenity Scatter Controls</div><label>Amenity type</label><select onchange="updateAmenity(this.value)"><option value="piped_water">Piped Water Access (%)</option><option value="electricity">Electricity Access (%)</option><option value="sanitation">Sanitation Access (%)</option></select><label>Year</label><select onchange="updateAmenityYear(this.value)"><option value="2022-01-01">2022</option><option value="2019-01-01">2019</option><option value="2016-01-01">2016</option></select></div></div>
+    <div class="narr"><div class="narr-text">Low income translates directly into financial fragility.<br>Kelantan households retain just RM 109 per month after<br>spending — barely enough to absorb any unexpected cost.<br>Meanwhile, piped water access in low-income states can fall<br>below 70%, showing that the divide extends well beyond take-<br>home pay.</div></div>
   </div>
 
   <!-- SECTION 5 — Bigger picture -->
@@ -243,7 +243,7 @@
       </div>
     </div>
 
-    <div class="narr"><div class="narr-text">Malaysia's HDI rose from 0.653 (1990) to 0.803 (2023),<br>reflecting improvements in income, education, and life<br>expectancy. Yet income inequality persists — economic growth<br>has not been equally shared across all states and<br>communities.</div><div class="narr-ctrl"><div class="ctrl-title">&#9881; Timeline Controls</div><label>Poverty area — start year: <span id="pov_start_val">1970</span></label><input type="range" min="1970" max="2015" step="1" value="1970" oninput="updatePovStart(this.value)"><label>HDI — start year: <span id="hdi_start_val">1990</span></label><input type="range" min="1990" max="2018" step="1" value="1990" oninput="updateHdiStart(this.value)"></div></div>
+    <div class="narr"><div class="narr-text">Malaysia's HDI rose from 0.653 (1990) to 0.803 (2023),<br>reflecting improvements in income, education, and life<br>expectancy. Yet income inequality persists — economic growth<br>has not been equally shared across all states and<br>communities.</div></div>
   </div>
 
   <!-- FOOTER -->

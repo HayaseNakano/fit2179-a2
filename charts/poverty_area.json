@@ -28,9 +28,6 @@
       "groupby": [
         "date"
       ]
-    },
-    {
-      "filter": "year(datum.date) >= year_start && year(datum.date) <= year_end"
     }
   ],
   "layer": [
@@ -196,29 +193,5 @@
       "stroke": null
     },
     "background": "#ffffff"
-  },
-  "params": [
-    {
-      "name": "year_start",
-      "value": 1970,
-      "bind": {
-        "input": "range",
-        "min": 1970,
-        "max": 2015,
-        "step": 1,
-        "name": "Start year: "
-      }
-    },
-    {
-      "name": "year_end",
-      "value": 2022,
-      "bind": {
-        "input": "range",
-        "min": 1976,
-        "max": 2022,
-        "step": 1,
-        "name": "End year: "
-      }
-    }
-  ]
+  }
 }
