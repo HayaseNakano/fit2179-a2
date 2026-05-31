@@ -200,8 +200,7 @@
         "values": [
           {
             "date": "1974-01-01",
-            "income_median": 108,
-            "label": "Kelantan grew 33\u00d7 yet\nnever caught any other state"
+            "label": "Kelantan grew 33\u00d7 yet never caught any other state"
           }
         ]
       },
@@ -209,11 +208,10 @@
         "type": "text",
         "align": "left",
         "dx": 6,
-        "dy": 0,
+        "dy": -8,
         "fontSize": 10,
         "fontStyle": "italic",
-        "color": "#cc3333",
-        "lineBreak": "\n"
+        "color": "#cc3333"
       },
       "encoding": {
         "x": {
@@ -221,8 +219,7 @@
           "type": "temporal"
         },
         "y": {
-          "field": "income_median",
-          "type": "quantitative"
+          "datum": 400
         },
         "text": {
           "field": "label",

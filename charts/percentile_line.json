@@ -180,8 +180,6 @@
       "data": {
         "values": [
           {
-            "percentile": 88,
-            "income": 11500,
             "label": "Top 10% in Kelantan\nnearly match KL's top \u2014\nthe gap widens at the bottom half"
           }
         ]
@@ -198,12 +196,10 @@
       },
       "encoding": {
         "x": {
-          "field": "percentile",
-          "type": "quantitative"
+          "datum": 88
         },
         "y": {
-          "field": "income",
-          "type": "quantitative"
+          "datum": 12000
         },
         "text": {
           "field": "label",

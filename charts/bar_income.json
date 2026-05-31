@@ -97,30 +97,25 @@
       "data": {
         "values": [
           {
-            "state": "Sabah",
-            "income_median": 4577,
-            "label": "All 4 bottom states earn less\nthan half of KL's median"
+            "x_val": 5100,
+            "label": "All 4 bottom states earn less than half of KL's median"
           }
         ]
       },
       "mark": {
         "type": "text",
         "align": "left",
-        "dx": 6,
         "fontSize": 10,
         "fontStyle": "italic",
-        "color": "#888888",
-        "lineBreak": "\n"
+        "color": "#888888"
       },
       "encoding": {
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "sort": "-x"
-        },
         "x": {
-          "field": "income_median",
+          "field": "x_val",
           "type": "quantitative"
+        },
+        "y": {
+          "datum": "Sabah"
         },
         "text": {
           "field": "label",

@@ -327,9 +327,7 @@
       "data": {
         "values": [
           {
-            "year": 1974,
-            "rank": 2,
-            "label": "N. Sembilan was\nricher than Johor\nand Pulau Pinang"
+            "label": "N. Sembilan was once\nricher than Johor\nand Pulau Pinang"
           }
         ]
       },
@@ -344,19 +342,10 @@
       },
       "encoding": {
         "x": {
-          "field": "year",
-          "type": "ordinal"
+          "datum": "1974"
         },
         "y": {
-          "field": "rank",
-          "type": "quantitative",
-          "scale": {
-            "domain": [
-              0.5,
-              11.5
-            ],
-            "reverse": true
-          }
+          "datum": 2
         },
         "text": {
           "field": "label",
@@ -368,8 +357,6 @@
       "data": {
         "values": [
           {
-            "year": 2022,
-            "rank": 9,
             "label": "Perak fell from\n6th to 9th \u2014\nmanufacturing decline"
           }
         ]
@@ -385,19 +372,10 @@
       },
       "encoding": {
         "x": {
-          "field": "year",
-          "type": "ordinal"
+          "datum": "2022"
         },
         "y": {
-          "field": "rank",
-          "type": "quantitative",
-          "scale": {
-            "domain": [
-              0.5,
-              11.5
-            ],
-            "reverse": true
-          }
+          "datum": 9
         },
         "text": {
           "field": "label",
