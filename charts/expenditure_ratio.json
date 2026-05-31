@@ -43,8 +43,8 @@
     {
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 4,
+        "align": "right",
+        "dx": -4,
         "dy": -6,
         "fontSize": 10,
         "color": "#cc3333",
@@ -138,7 +138,7 @@
           },
           "legend": {
             "title": null,
-            "orient": "bottom-right",
+            "orient": "top-left",
             "labelFontSize": 11,
             "symbolSize": 100
           }
@@ -189,8 +189,8 @@
       },
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 10,
+        "align": "right",
+        "dx": -10,
         "dy": -7,
         "fontSize": 10,
         "fontStyle": "italic",
@@ -227,8 +227,8 @@
       },
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 10,
+        "align": "right",
+        "dx": -10,
         "dy": 6,
         "fontSize": 10,
         "fontStyle": "italic",
@@ -265,8 +265,8 @@
       },
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 10,
+        "align": "right",
+        "dx": -10,
         "dy": -7,
         "fontSize": 10,
         "fontStyle": "italic",
@@ -303,8 +303,8 @@
       },
       "mark": {
         "type": "text",
-        "align": "left",
-        "dx": 10,
+        "align": "right",
+        "dx": -10,
         "dy": 6,
         "fontSize": 10,
         "fontStyle": "italic",
