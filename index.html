@@ -50,6 +50,7 @@
     /* ── Narr boxes — ALL full width, consistent ── */
     .narr { background: #ddeeff; border-left: 3px solid #1a5fa8; border-radius: 0 8px 8px 0; padding: 12px 18px; margin-bottom: 16px; font-family: 'Inter', sans-serif; font-size: 13px; color: #1a3a6a; line-height: 1.65; display: flex; gap: 20px; align-items: flex-start; width: 100%; box-sizing: border-box; }
     .narr-text { flex: 1; min-width: 0; }
+    .narr-text b { color: #0c447c; font-weight: 700; }
     .narr-ctrl { flex: 1; min-width: 0; background: #ffffff; border: 1px solid #c8d8f0; border-radius: 8px; padding: 12px 14px; font-size: 12px; color: #1a1a1a; }
     .narr-ctrl .ctrl-title { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 700; color: #1a5fa8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
     .narr-ctrl label { display: block; font-size: 11px; color: #555; margin-bottom: 2px; margin-top: 8px; }
@@ -126,7 +127,7 @@
       </div>
     </div>
 
-    <div class="narr"><div class="narr-text">W.P. Kuala Lumpur (RM 10,234) earns 2.8× more than Kelantan<br>(RM 3,614). Urban federal territories dominate the top of<br>the ranking, while East Coast Peninsular and Borneo states<br>cluster at the bottom — a geographic divide that mirrors<br>Malaysia's economic development history.</div></div>
+    <div class="narr"><div class="narr-text"><b>W.P. Kuala Lumpur (RM 10,234)</b> earns <b>2.8×</b> more than <b>Kelantan<br>(RM 3,614)</b>. Urban federal territories dominate the top of<br>the ranking, while East Coast Peninsular and Borneo states<br>cluster at the bottom — a geographic divide that mirrors<br>Malaysia's economic development history.</div></div>
   </div>
 
   <!-- SECTION 2 — Choropleth map -->
@@ -145,7 +146,7 @@
       <div id="chart_map" class="chart-wrap" style="min-height:520px;"></div>
     </div>
 
-    <div class="narr"><div class="narr-text">Poverty is not evenly distributed — Sabah (19.7%) and<br>Kelantan (13.2%) carry a disproportionate burden while the<br>Federal Territories sit below 2%. Crucially, Sabah's poverty<br>rate rivals states with far lower incomes, revealing that<br>resource wealth does not guarantee it reaches ordinary<br>households.</div><div class="narr-ctrl"><div class="ctrl-title">&#9881; Map Controls</div><label>Switch metric displayed on map</label><select onchange="updateChoropleth(this.value)"><option value="poverty">Poverty Rate (%)</option><option value="gini">Gini Coefficient</option><option value="expenditure_ratio">Expenditure Ratio (%)</option></select></div></div>
+    <div class="narr"><div class="narr-text">Poverty is not evenly distributed — <b>Sabah (19.7%)</b> and<br><b>Kelantan (13.2%)</b> carry a disproportionate burden while the<br>Federal Territories sit <b>below 2%</b>. Crucially, Sabah's poverty<br>rate rivals states with far lower incomes, revealing that<br>resource wealth does not guarantee it reaches ordinary<br>households.</div><div class="narr-ctrl"><div class="ctrl-title">&#9881; Map Controls</div><label>Switch metric displayed on map</label><select onchange="updateChoropleth(this.value)"><option value="poverty">Poverty Rate (%)</option><option value="gini">Gini Coefficient</option><option value="expenditure_ratio">Expenditure Ratio (%)</option></select></div></div>
   </div>
 
   <!-- SECTION 3 — Diverging + trends -->
@@ -201,11 +202,11 @@
     <div style="display:flex; gap:14px; margin-bottom:16px;">
       <div class="narr" style="flex:1;">
         <div class="narr-text"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em;">Rankings shift</strong><br><br>
-        All states grew since 1970, but KL's<br>median rose ~40× while Kelantan's<br>grew only ~18×. Terengganu climbed<br>from rank 10 to 5 — driven by oil<br>revenue that bypassed most states.</div>
+        All states grew since 1970, but <b>KL's<br>median rose ~40×</b> while Kelantan's<br>grew only <b>~18×</b>. Terengganu climbed<br>from <b>rank 10 to 5</b> — driven by oil<br>revenue that bypassed most states.</div>
       </div>
       <div class="narr" style="flex:1;">
         <div class="narr-text"><strong style="font-size:11px; text-transform:uppercase; letter-spacing:0.06em;">Who gains from growth?</strong><br><br>
-        In high-income states, a small group<br>of top earners pulls the mean far above<br>what most residents actually earn.<br>Gini remains stubbornly high in Sabah<br>and Kelantan — poor yet unequal within.</div>
+        In high-income states, a <b>small group<br>of top earners</b> pulls the mean far above<br>what most residents actually earn.<br>Gini remains <b>stubbornly high</b> in <b>Sabah</b><br>and <b>Kelantan</b> — poor yet unequal within.</div>
       </div>
     </div>
   </div>
@@ -243,7 +244,7 @@
       </div>
     </div>
 
-    <div class="narr"><div class="narr-text">Low income translates directly into financial fragility.<br>Kelantan households retain just RM 109 per month after<br>spending — barely enough to absorb any unexpected cost.<br>Meanwhile, piped water access in low-income states can fall<br>below 70%, showing that the divide extends well beyond take-<br>home pay.</div></div>
+    <div class="narr"><div class="narr-text">Low income translates directly into <b>financial fragility</b>.<br>Kelantan households retain just <b>RM 109 per month</b> after<br>spending — barely enough to absorb any unexpected cost.<br>Meanwhile, piped water access in low-income states can fall<br><b>below 70%</b>, showing that the divide extends well beyond take-<br>home pay.</div></div>
   </div>
 
   <!-- SECTION 5 — Bigger picture -->
@@ -270,7 +271,7 @@
       </div>
     </div>
 
-    <div class="narr"><div class="narr-text">Malaysia's HDI rose from 0.653 (1990) to 0.803 (2023),<br>reflecting improvements in income, education, and life<br>expectancy. Yet income inequality persists — economic growth<br>has not been equally shared across all states and<br>communities.</div></div>
+    <div class="narr"><div class="narr-text">Malaysia's HDI rose from <b>0.653 (1990)</b> to <b>0.803 (2023)</b>,<br>reflecting improvements in income, education, and life<br>expectancy. Yet <b>income inequality persists</b> — economic growth<br>has not been equally shared across all states and<br>communities.</div></div>
   </div>
 
   <!-- FOOTER -->
