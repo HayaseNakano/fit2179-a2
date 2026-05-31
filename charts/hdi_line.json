@@ -237,9 +237,9 @@
       },
       "mark": {
         "type": "text",
-        "align": "right",
-        "dx": -8,
-        "dy": 30,
+        "align": "left",
+        "dx": 10,
+        "dy": -10,
         "fontSize": 10,
         "fontStyle": "italic",
         "color": "#cc3333"
