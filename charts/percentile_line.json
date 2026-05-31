@@ -114,14 +114,14 @@
         },
         "opacity": {
           "condition": {
-            "param": "state_select",
+            "param": "state_select_pct",
             "value": 1
           },
           "value": 0.15
         },
         "strokeWidth": {
           "condition": {
-            "param": "state_select",
+            "param": "state_select_pct",
             "value": 3
           },
           "value": 1.5
@@ -147,7 +147,7 @@
       },
       "params": [
         {
-          "name": "state_select",
+          "name": "state_select_pct",
           "select": {
             "type": "point",
             "fields": [
@@ -157,7 +157,7 @@
           "bind": "legend"
         },
         {
-          "name": "year_select",
+          "name": "percentile_year_select",
           "value": "2024-01-01",
           "bind": {
             "input": "select",

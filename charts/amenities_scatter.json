@@ -45,7 +45,7 @@
           }
         },
         {
-          "name": "year_select",
+          "name": "amenity_year_select",
           "value": "2022-01-01",
           "bind": {
             "input": "select",
@@ -63,7 +63,7 @@
           }
         },
         {
-          "name": "hover",
+          "name": "hover_amenities",
           "select": {
             "type": "point",
             "on": "mouseover",
@@ -143,7 +143,7 @@
         },
         "opacity": {
           "condition": {
-            "param": "hover",
+            "param": "hover_amenities",
             "value": 1
           },
           "value": 0.7
